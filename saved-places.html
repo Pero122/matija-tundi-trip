@@ -512,6 +512,7 @@ function matches(p){
   if(state.verdicts.size && !state.verdicts.has(p.v)) return false;
   if(state.cats.size && !(p.cat||[]).some(c=>state.cats.has(c))) return false;
   if(state.srcs.size && !(p.src||[]).some(s=>state.srcs.has(s))) return false;
+  if(state.ourpicks){ const pk = getPick(pid(p)); if(!(pk.m>=4 || pk.t>=4)) return false; }
   return true;
 }
 function presentSet(data, key){
@@ -548,7 +549,7 @@ function apply(){
   document.getElementById("clearf").hidden = !(state.verdicts.size||state.cats.size||state.srcs.size||state.ourpicks);
 }
 function clearFilters(){
-  state.verdicts.clear(); state.cats.clear(); state.srcs.clear();
+  state.verdicts.clear(); state.cats.clear(); state.srcs.clear(); state.ourpicks=false;
   document.querySelectorAll(".filterbar .chip.on").forEach(c=>c.classList.remove("on"));
   apply();
 }
@@ -613,6 +614,11 @@ document.querySelector(".filterbar").addEventListener("click", e=>{
   apply();
 });
 document.getElementById("sortsel").addEventListener("change", e=>{ state.sort = e.target.value; apply(); });
+document.getElementById("ourpicks").addEventListener("click", e=>{
+  state.ourpicks = !state.ourpicks;
+  e.currentTarget.classList.toggle("on", state.ourpicks);
+  apply();
+});
 document.querySelectorAll(".tabrow button").forEach(b=>{
   b.addEventListener("click",()=>{
     document.querySelectorAll(".tabrow button").forEach(x=>x.classList.remove("on"));
