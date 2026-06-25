@@ -583,6 +583,23 @@ document.getElementById("results").addEventListener("click", e=>{
   renderStars(star.closest(".stars"), next);
 });
 
+/* notes: toggle textarea, persist on input */
+document.getElementById("results").addEventListener("click", e=>{
+  const tog = e.target.closest(".notetoggle"); if(!tog) return;
+  const wrap = tog.nextElementSibling;
+  wrap.hidden = !wrap.hidden;
+  if(!wrap.hidden) wrap.querySelector("textarea").focus();
+});
+document.getElementById("results").addEventListener("input", e=>{
+  const ta = e.target.closest(".noteinput"); if(!ta) return;
+  const voteEl = ta.closest(".vote"); const id = voteEl.dataset.id;
+  savePick(id, {note: ta.value});
+  const tog = voteEl.querySelector(".notetoggle");
+  const has = !!ta.value.trim();
+  tog.classList.toggle("has", has);
+  tog.textContent = has ? "📝 note ●" : "📝 note ▾";
+});
+
 /* ---------- events ---------- */
 document.querySelector(".filterbar").addEventListener("click", e=>{
   const b = e.target.closest(".chip"); if(!b) return;
