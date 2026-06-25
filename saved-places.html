@@ -175,6 +175,37 @@
 <footer><div class="wrap"><a href="trip-plan.html">← back to the trip plan</a></div></footer>
 
 <script>
+/* ---------- ids + persistence (voting & notes) ---------- */
+function slugify(s){
+  return (s||"").toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g,"")
+    .replace(/[^a-z0-9]+/g,"-").replace(/^-+|-+$/g,"");
+}
+function pid(p){
+  return Array.isArray(p.img) ? p.img[0] : (p.img || slugify(p.n));
+}
+function escapeHtml(s){
+  return (s||"").replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+}
+const PICKS_KEY = "matidi-picks-v1";
+function loadPicks(){
+  try { return JSON.parse(localStorage.getItem(PICKS_KEY)) || {}; }
+  catch { return {}; }
+}
+let picks = loadPicks();
+function getPick(id){ return {m:0, t:0, note:"", ...(picks[id]||{})}; }
+function savePick(id, patch){
+  const next = {...getPick(id), ...patch};
+  if(!next.m && !next.t && !(next.note && next.note.trim())) delete picks[id];
+  else picks[id] = next;
+  localStorage.setItem(PICKS_KEY, JSON.stringify(picks));
+}
+function stars(v){
+  let h=""; for(let i=1;i<=5;i++) h+=`<i class="star${i<=v?" on":""}" data-v="${i}">★</i>`;
+  return h;
+}
+function renderStars(el, val){
+  [...el.querySelectorAll(".star")].forEach(s => s.classList.toggle("on", (+s.dataset.v) <= val));
+}
 /* ---------- category + source dictionaries (order = display order) ---------- */
 const CATS = {
   landmarks:{e:"🏛️",l:"Landmarks & views"},
