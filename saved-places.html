@@ -68,6 +68,10 @@
   .fcount{font-size:.82rem; font-weight:700; color:var(--ink)}
   .clearbtn{font-family:inherit; font-size:.78rem; font-weight:700; cursor:pointer; background:none; border:none;
     color:var(--paprika-deep); text-decoration:underline; padding:0}
+  .fctrls{display:flex; gap:8px; align-items:center; flex-wrap:wrap}
+  .sortsel{font-family:inherit; font-size:.8rem; font-weight:600; color:var(--ink); cursor:pointer;
+    background:var(--paper); border:1.5px solid var(--line); border-radius:100px; padding:6px 12px}
+  .sortsel:hover{border-color:var(--ink)}
 
   .catname{display:flex; align-items:center; gap:13px; font-size:1.45rem; margin:34px 0 4px}
   .catname .ln{flex:1; height:2px; background:repeating-linear-gradient(90deg,var(--line) 0 8px,transparent 8px 14px)}
@@ -165,6 +169,14 @@
     <div class="chips" id="catchips"></div>
   </div>
   <div class="fmeta">
+    <div class="fctrls">
+      <select id="sortsel" class="sortsel" aria-label="Sort">
+        <option value="cat">↕ By category</option>
+        <option value="src">↕ Most sources</option>
+        <option value="rate">↕ Top rated</option>
+      </select>
+      <button class="chip" id="ourpicks">⭐ Our picks</button>
+    </div>
     <span class="fcount" id="fcount"></span>
     <button class="clearbtn" id="clearf" hidden onclick="clearFilters()">Clear all filters ✕</button>
   </div>
@@ -437,7 +449,11 @@ const UK = [
 const DATA = {Hungary:HU, UK:UK};
 
 /* ---------- state ---------- */
-const state = {country:"Hungary", verdicts:new Set(), cats:new Set(), srcs:new Set()};
+const state = {country:"Hungary", verdicts:new Set(), cats:new Set(), srcs:new Set(), sort:"cat", ourpicks:false};
+const SORTCMP = {
+  src:(a,b)=> ((b.src||[]).length-(a.src||[]).length) || ((parseFloat(b.r)||0)-(parseFloat(a.r)||0)) || a.n.localeCompare(b.n),
+  rate:(a,b)=> ((parseFloat(b.r)||0)-(parseFloat(a.r)||0)) || a.n.localeCompare(b.n),
+};
 
 /* ---------- card ---------- */
 function card(p){
@@ -499,21 +515,22 @@ function apply(){
   const data = DATA[state.country] || [];
   const visible = data.filter(matches);
   const root = document.getElementById("results");
-  if(!data.length){
-    root.innerHTML = `<div class="soon">🇬🇧 <b>UK / London places coming next.</b><br/>Say the word and I'll add the ~70 London pins — same treatment, every place a photo.</div>`;
-  } else if(!visible.length){
+  if(!visible.length){
     root.innerHTML = `<div class="soon">No places match these filters.<br/><button class="clearbtn" onclick="clearFilters()">Clear filters</button></div>`;
-  } else {
+  } else if(state.sort === "cat"){
     root.innerHTML = Object.keys(CATS).map(ck=>{
       const items = visible.filter(p=>(p.cat||[])[0]===ck);
       if(!items.length) return "";
       return `<div class="catname">${CATS[ck].e} ${CATS[ck].l} <span class="ln"></span><span class="count">${items.length}</span></div>
         <div class="grid">${items.map(card).join("")}</div>`;
     }).join("");
+  } else {
+    const sorted = visible.slice().sort(SORTCMP[state.sort]);
+    root.innerHTML = `<div class="grid">${sorted.map(card).join("")}</div>`;
   }
   const t = visible.length;
-  document.getElementById("fcount").textContent = data.length ? `${t} ${t===1?"place":"places"} shown` : "";
-  document.getElementById("clearf").hidden = !(state.verdicts.size||state.cats.size||state.srcs.size);
+  document.getElementById("fcount").textContent = `${t} ${t===1?"place":"places"} shown`;
+  document.getElementById("clearf").hidden = !(state.verdicts.size||state.cats.size||state.srcs.size||state.ourpicks);
 }
 function clearFilters(){
   state.verdicts.clear(); state.cats.clear(); state.srcs.clear();
@@ -552,6 +569,7 @@ document.querySelector(".filterbar").addEventListener("click", e=>{
   b.classList.toggle("on");
   apply();
 });
+document.getElementById("sortsel").addEventListener("change", e=>{ state.sort = e.target.value; apply(); });
 document.querySelectorAll(".tabrow button").forEach(b=>{
   b.addEventListener("click",()=>{
     document.querySelectorAll(".tabrow button").forEach(x=>x.classList.remove("on"));
