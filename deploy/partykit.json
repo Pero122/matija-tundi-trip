@@ -1,0 +1,8 @@
+{
+  "name": "matija-tundi-trip",
+  "main": "server.ts",
+  "compatibilityDate": "2024-01-01",
+  "serve": {
+    "path": "public"
+  }
+}

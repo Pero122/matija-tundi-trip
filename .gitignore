@@ -10,3 +10,7 @@ __pycache__/
 *.swp
 .idea/
 .vscode/
+
+# PartyKit generated static bundle (regenerate with deploy/build.sh)
+deploy/public/
+.partykit/
