@@ -126,6 +126,21 @@
   .psrc{display:flex; flex-wrap:wrap; gap:9px; margin-top:9px; padding-top:8px; border-top:1px dashed var(--line);
     font-size:.71rem; color:var(--ink-soft); font-weight:600}
   .psrc span{display:inline-flex; gap:3px; align-items:center}
+  .vote{margin-top:10px; padding-top:9px; border-top:1px dashed var(--line); display:flex; flex-direction:column; gap:4px}
+  .vrow{display:flex; align-items:center; gap:10px}
+  .vname{font-size:.74rem; font-weight:700; color:var(--ink-soft); width:52px; flex:none}
+  .stars{display:inline-flex; gap:2px; cursor:pointer}
+  .star{font-style:normal; font-size:1.15rem; line-height:1; color:var(--line); transition:.12s; user-select:none}
+  .star:hover{transform:scale(1.15)}
+  .star.on{color:var(--mustard)}
+  .notetoggle{align-self:flex-start; margin-top:4px; font-family:inherit; font-size:.76rem; font-weight:700;
+    cursor:pointer; background:none; border:1.5px solid var(--line); border-radius:100px; padding:4px 11px; color:var(--ink-soft)}
+  .notetoggle:hover{border-color:var(--ink); color:var(--ink)}
+  .notetoggle.has{border-color:var(--paprika); color:var(--paprika-deep)}
+  .notewrap{margin-top:6px}
+  .noteinput{width:100%; font-family:inherit; font-size:.85rem; color:var(--ink); background:var(--paper);
+    border:1.5px solid var(--line); border-radius:10px; padding:8px 10px; resize:vertical}
+  .noteinput:focus{outline:none; border-color:var(--ink)}
 
   footer{padding:44px 0 20px; border-top:2px solid var(--ink); text-align:center; margin-top:40px}
   footer a{font-size:1rem; font-weight:700; text-decoration:none}
@@ -555,6 +570,17 @@ document.getElementById("results").addEventListener("click", e=>{
   else if(e.target.closest(".prev")) setSlide(car,cur-1);
   else { const dot=e.target.closest(".cdots i");
     if(dot){ const dots=[...car.querySelectorAll(".cdots i")]; setSlide(car,dots.indexOf(dot)); } }
+});
+
+/* voting: tap a star to set; tap the current value to clear */
+document.getElementById("results").addEventListener("click", e=>{
+  const star = e.target.closest(".star"); if(!star) return;
+  const voteEl = star.closest(".vote"); const id = voteEl.dataset.id;
+  const who = star.closest(".stars").dataset.who;
+  const val = +star.dataset.v;
+  const next = (getPick(id)[who] === val) ? 0 : val;
+  savePick(id, {[who]: next});
+  renderStars(star.closest(".stars"), next);
 });
 
 /* ---------- events ---------- */
