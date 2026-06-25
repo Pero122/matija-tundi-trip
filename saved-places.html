@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Saved Places, Reviewed · Matija &amp; Tündi</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📍</text></svg>" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..900;1,9..144,400..700&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --paper:#f7ecd7; --paper-2:#f1e2c7; --ink:#2c2118; --ink-soft:#6b5b48;
+    --paprika:#c8492a; --paprika-deep:#a3361d; --forest:#1f4a40; --forest-deep:#14352d;
+    --mustard:#e0a32c; --line:#d8c4a0;
+    --green:#3f7d54; --skip:#a85a4a;
+    --shadow:0 1px 0 rgba(44,33,24,.04), 0 14px 30px -18px rgba(44,33,24,.45);
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0; background:var(--paper); color:var(--ink); font-family:"Hanken Grotesk",sans-serif;
+    font-size:17px; line-height:1.55; -webkit-font-smoothing:antialiased; padding-bottom:60px}
+  body::before{content:""; position:fixed; inset:0; z-index:9999; pointer-events:none; opacity:.05;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+  h1,h2,h3{font-family:"Fraunces",serif; font-weight:600; line-height:1.06; margin:0}
+  a{color:var(--paprika-deep)}
+  .wrap{max-width:1000px; margin:0 auto; padding:0 22px}
+  .kicker{text-transform:uppercase; letter-spacing:.26em; font-size:.72rem; font-weight:700; color:var(--paprika)}
+
+  header.top{padding:42px 0 24px; background:
+    radial-gradient(120% 90% at 90% -20%, rgba(224,163,44,.30), transparent 55%), var(--paper);
+    border-bottom:2px solid var(--ink)}
+  .topnav{display:flex; gap:10px; margin-bottom:20px; flex-wrap:wrap}
+  .topnav a{display:inline-flex; align-items:center; gap:6px; font-weight:700; font-size:.85rem; text-decoration:none;
+    color:var(--ink); background:var(--paper); border:2px solid var(--ink); padding:6px 14px; border-radius:100px; transition:.18s}
+  .topnav a:hover{background:var(--mustard)}
+  .topnav a.here{background:var(--ink); color:var(--paper)}
+  .top h1{font-size:clamp(2.2rem,5.5vw,3.6rem); letter-spacing:-.02em; margin-top:6px}
+  .top h1 em{font-style:italic; color:var(--paprika)}
+  .top p{color:var(--ink-soft); max-width:62ch; margin:12px 0 0}
+
+  /* country tabs */
+  .tabs{position:sticky; top:0; z-index:60; background:var(--paper); padding:13px 0; border-bottom:1.5px solid var(--line)}
+  .tabrow{display:flex; gap:6px; justify-content:center}
+  .tabrow button{font-family:"Hanken Grotesk"; font-weight:700; font-size:1rem; cursor:pointer; border:2px solid var(--ink);
+    background:var(--paper); color:var(--ink); padding:9px 22px; border-radius:100px; transition:.2s}
+  .tabrow button[data-t="Hungary"].on{background:var(--paprika); border-color:var(--paprika); color:#fff}
+  .tabrow button[data-t="UK"].on{background:var(--forest); border-color:var(--forest); color:#fff}
+
+  /* filter bar */
+  .filterbar{background:var(--paper-2); border-bottom:1.5px solid var(--line); padding:12px 0}
+  .fgroup{display:flex; align-items:flex-start; gap:8px; flex-wrap:wrap; padding:6px 0}
+  .fgroup+.fgroup{border-top:1px dashed var(--line)}
+  .flabel{font-size:.66rem; text-transform:uppercase; letter-spacing:.15em; font-weight:700; color:var(--ink-soft);
+    min-width:78px; padding-top:7px}
+  .chips{display:flex; flex-wrap:wrap; gap:6px; flex:1}
+  .chip{font-family:inherit; font-size:.8rem; font-weight:600; cursor:pointer; border:1.5px solid var(--line);
+    background:var(--paper); color:var(--ink); padding:5px 11px; border-radius:100px; transition:.15s;
+    display:inline-flex; gap:5px; align-items:center; white-space:nowrap}
+  .chip:hover{border-color:var(--ink)}
+  .chip.on{background:var(--ink); color:var(--paper); border-color:var(--ink)}
+  .chip.vchip.on[data-v="must"]{background:var(--green); border-color:var(--green); color:#fff}
+  .chip.vchip.on[data-v="worth"]{background:var(--mustard); border-color:var(--mustard); color:var(--ink)}
+  .chip.vchip.on[data-v="maybe"]{background:#cdb892; border-color:#cdb892; color:var(--ink)}
+  .chip.vchip.on[data-v="skip"]{background:var(--skip); border-color:var(--skip); color:#fff}
+  .fmeta{display:flex; justify-content:space-between; align-items:center; gap:12px; padding-top:10px; margin-top:4px;
+    border-top:1.5px solid var(--line)}
+  .fcount{font-size:.82rem; font-weight:700; color:var(--ink)}
+  .clearbtn{font-family:inherit; font-size:.78rem; font-weight:700; cursor:pointer; background:none; border:none;
+    color:var(--paprika-deep); text-decoration:underline; padding:0}
+
+  .catname{display:flex; align-items:center; gap:13px; font-size:1.45rem; margin:34px 0 4px}
+  .catname .ln{flex:1; height:2px; background:repeating-linear-gradient(90deg,var(--line) 0 8px,transparent 8px 14px)}
+  .count{font-size:.82rem; color:var(--ink-soft); font-weight:600}
+
+  .grid{display:grid; grid-template-columns:1fr 1fr; gap:18px; margin-top:18px}
+  @media(max-width:680px){.grid{grid-template-columns:1fr}}
+
+  .pcard{display:flex; flex-direction:column; background:var(--paper); border:2px solid var(--ink); border-radius:16px;
+    overflow:hidden; box-shadow:var(--shadow); transition:.18s}
+  .pcard:hover{transform:translateY(-3px); box-shadow:0 1px 0 rgba(44,33,24,.04),0 22px 40px -20px rgba(44,33,24,.5)}
+  .pimg{position:relative; aspect-ratio:16/9; overflow:hidden; border-bottom:2px solid var(--ink); background:var(--paper-2)}
+  .pimg img{width:100%; height:100%; object-fit:cover; display:block}
+  .pimg .emoji{width:100%; height:100%; display:flex; align-items:center; justify-content:center; font-size:3.4rem;
+    background:linear-gradient(135deg, rgba(224,163,44,.22), rgba(31,74,64,.16))}
+  .verdict{position:absolute; left:10px; bottom:10px; font-weight:700; font-size:.76rem; padding:5px 11px; border-radius:100px;
+    border:2px solid var(--ink); box-shadow:0 4px 10px -4px rgba(0,0,0,.4)}
+  .v-must{background:var(--green); color:#fff} .v-worth{background:var(--mustard); color:var(--ink)}
+  .v-maybe{background:var(--paper); color:var(--ink)} .v-skip{background:var(--skip); color:#fff}
+
+  /* photo carousel (places with multiple pics) */
+  .pimg .slide{position:absolute; inset:0; opacity:0; transition:opacity .4s ease}
+  .pimg .slide.on{opacity:1}
+  .cbtn{position:absolute; top:50%; transform:translateY(-50%); z-index:3; width:30px; height:30px; padding:0;
+    border-radius:50%; border:2px solid var(--ink); background:rgba(247,236,215,.92); color:var(--ink);
+    font-family:"Fraunces",serif; font-size:1.2rem; line-height:1; cursor:pointer; opacity:0; transition:.18s;
+    display:flex; align-items:center; justify-content:center; box-shadow:0 4px 10px -4px rgba(0,0,0,.5)}
+  .pcard:hover .cbtn{opacity:1}
+  .cbtn:hover{background:var(--mustard)}
+  .cbtn:focus-visible{opacity:1; outline:2px solid var(--ink); outline-offset:2px}
+  .cbtn.prev{left:8px} .cbtn.next{right:8px}
+  .ccount{position:absolute; top:9px; right:9px; z-index:3; font-family:"Hanken Grotesk"; font-size:.68rem;
+    font-weight:700; letter-spacing:.02em; color:var(--paper); background:rgba(44,33,24,.78);
+    border:1.5px solid rgba(247,236,215,.5); padding:2px 8px; border-radius:100px}
+  .cdots{position:absolute; bottom:11px; left:50%; transform:translateX(-50%); z-index:3; display:flex; gap:5px}
+  .cdots i{width:7px; height:7px; border-radius:50%; background:rgba(247,236,215,.6);
+    border:1px solid rgba(44,33,24,.55); cursor:pointer; transition:.18s}
+  .cdots i.on{background:var(--mustard); border-color:var(--ink); transform:scale(1.2)}
+
+  .pbody{padding:14px 16px 16px; display:flex; flex-direction:column; gap:6px}
+  .ptop{display:flex; align-items:baseline; gap:10px}
+  .ptop h3{font-size:1.16rem; flex:1}
+  .rate{font-size:.82rem; font-weight:700; color:var(--paprika-deep); white-space:nowrap}
+  .ptags{display:flex; flex-wrap:wrap; gap:5px; margin:1px 0 2px}
+  .ptag{font-size:.67rem; font-weight:600; color:var(--ink-soft); background:var(--paper-2); border:1px solid var(--line);
+    padding:2px 8px; border-radius:100px}
+  .what{margin:0; font-size:.92rem; color:var(--ink-soft)}
+  .why{margin:2px 0 0; font-size:.88rem; padding-top:8px; border-top:1px dashed var(--line)}
+  .why b{color:var(--ink)}
+  .psrc{display:flex; flex-wrap:wrap; gap:9px; margin-top:9px; padding-top:8px; border-top:1px dashed var(--line);
+    font-size:.71rem; color:var(--ink-soft); font-weight:600}
+  .psrc span{display:inline-flex; gap:3px; align-items:center}
+
+  footer{padding:44px 0 20px; border-top:2px solid var(--ink); text-align:center; margin-top:40px}
+  footer a{font-size:1rem; font-weight:700; text-decoration:none}
+  .soon{padding:50px 20px; text-align:center; color:var(--ink-soft); border:2px dashed var(--line); border-radius:16px; margin-top:24px}
+</style>
+</head>
+<body>
+
+<header class="top"><div class="wrap">
+  <div class="topnav">
+    <a href="trip-plan.html">🗺️ Trip plan</a>
+    <a href="activities.html">🎯 Activity picker</a>
+    <a class="here" href="saved-places.html">📍 Saved places</a>
+  </div>
+  <p class="kicker">Your 186 pins — filtered to Hungary &amp; the UK, reviewed</p>
+  <h1>Saved Places, <em>Reviewed</em></h1>
+  <p>Every saved pin in Hungary &amp; the UK — with a photo, what it is, its category, source, and my honest verdict. <b>Tap the chips below to filter</b> by verdict, category or source. Vienna, Italy, Prague &amp; co. are filtered out.</p>
+</div></header>
+
+<div class="tabs"><div class="wrap tabrow">
+  <button data-t="Hungary" class="on">🚗 Hungary</button>
+  <button data-t="UK">🇬🇧 United Kingdom</button>
+</div></div>
+
+<div class="filterbar"><div class="wrap">
+  <div class="fgroup">
+    <span class="flabel">Verdict</span>
+    <div class="chips">
+      <button class="chip vchip" data-v="must">🟢 Must-see</button>
+      <button class="chip vchip" data-v="worth">👍 Worth it</button>
+      <button class="chip vchip" data-v="maybe">🟡 If you have time</button>
+      <button class="chip vchip" data-v="skip">🔴 Skip</button>
+    </div>
+  </div>
+  <div class="fgroup">
+    <span class="flabel">Category</span>
+    <div class="chips" id="catchips"></div>
+  </div>
+  <div class="fgroup">
+    <span class="flabel">Source</span>
+    <div class="chips" id="srcchips"></div>
+  </div>
+  <div class="fmeta">
+    <span class="fcount" id="fcount"></span>
+    <button class="clearbtn" id="clearf" hidden onclick="clearFilters()">Clear all filters ✕</button>
+  </div>
+</div></div>
+
+<div class="wrap">
+  <div id="results"></div>
+</div>
+
+<footer><div class="wrap"><a href="trip-plan.html">← back to the trip plan</a></div></footer>
+
+<script>
+/* ---------- category + source dictionaries (order = display order) ---------- */
+const CATS = {
+  landmarks:{e:"🏛️",l:"Landmarks & views"},
+  museums:{e:"🖼️",l:"Museums & culture"},
+  baths:{e:"♨️",l:"Baths & water"},
+  spa:{e:"💆",l:"Spas & wellness"},
+  parks:{e:"🌳",l:"Parks & nature"},
+  views:{e:"🌅",l:"Viewpoints & photos"},
+  attractions:{e:"🎡",l:"Attractions & rides"},
+  themepark:{e:"🎢",l:"Theme & amusement parks"},
+  zoo:{e:"🐠",l:"Zoos & aquariums"},
+  adrenaline:{e:"🪂",l:"Adrenaline & sports"},
+  escape:{e:"🧩",l:"Escape rooms & games"},
+  vr:{e:"🥽",l:"VR & immersive"},
+  classes:{e:"🎨",l:"Classes & workshops"},
+  animalcafe:{e:"🐾",l:"Animal & quirky cafés"},
+  shows:{e:"🎭",l:"Shows & nightlife"},
+  bars:{e:"🍸",l:"Bars & rooftops"},
+  casino:{e:"🎰",l:"Casinos & gambling"},
+  markets:{e:"🛍️",l:"Markets & shopping"},
+  food:{e:"🍽️",l:"Food & drink"},
+  foodwine:{e:"🍷",l:"Food & wine experiences"},
+  tours:{e:"🎟️",l:"Guided tours"},
+  boats:{e:"🚤",l:"Boat tours & cruises"},
+  daytrip:{e:"🚗",l:"Day trips"},
+  stay:{e:"🛏️",l:"Stay"},
+};
+const SRCS = {
+  list:{e:"📍",l:"Your list"},
+  claude:{e:"🧠",l:"Claude"},
+  google:{e:"⭐",l:"Google"},
+  tripadvisor:{e:"🦉",l:"TripAdvisor"},
+  getyourguide:{e:"🎡",l:"GetYourGuide"},
+  fever:{e:"🎟️",l:"Fever"},
+  atlasobscura:{e:"🧭",l:"Atlas Obscura"},
+  timeout:{e:"📰",l:"Time Out"},
+  infatuation:{e:"🍴",l:"Infatuation / Eater"},
+  reddit:{e:"👽",l:"Reddit"},
+  welovebudapest:{e:"🌶️",l:"We Love Budapest"},
+  secretldn:{e:"🎩",l:"Secret London"},
+  web:{e:"🔎",l:"Other web"},
+};
+
+/* ---------- data (flat, multi-tag) ---------- */
+const HU = [
+  {n:"Vajdahunyad Castle", img:"vajdahunyad-castle", v:"must", cat:["landmarks"], src:["list","claude"], what:"Fairy-tale castle in City Park, blending Gothic, Baroque & Renaissance styles. Free to wander the grounds.", why:"It's your Valmar venue — and gorgeous by day too. Go early."},
+  {n:"Heroes' Square", img:"heroes-square", v:"must", cat:["landmarks"], src:["list","claude"], what:"Grand monumental square with the Millennium Monument and colonnades of Hungarian kings.", why:"Iconic, free, and 2 minutes from the castle/gig. Easy yes."},
+  {n:"Citadel (Citadella)", img:"citadella", r:"4.6", v:"must", cat:["landmarks","views"], src:["list","claude"], what:"Hilltop fortress on Gellért Hill with the Liberty Statue.", why:"The best panorama of the whole city. Sunset is unreal."},
+  {n:"Lágymányosi ELTE Campus", img:"elte-campus", r:"4.5", v:"skip", cat:["landmarks"], src:["list","claude"], what:"University science campus by the Danube.", why:"No real reason to visit as a tourist."},
+  {n:"Hopp Ferenc Museum", img:"hopp-museum", r:"4.4", v:"maybe", cat:["museums"], src:["list","claude"], what:"Museum of East-Asian art in a villa.", why:"Lovely but niche — only if you're into Asian art."},
+  {n:"Rudas Thermal Bath", img:"rudas-baths", r:"4.3", v:"must", cat:["baths"], src:["list","claude"], what:"16th-century Ottoman Turkish bath with an original octagonal dome — plus a rooftop hot tub over the Danube.", why:"The rooftop pool with city views is special. Quintessential Budapest."},
+  {n:"SPARTY — Széchenyi bath party", img:"szechenyi-bath", r:"4.5", v:"must", cat:["baths","shows"], src:["list","claude"], what:"After-dark pool party inside the grand Széchenyi thermal baths.", why:"A genuinely unique night out — you've also pinned it in the activity picker."},
+  {n:"City Park (Városliget)", img:["varosliget","varosliget-2"], v:"must", cat:["parks"], src:["list","claude"], what:"Big central park wrapping around the castle, lake & museums.", why:"You'll be here for the gig anyway — worth a daytime wander."},
+  {n:"Musical Fountain", img:["margaret-island","margaret-island-2"], r:"4.7", v:"worth", cat:["parks"], src:["list","claude"], what:"Choreographed fountain show set to music on Margaret Island.", why:"Free, relaxing, and Margaret Island itself is a lovely car-free escape."},
+  {n:"Marina sétány (the dropped pin)", img:"marina-setany", v:"maybe", cat:["parks","views"], src:["list","claude"], what:"Danube-side promenade in District XIII — a modern riverfront walkway.", why:"Nice for a stroll/jog if you're staying nearby, not a destination."},
+  {n:"Szabadidőpark", img:"szabadidopark", v:"maybe", cat:["parks"], src:["list","claude"], what:"A local recreation park — green space for a walk.", why:"Pleasant but generic; skip unless it's near you."},
+  {n:"József Gruber Reservoir", img:"gruber-reservoir", r:"4.6", v:"maybe", cat:["views","parks"], src:["list","claude"], what:"Hilltop reservoir in the Buda hills with a quiet viewpoint.", why:"Offbeat sunset spot — only if you want to get off the tourist track."},
+  {n:"Gerecse Landscape Reserve", img:"gerecse", r:"4.8", v:"maybe", cat:["parks","daytrip"], src:["list","claude"], what:"Protected hills & forest in Transdanubia.", why:"Beautiful nature — but only makes sense if the roadtrip passes that way."},
+  {n:"Budapest Zoo & Botanical Garden", img:"budapest-zoo", v:"must", cat:["zoo"], src:["list","claude"], what:"One of the world's oldest zoos, with stunning Art-Nouveau pavilions.", why:"Worth it even just for the architecture. Great half-day."},
+  {n:"Zugliget Chairlift (Libegő)", img:["zugliget-chairlift","zugliget-chairlift-2"], r:"4.7", v:"must", cat:["attractions","views"], src:["list","claude"], what:"Open-air chairlift gliding up into the Buda Hills.", why:"Scenic, breezy and a little bit adventurous — your kind of thing."},
+  {n:"BalloonFly", img:"balloonfly", r:"4.2", v:"worth", cat:["attractions","views"], src:["list","claude"], what:"Tethered helium balloon that floats ~150m up for panoramic views.", why:"Quick thrill + great photos. Weather-dependent."},
+  {n:"Ferris Wheel (Budapest Eye)", img:"budapest-eye", v:"maybe", cat:["attractions","views"], src:["list","claude"], what:"Big observation wheel on Erzsébet tér, central.", why:"Touristy, but decent views and it's right downtown."},
+  {n:"Budapest Jazz Club", img:["jazz-club","jazz-club-2"], r:"4.7", v:"worth", cat:["shows"], src:["list","claude"], what:"Well-regarded live jazz venue.", why:"Lovely evening if a gig's on while you're there."},
+  {n:"for sale pub", img:"for-sale-pub", r:"4.5", v:"must", cat:["bars"], src:["list","claude"], what:"Cult quirky pub — peanut shells on the floor, hand-written notes covering every wall.", why:"Cheap, fun, unmistakably Budapest. 18k reviews don't lie."},
+  {n:"A Kemencés", img:["a-kemences","a-kemences-2"], r:"4.9", v:"must", cat:["food"], src:["list","claude"], what:"Beloved kenyérlángos (bread-lángos) stand in Kecskemét — oven-baked flatbreads with toppings.", why:"A 4.9★ local favourite — that rating is rare. Go hungry. (It's in Kecskemét, so a roadtrip stop.)"},
+  {n:"Retro Lángos Budapest", img:"retro-langos", r:"4.6", v:"must", cat:["food"], src:["list","claude"], what:"Hugely popular lángos (deep-fried dough) street food.", why:"The classic Hungarian snack done right. 20k reviews."},
+  {n:"Pirate Empire", img:"pirate-empire", r:"4.8", v:"must", cat:["food"], src:["list","claude"], what:"Full pirate-themed restaurant — big, fun, immersive.", why:"4.8★ and pure fun — exactly your adventure vibe."},
+  {n:"Nándori Cukrászda", img:["nandori","nandori-2"], r:"4.6", v:"must", cat:["food"], src:["list","claude"], what:"Classic Hungarian patisserie / cake shop.", why:"Top-tier dessert stop. Don't skip the cakes."},
+  {n:"Karimi Gyros", img:"karimi-gyros", r:"4.7", v:"worth", cat:["food"], src:["list","claude"], what:"Excellent-value gyros joint.", why:"Cheap, fast, 4.7★ — great quick lunch."},
+  {n:"Esetleg Bisztró", img:["esetleg","esetleg-2"], r:"4.5", v:"worth", cat:["food"], src:["list","claude"], what:"Modern Hungarian bistro.", why:"Solid sit-down meal, well-reviewed."},
+  {n:"The Spot Budapest", img:["the-spot","the-spot-2"], r:"4.6", v:"worth", cat:["food"], src:["list","claude"], what:"Well-rated all-rounder restaurant.", why:"Reliable, good food."},
+  {n:"Pastamore Budapest", img:"pastamore", r:"4.6", v:"worth", cat:["food"], src:["list","claude"], what:"Fresh Italian pasta.", why:"Good if you fancy a pasta night."},
+  {n:"Négy Muskétás Étterem", img:["negy-musketas","negy-musketas-2"], r:"4.5", v:"worth", cat:["food"], src:["list","claude"], what:"'Four Musketeers' — hearty traditional Hungarian.", why:"Generous portions of classic Magyar fare."},
+  {n:"Bujdosó Székely Étterem", img:["bujdoso","bujdoso-2"], r:"4.3", v:"worth", cat:["food"], src:["list","claude"], what:"Transylvanian / Székely home cooking.", why:"Rustic and filling — a taste of the old country."},
+  {n:"Csali Csárda", img:"csali-csarda", r:"4.5", v:"worth", cat:["food","daytrip"], src:["list","claude"], what:"Traditional roadside csárda (country inn).", why:"Great for a roadtrip lunch with folk atmosphere."},
+  {n:"Zoo Café", img:"zoo-cafe", r:"4.4", v:"maybe", cat:["food"], src:["list","claude"], what:"Themed coffee shop.", why:"Cute for a quick coffee, nothing essential."},
+  {n:"Saloon Pizzéria", img:["saloon-pizzeria","saloon-pizzeria-2"], v:"maybe", cat:["food"], src:["list","claude"], what:"Local pizzeria.", why:"Fine for an easy bite, not a destination."},
+  {n:"Queen's Court Hotel & Residence", img:"queens-court", r:"4.4", v:"maybe", cat:["stay"], src:["list","claude"], what:"A central 4–5★ hotel/residence.", why:"It's accommodation, not a sight — handy if you need a base."},
+];
+const UK = [
+  {n:"Big Ben & Houses of Parliament", img:"big-ben-and-houses-of-parliament", e:"🕰️", v:"must", cat:["landmarks"], src:["list","claude"], what:"The famous clock tower (Elizabeth Tower) & the Palace of Westminster on the Thames.", why:"Unmissable photo, freshly restored. Best shot from Westminster Bridge."},
+  {n:"Tower Bridge", img:"tower-bridge", e:"🌉", r:"4.8", v:"must", cat:["landmarks"], src:["list","claude"], what:"London's iconic Victorian bascule bridge — glass-floor walkway & engine rooms inside.", why:"Unmissable. Free to cross; the glass-floor exhibition is optional."},
+  {n:"Buckingham Palace", img:"buckingham-palace", e:"👑", v:"must", cat:["landmarks"], src:["list","claude"], what:"The monarch's London residence — Changing of the Guard out front; State Rooms open in summer.", why:"Iconic. In July the State Rooms are open (ticketed). Catch the guard change."},
+  {n:"Westminster Abbey", img:"westminster-abbey", e:"⛪", r:"4.6", v:"must", cat:["landmarks"], src:["list","claude"], what:"Coronation church of monarchs since 1066 — royal tombs, Poets' Corner.", why:"Breathtaking Gothic interior. Pricey entry but a true icon."},
+  {n:"St. Paul's Cathedral", img:"st-pauls-cathedral", e:"⛪", r:"4.7", v:"must", cat:["landmarks"], src:["list","claude"], what:"Wren's domed masterpiece — climb to the Whispering Gallery & dome for city views.", why:"Iconic inside and out. The dome climb is worth the steps."},
+  {n:"St Pancras International", img:"st-pancras-international", e:"🚂", v:"worth", cat:["landmarks"], src:["list","claude"], what:"Spectacular Victorian-Gothic railway station — red-brick spires, the longest champagne bar in Europe.", why:"Free to wander, genuinely beautiful, right by King's Cross. Quick stop."},
+  {n:"Horse Guards Parade", img:"horse-guards-parade", e:"🐎", r:"4.7", v:"worth", cat:["landmarks"], src:["list","claude"], what:"Ceremonial parade ground off Whitehall — mounted guards & the Changing of the Guard.", why:"Free spectacle; catch the guard change. On the walk between sights."},
+  {n:"Old Royal Naval College (Greenwich)", img:["old-royal-naval-college-greenwich","old-royal-naval-college-greenwich-2"], e:"🏛️", v:"worth", cat:["landmarks"], src:["list","claude"], what:"Wren's baroque riverside masterpiece — the dazzling Painted Hall ('Britain's Sistine Chapel').", why:"Stunning architecture; the Painted Hall is worth the ticket. Anchors a Greenwich day."},
+  {n:"Notting Hill", img:"notting-hill", e:"🏘️", v:"worth", cat:["landmarks","views"], src:["list","claude"], what:"Picture-perfect district — pastel townhouses, mews, Portobello Road.", why:"Lovely to wander and very photogenic. Combine with Portobello Market."},
+  {n:"St Katharine Docks", img:"st-katharine-docks", e:"⛵", v:"worth", cat:["views","food"], src:["list","claude"], what:"Pretty yacht marina right beside Tower Bridge — bars, restaurants, boats.", why:"A calm, scenic spot for a drink steps from the tourist crush."},
+  {n:"Southwark Cathedral", img:"southwark-cathedral", e:"⛪", v:"maybe", cat:["landmarks"], src:["list","claude"], what:"Oldest Gothic church in London, tucked beside Borough Market.", why:"Free and 30 seconds from Borough — pop in while you're there."},
+  {n:"The Charterhouse", img:"the-charterhouse", e:"🏰", v:"maybe", cat:["landmarks","museums"], src:["list","claude"], what:"600-year-old former monastery & almshouse with a small museum and tours.", why:"Quiet, atmospheric history — niche, only if you like the hidden-London thing."},
+  {n:"Fulham Palace", img:"fulham-palace", e:"🏰", v:"maybe", cat:["landmarks","parks"], src:["list","claude"], what:"Former home of the Bishops of London — free historic house, walled garden & riverside lawns.", why:"Lovely and free, but out west — only if you're nearby."},
+  {n:"Mayfair", img:"mayfair", e:"💎", v:"maybe", cat:["landmarks"], src:["list","claude"], what:"London's most upmarket district — Bond St boutiques, galleries, grand squares.", why:"Window-shopping & people-watching; skippable unless you're splurging."},
+  {n:"Canary Wharf Estate", img:"canary-wharf-estate", e:"🏙️", v:"maybe", cat:["landmarks"], src:["list","claude"], what:"London's gleaming modern financial district — skyscrapers, docks, art & gardens.", why:"Striking but corporate. Worth it bundled with Crossrail garden / Eden Dock / Skuna."},
+
+  {n:"The British Museum", img:"the-british-museum", e:"🏛️", r:"4.7", v:"must", cat:["museums"], src:["list","claude"], what:"World-history mega-museum — Rosetta Stone, Egyptian mummies, the Parthenon marbles. Free.", why:"Free and staggering. Don't try to see it all — pick a few wings."},
+  {n:"Natural History Museum", img:"natural-history-museum", e:"🦕", v:"must", cat:["museums"], src:["list","claude"], what:"Cathedral-like museum — dinosaurs, the blue whale skeleton, gems. Free.", why:"The building alone is worth it. Free; expect queues at peak."},
+  {n:"Sir John Soane's Museum", img:"sir-john-soanes-museum", e:"🕯️", v:"worth", cat:["museums"], src:["list","claude"], what:"An architect's eccentric house crammed with antiquities, kept exactly as in 1837. Free.", why:"One of London's most magical small museums. Free; go on a candlelit evening if you can."},
+  {n:"Science Museum", img:"science-museum", e:"🚀", v:"worth", cat:["museums"], src:["list","claude"], what:"Hands-on science & tech — space, computing, medicine. Free.", why:"Free and fun; next door to the Natural History Museum in South Ken."},
+  {n:"National Maritime Museum", img:"national-maritime-museum", e:"⚓", r:"4.6", v:"worth", cat:["museums"], src:["list","claude"], what:"Free maritime museum in Greenwich — ships, exploration, the sea.", why:"Free and excellent; pairs with the rest of Greenwich for a half-day."},
+  {n:"Somerset House", img:"somerset-house", e:"⛲", r:"4.4", v:"worth", cat:["museums","landmarks"], src:["list","claude"], what:"Grand neoclassical courtyard with dancing fountains (summer) & rotating art shows.", why:"The fountain courtyard is a delight in July. Often free exhibitions."},
+  {n:"Paradox Museum London", img:"paradox-museum-london", e:"🌀", v:"worth", cat:["museums","attractions"], src:["list","claude"], what:"Optical-illusion museum — upside-down rooms, infinity spaces, brain-bending photo ops.", why:"Playful and very photogenic. Good rainy-day fun."},
+  {n:"Halcyon Gallery", img:"halcyon-gallery", e:"🖼️", v:"maybe", cat:["museums"], src:["list","claude"], what:"Glossy New Bond St art gallery — modern & contemporary blue-chip names.", why:"Free to browse if you're shopping Mayfair, but skippable."},
+  {n:"Hunterian Museum", img:"hunterian-museum", e:"🦴", v:"maybe", cat:["museums"], src:["list","claude"], what:"Free museum of anatomy & surgery at the Royal College of Surgeons.", why:"Fascinating but macabre — only for the curious. Free."},
+  {n:"British Museum Reading Room", img:"british-museum-reading-room", e:"📖", r:"4.8", v:"maybe", cat:["museums"], src:["list","claude"], what:"The domed former Reading Room at the heart of the British Museum's Great Court.", why:"Often closed to the public — admire the Great Court regardless. Part of the BM visit."},
+  {n:"Wimbledon Lawn Tennis Museum", img:"wimbledon-lawn-tennis-museum", e:"🎾", r:"4.8", v:"maybe", cat:["museums"], src:["list","claude"], what:"Museum at the All England Club — Centre Court views & tennis history; tours available.", why:"A treat for tennis fans (the tour includes Centre Court). Niche otherwise."},
+  {n:"Madame Tussauds London", img:"madame-tussauds-london", e:"🕴️", v:"maybe", cat:["attractions","museums"], src:["list","claude"], what:"The famous wax-figure museum — celebrities, royals, a Marvel zone.", why:"Touristy and pricey; fun if you like the photos. Book online to skip queues."},
+  {n:"Mundo Pixar Experience", img:"mundo-pixar-experience", e:"🎬", r:"4.0", v:"maybe", cat:["attractions","museums"], src:["list","claude"], what:"Touring immersive Pixar exhibition at Wembley Park — life-size sets from Toy Story, Up, Coco etc.", why:"Confirmed in London (Wembley), but it's a travelling show — check it's still running on your July dates. Only 4.0★."},
+
+  {n:"Sky Garden", img:"sky-garden", e:"🌿", v:"must", cat:["views","parks"], src:["list","claude"], what:"Free three-storey rooftop garden atop the 'Walkie-Talkie' (20 Fenchurch St) — 360° views.", why:"Free panoramic views with a bar. Book a slot well ahead — they go fast."},
+  {n:"Horizon 22", img:"horizon-22", e:"🌆", v:"must", cat:["views"], src:["list","claude"], what:"London's highest FREE viewing gallery, 58 floors up at 22 Bishopsgate.", why:"Best free view in the City — beats paying for the Shard. Book a free slot ahead."},
+  {n:"Primrose Hill", img:"primrose-hill", e:"🌅", v:"must", cat:["views","parks"], src:["list","claude"], what:"Grassy hill just north of Regent's Park with a protected London skyline panorama.", why:"Best free view in the city — bring a picnic for sunset. Very romantic."},
+  {n:"The Shard", img:"the-shard", e:"🌃", r:"4.6", v:"worth", cat:["views","landmarks"], src:["list","claude"], what:"Western Europe's tallest building — The View from the Shard observation decks (244m).", why:"Stunning but pricey. If you want a free alternative: Sky Garden / Horizon 22."},
+  {n:"The Garden at 120", img:"the-garden-at-120", e:"🌳", v:"worth", cat:["views","parks"], src:["list","claude"], what:"Free rooftop garden in the City with open-air Tower Bridge & Gherkin views.", why:"Free, usually no booking, less mobbed than Sky Garden. Great combo."},
+  {n:"Crossrail Place Roof Garden", img:"crossrail-place-roof-garden", e:"🌴", v:"worth", cat:["parks","views"], src:["list","claude"], what:"Free covered roof garden atop Canary Wharf's Crossrail station — plants from around the world.", why:"Peaceful and free. Nice combo with Eden Dock / the Wharf."},
+  {n:"Barbican Conservatory", img:"barbican-conservatory", e:"🌿", v:"worth", cat:["parks","views"], src:["list","claude"], what:"Hidden tropical glasshouse inside the brutalist Barbican — 1,500+ species, free.", why:"A secret jungle in the City. Free but limited opening days — check first."},
+  {n:"Sunken Garden (Kensington Palace)", img:"sunken-garden-kensington-palace", e:"🌷", v:"worth", cat:["parks","views"], src:["list","claude"], what:"Immaculate sunken flower garden beside Kensington Palace — the Diana memorial garden.", why:"Postcard-pretty in summer and free. Pairs with Kensington Gardens."},
+  {n:"The Post Building Roof Garden", img:"the-post-building-roof-garden", e:"🌇", v:"maybe", cat:["views","parks"], src:["list","claude"], what:"Free public roof terrace with central London views, near Tottenham Court Rd.", why:"Decent free view; lower-key than Sky Garden. Nice if passing."},
+
+  {n:"The Regent's Park", img:"the-regents-park", e:"🌳", r:"4.7", v:"must", cat:["parks"], src:["list","claude"], what:"Elegant royal park with Queen Mary's Rose Garden (12,000 roses) and the open-air theatre.", why:"July = roses in full bloom. One of London's loveliest parks."},
+  {n:"Richmond Park", img:"richmond-park", e:"🦌", r:"4.8", v:"worth", cat:["parks"], src:["list","claude"], what:"Vast royal deer park — 600+ free-roaming deer, Isabella Plantation, big skies.", why:"Wild and beautiful, but far southwest. Bundle with Isabella Plantation."},
+  {n:"Isabella Plantation", img:"isabella-plantation", e:"🌸", r:"4.8", v:"worth", cat:["parks"], src:["list","claude"], what:"Ornamental woodland garden inside Richmond Park — streams, ponds, azaleas.", why:"A serene hidden gem; best with Richmond Park. (Azaleas peak in spring.)"},
+  {n:"Eden Dock", img:"eden-dock", e:"🌿", v:"maybe", cat:["parks"], src:["list","claude"], what:"New green, water-side oasis in the middle of Canary Wharf.", why:"Pleasant if you're already at the Wharf; not a destination."},
+
+  {n:"Covent Garden", img:"covent-garden", e:"🎭", v:"must", cat:["markets","shows"], src:["list","claude"], what:"Historic piazza — covered market, boutiques, street performers, the Apple Market.", why:"Lively and central; the buskers are genuinely good. Easy must-do."},
+  {n:"Borough Market", img:"borough-market", e:"🧀", r:"4.6", v:"must", cat:["markets","food"], src:["list","claude"], what:"London's best food market — artisan produce, street food, oysters, cheese.", why:"A foodie must. Go hungry; quieter early — check the opening days."},
+  {n:"Camden Market", img:"camden-market", e:"🛍️", r:"4.6", v:"must", cat:["markets","food"], src:["list","claude"], what:"Sprawling alt market by the canal — street food, vintage, crafts, music.", why:"Endless food stalls + great browsing. A classic London afternoon."},
+  {n:"Portobello Road Market", img:"portobello-road-market", e:"🛍️", v:"worth", cat:["markets"], src:["list","claude"], what:"Famous Notting Hill street market — antiques, vintage, food, pastel houses.", why:"Best on Fridays/Saturdays (antiques). Pairs with a Notting Hill wander."},
+  {n:"Harrods", img:"harrods", e:"🛍️", v:"worth", cat:["markets"], src:["list","claude"], what:"Opulent Knightsbridge department store — legendary food halls.", why:"Worth seeing once for the spectacle and food halls, even just browsing."},
+  {n:"Selfridges", img:"selfridges", e:"🛍️", v:"worth", cat:["markets"], src:["list","claude"], what:"Landmark Oxford St department store — famous window displays & food hall.", why:"Worth a wander even window-shopping. The food hall is a treat."},
+  {n:"Oxford Street", img:"oxford-street", e:"🛍️", r:"4.7", v:"worth", cat:["markets"], src:["list","claude"], what:"Europe's busiest shopping street — flagship stores end to end.", why:"Go for the big shops (Selfridges); otherwise it's crowded. Pair with Soho."},
+  {n:"Charing Cross Road", img:"charing-cross-road", e:"📚", v:"maybe", cat:["markets"], src:["list","claude"], what:"London's historic bookshop street — secondhand & antiquarian stores (Cecil Court nearby).", why:"A browse for book lovers; the Cecil Court alley is the prettier bit."},
+
+  {n:"Cahoots", img:"cahoots", e:"🍸", r:"4.8", v:"must", cat:["bars","shows"], src:["list","claude"], what:"1940s-themed speakeasy in a 'disused' Tube station & postal office — costumed staff, vintage cocktails.", why:"Immersive and theatrical — exactly your pirate-empire energy. Book a slot."},
+  {n:"Trafalgar Tavern", img:"trafalgar-tavern", e:"🍺", v:"worth", cat:["bars","food"], src:["list","claude"], what:"Historic Greenwich riverside pub — Dickens drank here; Thames views.", why:"Perfect pint stop on a Greenwich day. Great river outlook."},
+  {n:"Voyage Lounge London", img:"voyage-lounge-london", e:"🛋️", v:"maybe", cat:["bars"], src:["list","claude"], what:"Lounge bar & shisha spot.", why:"Niche — only if a chilled lounge night appeals."},
+
+  {n:"A West End show", img:"a-west-end-show", e:"🎭", v:"must", cat:["shows"], src:["list","claude"], what:"London's theatre district — musicals, plays & long-runners around Shaftesbury Ave & Leicester Sq.", why:"A West End night is a London rite of passage. Grab day-seats or TodayTix deals."},
+  {n:"Royal Ballet and Opera", img:"royal-ballet-and-opera", e:"🩰", r:"4.8", v:"worth", cat:["shows"], src:["list","claude"], what:"World-class ballet & opera at the Royal Opera House, Covent Garden.", why:"A special night out if something's on — even cheap seats are worth it. Book ahead."},
+  {n:"Electric Cinema (Portobello)", img:"electric-cinema-portobello", e:"🎬", v:"worth", cat:["shows"], src:["list","claude"], what:"One of the UK's oldest cinemas — leather armchairs, sofas, footstools and a bar.", why:"A luxe, romantic film night. Splurge on the front-row beds."},
+  {n:"Barbican Centre", img:"barbican-centre", e:"🎶", v:"maybe", cat:["shows","landmarks"], src:["list","claude"], what:"Europe's largest arts centre — concerts, film, theatre in a brutalist landmark.", why:"Go for a specific show, or to see the Conservatory & architecture."},
+  {n:"Soho", img:"soho", e:"🌃", v:"worth", cat:["shows","food"], src:["list","claude"], what:"London's buzziest nightlife & dining quarter — bars, theatres, restaurants.", why:"Where to go out at night. Great for dinner before a West End show."},
+  {n:"Dock X", img:"dock-x", e:"🎶", v:"maybe", cat:["shows"], src:["list","claude"], what:"Large events & club venue at Canada Water.", why:"Only relevant if there's an event/night on while you're there."},
+
+  {n:"Outernet London", img:["outernet-london","outernet-london-2"], e:"💡", v:"worth", cat:["attractions","vr"], src:["list","claude"], what:"Wraparound 4K LED 'Now Building' near Tottenham Court Rd — immersive digital art. Free.", why:"Jaw-dropping and free — pop in for 10 minutes. Right by Soho."},
+  {n:"London Eye", img:"london-eye", e:"🎡", v:"worth", cat:["attractions","views"], src:["list","claude"], what:"135m riverside observation wheel — 30-min rotation over the Thames.", why:"Classic views, especially at dusk. Pricey; book ahead for shorter lines."},
+  {n:"London Cable Car (IFS Cloud)", img:"london-cable-car-ifs-cloud", e:"🚡", v:"worth", cat:["attractions","views"], src:["list","claude"], what:"Cable car gliding across the Thames between Greenwich Peninsula & Royal Docks.", why:"Cheap, quick, big views — your kind of ride (like the Zugliget chairlift)."},
+  {n:"Treetop Walkway (Kew)", img:"treetop-walkway-kew", e:"🌲", r:"4.5", v:"worth", cat:["attractions","views"], src:["list","claude"], what:"18m-high canopy walkway among the treetops at Kew Gardens.", why:"Fun, slightly vertiginous, great views — your adventure streak. (Inside Kew, so paid entry.)"},
+  {n:"Babylon Park London", img:"babylon-park-london", e:"🕹️", v:"maybe", cat:["attractions"], src:["list","claude"], what:"Arcade & amusement spot near Oxford St — games, rides, claw machines.", why:"Cheesy fun for an hour; skippable unless you fancy it."},
+  {n:"Platform 9¾", img:"platform-9", e:"🧙", r:"3.8", v:"maybe", cat:["attractions"], src:["list","claude"], what:"The Harry Potter photo spot at King's Cross — trolley through the wall, plus a shop.", why:"Big queues for one photo. Only if you're a Potter fan; the shop's free."},
+
+  {n:"Skuna Hot Tub Boats (Canary Wharf)", img:"skuna-hot-tub-boats-canary-wharf", e:"🛁", v:"worth", cat:["attractions","baths"], src:["list","claude"], what:"Self-drive wood-fired hot-tub boats you pilot around the dock — sauna & BBQ boats too.", why:"Genuinely unique couple's experience. Quirky and memorable."},
+  {n:"Alpha Guns London (Camden)", img:"alpha-guns-london-camden", e:"🎯", r:"4.9", v:"worth", cat:["adrenaline"], src:["list","claude"], what:"Indoor shooting range — air rifles, archery, axe throwing.", why:"4.9★ and a proper adrenaline hit — right up your alley."},
+  {n:"Wimbledon Park Tennis Courts", img:"wimbledon-park-tennis-courts", e:"🎾", r:"4.5", v:"maybe", cat:["adrenaline"], src:["list","claude"], what:"Public tennis courts near the All England Club.", why:"Only if you fancy a hit. Otherwise the Wimbledon museum is the draw."},
+
+  {n:"Pottery Cafe", img:"pottery-cafe", e:"🎨", v:"worth", cat:["classes"], src:["list","claude"], what:"Paint-your-own pottery studio — pick a piece, glaze it, they fire it.", why:"Relaxed, creative couple activity. You take home a keepsake."},
+
+  {n:"Java Whiskers Cat Café (White City)", img:"java-whiskers-white-city", e:"🐾", v:"maybe", cat:["animalcafe"], src:["list","claude"], what:"Bookable cat café — coffee & cake with resident rescue cats.", why:"Sweet if you love cats. Pick whichever branch is closer — no need for both."},
+  {n:"Java Whiskers Cat Café (Marylebone)", img:"java-whiskers-marylebone", e:"🐾", v:"maybe", cat:["animalcafe"], src:["list","claude"], what:"The Marylebone branch of the bookable cat café.", why:"Same concept as the White City one — choose one."},
+
+  {n:"The Summerhouse", img:"the-summerhouse", e:"🦞", r:"4.4", v:"worth", cat:["food"], src:["list","claude"], what:"Waterside seafood restaurant on the Little Venice canal.", why:"Romantic canalside tables — lovely on a warm evening. (£30–80, treat meal.)"},
+  {n:"Chinatown", img:"chinatown", e:"🏮", v:"worth", cat:["food"], src:["list","claude"], what:"Lantern-strung streets off Soho — dim sum, bubble tea, bakeries.", why:"Fun, cheap eats and great atmosphere. Walk-through even if not hungry."},
+  {n:"Il Botanico Pasticceria e Gelateria", img:"il-botanico-pasticceria-e-gelateria", e:"🍨", v:"worth", cat:["food"], src:["list","claude"], what:"Italian pasticceria & gelateria on Camden High St — gelato, cannoli, espresso.", why:"Confirmed the London one (Camden). Ideal sweet stop to pair with Camden Market."},
+  {n:"Haute Dolci (The O2)", img:["haute-dolci-the-o2","haute-dolci-the-o2-2"], e:"🍰", v:"maybe", cat:["food"], src:["list","claude"], what:"Lavish dessert restaurant at The O2 — waffles, crêpes, sundaes.", why:"For a serious sweet tooth. Skippable otherwise."},
+
+  {n:"Thames Clipper (London Eye Pier)", img:"thames-clipper-london-eye-pier", e:"⛴️", v:"worth", cat:["boats"], src:["list","claude"], what:"Fast river-bus service along the Thames — board near the London Eye.", why:"The cheapest, best 'cruise' in London — use it to get to Greenwich. Sit outside."},
+  {n:"Thames Clipper (North Greenwich Pier)", img:"thames-clipper-north-greenwich-pier", e:"⛴️", v:"maybe", cat:["boats"], src:["list","claude"], what:"River-bus pier by The O2 / cable car.", why:"Same boat service — handy if you do the cable car. One Clipper ride is enough."},
+
+  {n:"Windsor Castle", img:"windsor-castle", e:"🏰", v:"worth", cat:["daytrip","landmarks"], src:["list","claude"], what:"The world's oldest occupied castle — State Apartments & St George's Chapel.", why:"Easy ~1hr day trip from Paddington. Pick one or two day-trips, not all three."},
+  {n:"Oxford", img:"oxford", e:"🎓", v:"worth", cat:["daytrip"], src:["list","claude"], what:"'City of dreaming spires' — colleges, the Bodleian, Radcliffe Camera, covered market.", why:"Beautiful day trip. Choose Oxford OR Cambridge if time's tight — they rhyme."},
+  {n:"Cambridge", img:"cambridge", e:"🚣", v:"worth", cat:["daytrip"], src:["list","claude"], what:"Historic university city — punting on the Cam, King's College Chapel, the Backs.", why:"Gorgeous day trip (~1hr by train). Punting is a must if you go."},
+
+  /* 💡 Claude picks — not on your list, easy to toggle off */
+  {n:"Tate Modern", img:"tate-modern", e:"🎨", v:"worth", cat:["museums","views"], src:["claude"], what:"Free modern-art powerhouse in a former power station on Bankside — plus a free top-floor viewing level.", why:"💡 My pick: world-class art for free, and the river views are a bonus. Walk the Millennium Bridge across to St Paul's."},
+  {n:"Hyde Park & Kensington Gardens", img:"hyde-park-and-kensington-gardens", e:"🌳", v:"worth", cat:["parks"], src:["claude"], what:"London's huge central royal parks — the Serpentine lido & boats, Diana memorial fountain, Kensington Palace.", why:"💡 My pick: the obvious central green space, and it ties together the Sunken Garden & palace you already pinned."},
+  {n:"Neal's Yard", img:"neals-yard", e:"🌈", v:"worth", cat:["views"], src:["claude"], what:"Tiny hidden courtyard off Covent Garden splashed in rainbow colours — cafés & wholefoods.", why:"💡 My pick: ridiculously photogenic and 2 minutes from Covent Garden. Quick detour."},
+  {n:"Leadenhall Market", img:"leadenhall-market", e:"🏛️", v:"worth", cat:["markets","views"], src:["claude"], what:"Ornate Victorian covered market in the City — used as Diagon Alley in Harry Potter.", why:"💡 My pick: gorgeous architecture and a better Potter spot than Platform 9¾. Quiet on weekends."},
+  {n:"Royal Observatory Greenwich", img:"royal-observatory-greenwich", e:"🔭", v:"worth", cat:["museums","views"], src:["claude"], what:"Stand on the Prime Meridian (0° longitude) atop Greenwich Park — planetarium & the best view back over the city.", why:"💡 My pick: completes your Greenwich day (Maritime Museum, Naval College, Trafalgar Tavern) with the best hilltop view."},
+  {n:"Kyoto Garden, Holland Park", img:"kyoto-garden-holland-park", e:"🍁", v:"worth", cat:["parks"], src:["claude"], what:"Serene Japanese garden in Holland Park — koi pond, waterfall, resident peacocks. Free.", why:"💡 My pick: a tranquil, romantic free garden away from the crowds. Pairs with Notting Hill / Portobello."},
+];
+const DATA = {Hungary:HU, UK:UK};
+
+/* ---------- state ---------- */
+const state = {country:"Hungary", verdicts:new Set(), cats:new Set(), srcs:new Set()};
+
+/* ---------- card ---------- */
+function card(p){
+  const imgs = p.img ? (Array.isArray(p.img) ? p.img : [p.img]) : [];
+  const multi = imgs.length > 1;
+  let media;
+  if(imgs.length){
+    const slides = imgs.map((s,i)=>`<div class="slide${i===0?" on":""}"><img src="images/${s}.jpg" alt="${p.n}" loading="lazy"></div>`).join("");
+    const ctrls = multi ? `<button class="cbtn prev" aria-label="Previous photo">‹</button><button class="cbtn next" aria-label="Next photo">›</button><span class="ccount">1/${imgs.length}</span><div class="cdots">${imgs.map((_,i)=>`<i class="${i===0?"on":""}"></i>`).join("")}</div>` : "";
+    media = slides + ctrls;
+  } else {
+    media = `<div class="emoji">${p.e||"📍"}</div>`;
+  }
+  const vlabel = {must:"🟢 Must-see", worth:"👍 Worth it", maybe:"🟡 If you have time", skip:"🔴 Skip"}[p.v];
+  const tags = (p.cat||[]).map(c=>`<span class="ptag">${CATS[c].e} ${CATS[c].l}</span>`).join("");
+  const srcs = (p.src||[]).map(s=>`<span>${SRCS[s].e} ${SRCS[s].l}</span>`).join("");
+  return `<article class="pcard">
+    <div class="pimg${multi?" carousel":""}" data-i="0">${media}<span class="verdict v-${p.v}">${vlabel}</span></div>
+    <div class="pbody">
+      <div class="ptop"><h3>${p.n}</h3>${p.r?`<span class="rate">★ ${p.r}</span>`:""}</div>
+      <div class="ptags">${tags}</div>
+      <p class="what">${p.what}</p>
+      <p class="why"><b>Verdict:</b> ${p.why}</p>
+      <div class="psrc">${srcs}</div>
+    </div>
+  </article>`;
+}
+
+/* ---------- filtering ---------- */
+function matches(p){
+  if(state.verdicts.size && !state.verdicts.has(p.v)) return false;
+  if(state.cats.size && !(p.cat||[]).some(c=>state.cats.has(c))) return false;
+  if(state.srcs.size && !(p.src||[]).some(s=>state.srcs.has(s))) return false;
+  return true;
+}
+function presentSet(data, key){
+  const s=new Set(); data.forEach(p=>(p[key]||[]).forEach(v=>s.add(v))); return s;
+}
+function buildChips(){
+  const data = DATA[state.country] || [];
+  const pc = presentSet(data,"cat");
+  document.getElementById("catchips").innerHTML = Object.keys(CATS).filter(c=>pc.has(c))
+    .map(c=>`<button class="chip cchip${state.cats.has(c)?" on":""}" data-c="${c}">${CATS[c].e} ${CATS[c].l}</button>`).join("");
+  const ps = presentSet(data,"src");
+  document.getElementById("srcchips").innerHTML = Object.keys(SRCS).filter(s=>ps.has(s))
+    .map(s=>`<button class="chip schip${state.srcs.has(s)?" on":""}" data-s="${s}">${SRCS[s].e} ${SRCS[s].l}</button>`).join("");
+}
+function apply(){
+  const data = DATA[state.country] || [];
+  const visible = data.filter(matches);
+  const root = document.getElementById("results");
+  if(!data.length){
+    root.innerHTML = `<div class="soon">🇬🇧 <b>UK / London places coming next.</b><br/>Say the word and I'll add the ~70 London pins — same treatment, every place a photo.</div>`;
+  } else if(!visible.length){
+    root.innerHTML = `<div class="soon">No places match these filters.<br/><button class="clearbtn" onclick="clearFilters()">Clear filters</button></div>`;
+  } else {
+    root.innerHTML = Object.keys(CATS).map(ck=>{
+      const items = visible.filter(p=>(p.cat||[])[0]===ck);
+      if(!items.length) return "";
+      return `<div class="catname">${CATS[ck].e} ${CATS[ck].l} <span class="ln"></span><span class="count">${items.length}</span></div>
+        <div class="grid">${items.map(card).join("")}</div>`;
+    }).join("");
+  }
+  const t = visible.length;
+  document.getElementById("fcount").textContent = data.length ? `${t} ${t===1?"place":"places"} shown` : "";
+  document.getElementById("clearf").hidden = !(state.verdicts.size||state.cats.size||state.srcs.size);
+}
+function clearFilters(){
+  state.verdicts.clear(); state.cats.clear(); state.srcs.clear();
+  document.querySelectorAll(".filterbar .chip.on").forEach(c=>c.classList.remove("on"));
+  apply();
+}
+
+/* ---------- carousel (multi-photo cards) ---------- */
+function setSlide(car, idx){
+  const slides=[...car.querySelectorAll(".slide")]; if(!slides.length) return;
+  const dots=[...car.querySelectorAll(".cdots i")];
+  const n=slides.length; idx=((idx%n)+n)%n;
+  slides.forEach((s,k)=>s.classList.toggle("on",k===idx));
+  dots.forEach((d,k)=>d.classList.toggle("on",k===idx));
+  car.dataset.i=idx;
+  const c=car.querySelector(".ccount"); if(c) c.textContent=`${idx+1}/${n}`;
+}
+document.getElementById("results").addEventListener("click", e=>{
+  const car=e.target.closest(".carousel"); if(!car) return;
+  const cur=+car.dataset.i||0;
+  if(e.target.closest(".next")) setSlide(car,cur+1);
+  else if(e.target.closest(".prev")) setSlide(car,cur-1);
+  else { const dot=e.target.closest(".cdots i");
+    if(dot){ const dots=[...car.querySelectorAll(".cdots i")]; setSlide(car,dots.indexOf(dot)); } }
+});
+
+/* ---------- events ---------- */
+document.querySelector(".filterbar").addEventListener("click", e=>{
+  const b = e.target.closest(".chip"); if(!b) return;
+  let set, val;
+  if(b.classList.contains("vchip")){ set=state.verdicts; val=b.dataset.v; }
+  else if(b.classList.contains("cchip")){ set=state.cats; val=b.dataset.c; }
+  else if(b.classList.contains("schip")){ set=state.srcs; val=b.dataset.s; }
+  else return;
+  if(set.has(val)) set.delete(val); else set.add(val);
+  b.classList.toggle("on");
+  apply();
+});
+document.querySelectorAll(".tabrow button").forEach(b=>{
+  b.addEventListener("click",()=>{
+    document.querySelectorAll(".tabrow button").forEach(x=>x.classList.remove("on"));
+    b.classList.add("on");
+    state.country = b.dataset.t;
+    clearFilters();          // reset filters when switching country
+    buildChips();
+    apply();
+    window.scrollTo({top:0,behavior:"smooth"});
+  });
+});
+
+/* ---------- init ---------- */
+buildChips();
+apply();
+</script>
+</body>
+</html>

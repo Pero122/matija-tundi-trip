@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Matija &amp; Tündi · Summer 2026</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎟️</text></svg>" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..900;1,9..144,400..700&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --paper:#f7ecd7; --paper-2:#f1e2c7; --ink:#2c2118; --ink-soft:#6b5b48;
+    --paprika:#c8492a; --paprika-deep:#a3361d; --forest:#1f4a40; --forest-deep:#14352d;
+    --mustard:#e0a32c; --sky:#5a86a0; --line:#d8c4a0;
+    --shadow:0 1px 0 rgba(44,33,24,.04), 0 14px 30px -18px rgba(44,33,24,.45);
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0; background:var(--paper); color:var(--ink);
+    font-family:"Hanken Grotesk",sans-serif; font-size:17px; line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  /* paper grain */
+  body::before{
+    content:""; position:fixed; inset:0; z-index:9999; pointer-events:none; opacity:.05;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+  h1,h2,h3,h4{font-family:"Fraunces",serif; font-weight:600; line-height:1.05; margin:0}
+  a{color:var(--paprika-deep)}
+  .wrap{max-width:1040px; margin:0 auto; padding:0 24px}
+  .kicker{font-family:"Hanken Grotesk"; text-transform:uppercase; letter-spacing:.28em; font-size:.72rem; font-weight:700; color:var(--paprika)}
+  .navlink{display:inline-flex; align-items:center; gap:6px; font-weight:700; font-size:.9rem; text-decoration:none;
+    color:var(--forest-deep); background:var(--paper); border:2px solid var(--ink); padding:7px 16px; border-radius:100px;
+    box-shadow:var(--shadow); transition:.18s; margin-bottom:20px}
+  .navlink:hover{background:var(--mustard); transform:translateY(-1px)}
+  .topnav{display:flex; gap:10px; margin-bottom:22px; flex-wrap:wrap}
+  .topnav a{display:inline-flex; align-items:center; gap:6px; font-weight:700; font-size:.85rem; text-decoration:none;
+    color:var(--ink); background:var(--paper); border:2px solid var(--ink); padding:6px 14px; border-radius:100px; transition:.18s}
+  .topnav a:hover{background:var(--mustard)}
+  .topnav a.here{background:var(--ink); color:var(--paper)}
+  .gobtn{display:inline-flex; align-items:center; gap:8px; font-family:"Hanken Grotesk"; font-weight:700; font-size:1.05rem;
+    text-decoration:none; color:var(--paper); background:var(--paprika); border:2px solid var(--ink); padding:14px 28px;
+    border-radius:100px; box-shadow:var(--shadow); transition:.18s}
+  .gobtn:hover{background:var(--paprika-deep); transform:translateY(-2px)}
+
+  /* ───────── HERO ───────── */
+  .hero{position:relative; overflow:hidden; padding:84px 0 56px;
+    background:
+      radial-gradient(120% 90% at 85% -10%, rgba(224,163,44,.30), transparent 55%),
+      radial-gradient(100% 80% at 5% 110%, rgba(31,74,64,.20), transparent 60%),
+      var(--paper);
+    border-bottom:2px solid var(--ink);
+  }
+  .hero .sun{position:absolute; right:-90px; top:-90px; width:340px; height:340px; border-radius:50%;
+    background:radial-gradient(circle at 50% 50%, var(--mustard), var(--paprika) 75%); opacity:.16; filter:blur(2px)}
+  .hero-grid{position:relative; display:grid; grid-template-columns:1.3fr .9fr; gap:40px; align-items:end}
+  .title{font-size:clamp(3rem,8vw,6.2rem); letter-spacing:-.02em}
+  .title em{font-style:italic; color:var(--paprika)}
+  .subtitle{margin-top:14px; font-size:1.15rem; color:var(--ink-soft); max-width:34ch}
+  .datepill{display:inline-flex; align-items:center; gap:10px; margin-top:26px; padding:9px 18px;
+    background:var(--forest); color:var(--paper); border-radius:100px; font-weight:600; font-size:.95rem;
+    box-shadow:var(--shadow)}
+  .datepill b{font-family:"Fraunces"; font-weight:600}
+  .chips{display:flex; flex-wrap:wrap; gap:8px; margin-top:18px}
+  .chip{font-size:.82rem; font-weight:600; padding:5px 12px; border:1.5px solid var(--ink);
+    border-radius:100px; background:var(--paper); color:var(--ink)}
+  .chip.solid{background:var(--mustard); border-color:var(--mustard)}
+
+  /* ───────── TICKETS ───────── */
+  .tickets{display:flex; flex-direction:column; gap:16px}
+  .ticket{position:relative; background:var(--paper); border:2px solid var(--ink); border-radius:14px;
+    padding:18px 20px 18px 64px; box-shadow:var(--shadow); overflow:hidden}
+  .ticket::before{content:""; position:absolute; left:44px; top:0; bottom:0; width:0;
+    border-left:2px dashed var(--line)}
+  .ticket .stub{position:absolute; left:0; top:0; bottom:0; width:44px;
+    background:var(--paprika); writing-mode:vertical-rl; transform:rotate(180deg);
+    display:flex; align-items:center; justify-content:center; color:var(--paper);
+    font-weight:700; letter-spacing:.18em; font-size:.66rem; text-transform:uppercase}
+  .ticket.cp .stub{background:var(--forest)}
+  .ticket .when{font-size:.72rem; font-weight:700; letter-spacing:.12em; text-transform:uppercase; color:var(--paprika)}
+  .ticket.cp .when{color:var(--forest)}
+  .ticket .act{font-family:"Fraunces"; font-size:1.5rem; margin:2px 0 2px}
+  .ticket .ven{font-size:.9rem; color:var(--ink-soft)}
+  .ticket .note{margin-top:6px; font-size:.74rem; color:var(--ink-soft); font-style:italic}
+
+  /* ───────── SECTION SHELL ───────── */
+  section{padding:64px 0}
+  .eyebrow{display:flex; align-items:center; gap:14px; margin-bottom:8px}
+  .eyebrow::after{content:""; flex:1; height:2px;
+    background:repeating-linear-gradient(90deg,var(--line) 0 8px, transparent 8px 14px)}
+  .lead{font-size:1.05rem; color:var(--ink-soft); max-width:60ch; margin-top:10px}
+
+  /* segmented control */
+  .switch{position:sticky; top:14px; z-index:50; display:inline-flex; gap:4px; padding:5px;
+    background:var(--ink); border-radius:100px; box-shadow:var(--shadow); margin:0 auto 38px; }
+  .switchwrap{display:flex; justify-content:center}
+  .switch button{font-family:"Hanken Grotesk"; font-weight:700; font-size:.9rem; color:var(--paper);
+    background:transparent; border:0; padding:9px 20px; border-radius:100px; cursor:pointer; transition:.25s}
+  .switch button.on{background:var(--mustard); color:var(--ink)}
+
+  .options[data-view="A"] #optB,
+  .options[data-view="B"] #optA{display:none}
+
+  .opt-head{display:flex; align-items:baseline; gap:14px; flex-wrap:wrap; margin-bottom:6px}
+  .opt-head h2{font-size:clamp(2rem,5vw,3.2rem)}
+  .opt-head .tag{font-size:.72rem; font-weight:700; letter-spacing:.18em; text-transform:uppercase;
+    padding:4px 12px; border-radius:100px; color:var(--paper)}
+  #optA .tag{background:var(--paprika)} #optB .tag{background:var(--forest)}
+  .opt-sub{color:var(--ink-soft); max-width:64ch; margin:0 0 30px}
+
+  /* hero photo per option */
+  .banner{position:relative; aspect-ratio:21/7; border-radius:18px; overflow:hidden; margin-bottom:36px;
+    border:2px solid var(--ink); box-shadow:var(--shadow)}
+  .banner img{width:100%; height:100%; object-fit:cover; display:block}
+  .banner .ph{width:100%; height:100%; display:flex; flex-direction:column; align-items:center;
+    justify-content:center; gap:8px; color:var(--ink-soft);
+    background:linear-gradient(135deg, rgba(224,163,44,.18), rgba(31,74,64,.14))}
+  .banner .ph span{font-size:2.4rem} .banner .ph small{font-size:.8rem; letter-spacing:.06em}
+
+  /* ───────── TIMELINE ───────── */
+  .timeline{position:relative; margin-left:8px; padding-left:34px;
+    border-left:2px dashed var(--line)}
+  .day{position:relative; padding:0 0 30px}
+  .day::before{content:""; position:absolute; left:-43px; top:6px; width:16px; height:16px;
+    border-radius:50%; background:var(--paper); border:3px solid var(--paprika)}
+  #optB .day::before{border-color:var(--forest)}
+  .day.gig::before{background:var(--mustard); border-color:var(--ink); box-shadow:0 0 0 4px rgba(224,163,44,.3)}
+  .day-top{display:flex; align-items:baseline; gap:12px; flex-wrap:wrap}
+  .daydate{font-family:"Fraunces"; font-weight:700; font-size:1.15rem}
+  .dow{font-size:.7rem; font-weight:700; letter-spacing:.14em; text-transform:uppercase; color:var(--ink-soft);
+    border:1.5px solid var(--line); border-radius:6px; padding:2px 7px}
+  .bed{margin-left:auto; font-size:.78rem; font-weight:600; color:var(--forest)}
+  .day h4{font-family:"Fraunces"; font-size:1.25rem; margin:8px 0 4px}
+  .day p{margin:0; color:var(--ink-soft); font-size:.96rem}
+  .pins{display:flex; flex-wrap:wrap; gap:6px; margin-top:10px}
+  .pin{font-size:.74rem; font-weight:600; padding:3px 9px; border-radius:6px;
+    background:var(--paper-2); color:var(--ink); border:1px solid var(--line)}
+  .pin::before{content:"📍 "; font-size:.7em}
+  .gigflag{display:inline-block; font-size:.74rem; font-weight:700; color:var(--ink);
+    background:var(--mustard); padding:3px 10px; border-radius:6px; margin-top:10px}
+
+  /* photo slot */
+  .photo{margin:14px 0 0}
+  .photo img{width:100%; border-radius:12px; border:2px solid var(--ink); display:block; box-shadow:var(--shadow)}
+  .photo .ph{display:flex; flex-direction:column; align-items:center; justify-content:center; gap:6px;
+    aspect-ratio:16/7; border:2px dashed var(--line); border-radius:12px; color:var(--ink-soft);
+    background:linear-gradient(135deg, rgba(224,163,44,.10), rgba(31,74,64,.08)); cursor:default}
+  .photo .ph span{font-size:1.6rem}
+  .photo .ph small{font-size:.72rem; letter-spacing:.04em}
+  .photo figcaption{font-size:.76rem; color:var(--ink-soft); margin-top:6px; font-style:italic}
+
+  .trim{margin-top:18px; padding:14px 18px; border-radius:12px; background:var(--paper-2);
+    border:1.5px dashed var(--paprika); font-size:.9rem}
+  .trim b{color:var(--paprika-deep)}
+
+  /* ───────── COMPARE ───────── */
+  .compare{background:var(--forest-deep); color:var(--paper); border-radius:22px; padding:40px;
+    box-shadow:var(--shadow)}
+  .compare h2{color:var(--paper); font-size:2.2rem; margin-bottom:24px}
+  .ctable{width:100%; border-collapse:collapse; font-size:.95rem}
+  .ctable th,.ctable td{text-align:left; padding:13px 14px; border-bottom:1px solid rgba(247,236,215,.18); vertical-align:top}
+  .ctable th{font-family:"Fraunces"; font-weight:600; font-size:.8rem; text-transform:uppercase; letter-spacing:.1em; color:var(--mustard)}
+  .ctable td:first-child{font-weight:700; color:#e9dcc2; width:120px}
+  .ctable .ja{color:#f3c98a} .ctable .jb{color:#bcd6cd}
+  .rec{margin-top:26px; padding:20px 22px; background:rgba(224,163,44,.14); border-left:4px solid var(--mustard);
+    border-radius:0 12px 12px 0}
+  .rec b{color:var(--mustard)}
+
+  /* footer */
+  footer{padding:48px 0 70px; border-top:2px solid var(--ink); text-align:center}
+  footer .heart{font-size:1.4rem}
+  footer p{color:var(--ink-soft); font-size:.9rem}
+
+  /* reveal — self-completing entrance, always ends visible */
+  @keyframes rise{from{opacity:0; transform:translateY(20px)} to{opacity:1; transform:none}}
+  .reveal{animation:rise .7s cubic-bezier(.2,.7,.2,1) both}
+  .hero .reveal:nth-child(2){animation-delay:.06s}
+  .hero .reveal:nth-child(3){animation-delay:.12s}
+  .hero .reveal:nth-child(4){animation-delay:.18s}
+  .hero .reveal:nth-child(5){animation-delay:.24s}
+  @media(prefers-reduced-motion:reduce){.reveal{animation:none}}
+
+  @media(max-width:760px){
+    .hero-grid{grid-template-columns:1fr; gap:28px}
+    .compare{padding:26px 18px}
+    .ctable{font-size:.86rem} .ctable td:first-child{width:90px}
+  }
+  @media print{ .switch{display:none} .options #optA,.options #optB{display:block!important} body::before{display:none} }
+</style>
+</head>
+<body>
+
+<!-- ════════ HERO ════════ -->
+<header class="hero">
+  <div class="sun"></div>
+  <div class="wrap hero-grid">
+    <div>
+      <div class="topnav">
+        <a class="here" href="trip-plan.html">🗺️ Trip plan</a>
+        <a href="activities.html">🎯 Activity picker</a>
+        <a href="saved-places.html">📍 Saved places</a>
+      </div>
+      <p class="kicker reveal">A summer for two · Hungary 2026</p>
+      <h1 class="title reveal">Matija <em>&amp;</em> Tündi</h1>
+      <p class="subtitle reveal">Two concerts, one city to come home to, and nine open days in between to fill however we like.</p>
+      <div class="datepill reveal">🗓️ <b>17 → 28 July 2026</b> · 11 nights</div>
+      <div class="chips reveal">
+        <span class="chip solid">💶 Mid budget</span>
+        <span class="chip">🏠 Home base: Vienna</span>
+        <span class="chip">🔁 Starts &amp; ends in Budapest</span>
+      </div>
+    </div>
+    <div class="tickets">
+      <div class="ticket reveal">
+        <div class="stub">Admit one</div>
+        <div class="when">Fri · 17 July · 20:00</div>
+        <div class="act">VALMAR 🎤</div>
+        <div class="ven">Vajdahunyad Castle · Budapest</div>
+        <div class="note">Originally Sat 18th — moved up to Fri 17th.</div>
+      </div>
+      <div class="ticket cp reveal">
+        <div class="stub">Admit one</div>
+        <div class="when">Mon · 27 July</div>
+        <div class="act">Charlie Puth 🎤</div>
+        <div class="ven">Budapest</div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ════════ OPTIONS ════════ -->
+<section class="wrap">
+  <div class="eyebrow"><span class="kicker">The big choice</span></div>
+  <h2 style="font-size:clamp(1.8rem,4vw,2.6rem)">What do we do with the days in the middle?</h2>
+  <p class="lead">Both plans keep the Budapest bookends identical — only 18–26 July changes. Flip between them, or read side by side.</p>
+
+  <div class="switchwrap" style="margin-top:34px">
+    <div class="switch" role="tablist">
+      <button data-v="both" class="on">Both</button>
+      <button data-v="A">🚗 Hungary</button>
+      <button data-v="B">🇬🇧 London</button>
+    </div>
+  </div>
+
+  <div class="options" data-view="both">
+
+    <!-- ─── OPTION A ─── -->
+    <div id="optA">
+      <div class="opt-head"><span class="tag">Option A</span><h2>The Hungary Roadtrip</h2></div>
+      <p class="opt-sub">Rent a car and loop the country — Lake Balaton wine country, Mediterranean Pécs, the cellars of Eger, the bend of the Danube — then roll back into Budapest for Charlie Puth. No flights, no airports, all road.</p>
+
+      <figure class="banner reveal">
+        <!-- 📷 TO ADD A PHOTO: replace the <div class="ph"> line below with:  <img src="photos/balaton.jpg" alt="Lake Balaton" />  -->
+        <div class="ph"><span>🌅</span><small>banner — Lake Balaton at sunset</small></div>
+      </figure>
+
+      <div class="timeline">
+        <div class="day gig reveal">
+          <div class="day-top"><span class="daydate">17 Jul</span><span class="dow">Fri</span><span class="bed">🛏 Budapest</span></div>
+          <h4>Arrive &amp; the first show</h4>
+          <p>Vienna → Budapest (~2.5h). Pre-show golden hour around City Park.</p>
+          <div class="pins"><span class="pin">Heroes' Square</span><span class="pin">Vajdahunyad Castle</span><span class="pin">Musical Fountain</span><span class="pin">Retro Lángos</span></div>
+          <span class="gigflag">🎤 VALMAR · Vajdahunyad Castle</span>
+        </div>
+        <div class="day reveal">
+          <div class="day-top"><span class="daydate">18 Jul</span><span class="dow">Sat</span><span class="bed">🛏 Budapest</span></div>
+          <h4>Baths &amp; the city</h4>
+          <p>Thermal soak, Gellért Hill view, Buda Castle. Optional late-night bath party.</p>
+          <div class="pins"><span class="pin">Rudas Thermal Bath</span><span class="pin">Citadel</span><span class="pin">for sale pub</span><span class="pin">SPARTY</span></div>
+        </div>
+        <div class="day reveal">
+          <div class="day-top"><span class="daydate">19 Jul</span><span class="dow">Sun</span><span class="bed">🛏 Balaton</span></div>
+          <h4>To Lake Balaton 🚗</h4>
+          <p>Pick up the car, drive to the north shore (~1.5h). Tihany peninsula — lavender, abbey, lakeside sunset and wine.</p>
+          <figure class="photo"><div class="ph"><span>📷</span><small>add: Tihany / Balaton</small></div></figure>
+        </div>
+        <div class="day reveal">
+          <div class="day-top"><span class="daydate">20 Jul</span><span class="dow">Mon</span><span class="bed">🛏 Balaton</span></div>
+          <h4>Lake day</h4>
+          <p>Badacsony wine hills, a long beach afternoon, maybe a boat. Slow and sunny.</p>
+        </div>
+        <div class="day reveal">
+          <div class="day-top"><span class="daydate">21 Jul</span><span class="dow">Tue</span><span class="bed">🛏 Pécs</span></div>
+          <h4>South to Pécs 🚗</h4>
+          <p>~2h drive. Zsolnay Cultural Quarter, the early-Christian Cella Septichora, a café crawl in the warmest, most Mediterranean city in Hungary.</p>
+        </div>
+        <div class="day reveal">
+          <div class="day-top"><span class="daydate">22 Jul</span><span class="dow">Wed</span><span class="bed">🛏 Eger</span></div>
+          <h4>Pécs → Eger 🚗</h4>
+          <p>Baroque town under a hilltop castle. Evening in the wine cellars of the Valley of the Beautiful Women.</p>
+          <figure class="photo"><div class="ph"><span>📷</span><small>add: Eger castle / wine cellars</small></div></figure>
+        </div>
+        <div class="day reveal">
+          <div class="day-top"><span class="daydate">23 Jul</span><span class="dow">Thu</span><span class="bed">🛏 Eger</span></div>
+          <h4>Tokaj day trip</h4>
+          <p>~1.5h to the famous sweet-wine region and back — or a slow do-nothing day in Eger if we'd rather.</p>
+        </div>
+        <div class="day reveal">
+          <div class="day-top"><span class="daydate">24 Jul</span><span class="dow">Fri</span><span class="bed">🛏 Danube Bend</span></div>
+          <h4>West to the Danube Bend 🚗</h4>
+          <p>Drive toward the river's elbow. Szentendre — cobbled, artsy, full of little galleries and ice cream.</p>
+        </div>
+        <div class="day reveal">
+          <div class="day-top"><span class="daydate">25 Jul</span><span class="dow">Sat</span><span class="bed">🛏 Budapest</span></div>
+          <h4>Castles &amp; basilicas</h4>
+          <p>Visegrád citadel and the vast Esztergom Basilica over the Danube, then roll back into Budapest.</p>
+        </div>
+        <div class="day reveal">
+          <div class="day-top"><span class="daydate">26 Jul</span><span class="dow">Sun</span><span class="bed">🛏 Budapest</span></div>
+          <h4>Drop the car, slow down</h4>
+          <p>Margaret Island, one more bath, dessert at Nándori. Nothing on the clock.</p>
+          <div class="pins"><span class="pin">Margaret Island</span><span class="pin">Nándori Cukrászda</span></div>
+        </div>
+        <div class="day gig reveal">
+          <div class="day-top"><span class="daydate">27 Jul</span><span class="dow">Mon</span><span class="bed">🛏 Budapest</span></div>
+          <h4>The send-off show</h4>
+          <p>Last few pins by day, big finish by night.</p>
+          <div class="pins"><span class="pin">Hopp Ferenc Museum</span><span class="pin">Budapest Jazz Club</span></div>
+          <span class="gigflag">🎤 Charlie Puth · Budapest</span>
+        </div>
+        <div class="day reveal">
+          <div class="day-top"><span class="daydate">28 Jul</span><span class="dow">Tue</span><span class="bed">🏁 Home</span></div>
+          <h4>Budapest → Vienna</h4>
+          <p>The drive home. End of trip.</p>
+        </div>
+      </div>
+
+      <div class="trim reveal">✂️ <b>Too much driving?</b> Drop Tokaj or Pécs and add a third Balaton night — slower, more romantic, less time behind the wheel.</div>
+    </div>
+
+    <!-- ─── OPTION B ─── -->
+    <div id="optB">
+      <div class="opt-head"><span class="tag">Option B</span><h2>The London Week</h2></div>
+      <p class="opt-sub">Fly out the morning after Valmar and spend ~6½ days working through the 80+ London pins we've already saved — then fly back in time for Charlie Puth. The bigger adventure, the bigger spend.</p>
+
+      <figure class="banner reveal">
+        <!-- 📷 TO ADD A PHOTO: replace the <div class="ph"> line with:  <img src="photos/london.jpg" alt="London" />  -->
+        <div class="ph"><span>🎡</span><small>banner — London skyline / Tower Bridge</small></div>
+      </figure>
+
+      <div class="timeline">
+        <div class="day gig reveal">
+          <div class="day-top"><span class="daydate">17 Jul</span><span class="dow">Fri</span><span class="bed">🛏 Budapest</span></div>
+          <h4>Arrive &amp; the first show</h4>
+          <p>Vienna → Budapest. Golden hour around City Park before the gig.</p>
+          <span class="gigflag">🎤 VALMAR · Vajdahunyad Castle</span>
+        </div>
+        <div class="day reveal">
+          <div class="day-top"><span class="daydate">18 Jul</span><span class="dow">Sat</span><span class="bed">🛏 London</span></div>
+          <h4>Fly to London ✈️</h4>
+          <p>Quick Budapest morning, afternoon flight (~2.5h), check in. Evening wander: Soho, Covent Garden, Chinatown.</p>
+          <div class="pins"><span class="pin">Soho</span><span class="pin">Covent Garden</span><span class="pin">Chinatown</span></div>
+        </div>
+        <div class="day reveal">
+          <div class="day-top"><span class="daydate">19 Jul</span><span class="dow">Sun</span><span class="bed">🛏 London</span></div>
+          <h4>Royal London</h4>
+          <p>Westminster Abbey, Big Ben, Buckingham Palace, St James's Park, Trafalgar Square.</p>
+          <figure class="photo"><div class="ph"><span>📷</span><small>add: Westminster / Big Ben</small></div></figure>
+        </div>
+        <div class="day reveal">
+          <div class="day-top"><span class="daydate">20 Jul</span><span class="dow">Mon</span><span class="bed">🛏 London</span></div>
+          <h4>Museums &amp; markets</h4>
+          <p>The British Museum, Sir John Soane's, then north: Camden Market and a Primrose Hill sunset.</p>
+          <div class="pins"><span class="pin">British Museum</span><span class="pin">Camden Market</span><span class="pin">Primrose Hill</span></div>
+        </div>
+        <div class="day reveal">
+          <div class="day-top"><span class="daydate">21 Jul</span><span class="dow">Tue</span><span class="bed">🛏 London</span></div>
+          <h4>The City &amp; the river</h4>
+          <p>Tower Bridge, Sky Garden, Borough Market, The Shard, St Paul's, the Barbican Conservatory.</p>
+          <div class="pins"><span class="pin">Tower Bridge</span><span class="pin">Sky Garden</span><span class="pin">Borough Market</span></div>
+        </div>
+        <div class="day reveal">
+          <div class="day-top"><span class="daydate">22 Jul</span><span class="dow">Wed</span><span class="bed">🛏 London</span></div>
+          <h4>South Ken &amp; West</h4>
+          <p>Natural History + Science Museum, Harrods, then Notting Hill and Portobello Road.</p>
+          <figure class="photo"><div class="ph"><span>📷</span><small>add: Notting Hill / Natural History Museum</small></div></figure>
+        </div>
+        <div class="day reveal">
+          <div class="day-top"><span class="daydate">23 Jul</span><span class="dow">Thu</span><span class="bed">🛏 London</span></div>
+          <h4>Greenwich by boat</h4>
+          <p>Uber Boat down the Thames + the Cable Car. Maritime Museum, Royal Observatory. Platform 9¾ at King's Cross on the way back.</p>
+          <div class="pins"><span class="pin">Maritime Museum</span><span class="pin">Platform 9¾</span></div>
+        </div>
+        <div class="day reveal">
+          <div class="day-top"><span class="daydate">24 Jul</span><span class="dow">Fri</span><span class="bed">🛏 London</span></div>
+          <h4>Day trip + a night out</h4>
+          <p>Windsor Castle (or Oxford) by day. Evening: a West End show or cocktails at Cahoots.</p>
+          <div class="pins"><span class="pin">Windsor Castle</span><span class="pin">West End show</span><span class="pin">Cahoots</span></div>
+        </div>
+        <div class="day reveal">
+          <div class="day-top"><span class="daydate">25 Jul</span><span class="dow">Sat</span><span class="bed">🛏 Budapest</span></div>
+          <h4>Fly back ✈️</h4>
+          <p>Last London morning (Sky Garden / Harrods), then evening flight back to Budapest.</p>
+        </div>
+        <div class="day reveal">
+          <div class="day-top"><span class="daydate">26 Jul</span><span class="dow">Sun</span><span class="bed">🛏 Budapest</span></div>
+          <h4>Recover in Budapest</h4>
+          <p>Thermal bath, Citadel view, an easy reset day.</p>
+        </div>
+        <div class="day gig reveal">
+          <div class="day-top"><span class="daydate">27 Jul</span><span class="dow">Mon</span><span class="bed">🛏 Budapest</span></div>
+          <h4>The send-off show</h4>
+          <p>One more Budapest day, then the finale.</p>
+          <span class="gigflag">🎤 Charlie Puth · Budapest</span>
+        </div>
+        <div class="day reveal">
+          <div class="day-top"><span class="daydate">28 Jul</span><span class="dow">Tue</span><span class="bed">🏁 Home</span></div>
+          <h4>Budapest → Vienna</h4>
+          <p>Home. End of trip.</p>
+        </div>
+      </div>
+
+      <div class="trim reveal">✈️ <b>Book early.</b> Budapest↔London fares and late-July London hotels are the whole budget — lock them first and the rest is easy.</div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ════════ COMPARE ════════ -->
+<section class="wrap">
+  <div class="compare reveal">
+    <h2>Side by side</h2>
+    <table class="ctable">
+      <thead><tr><th></th><th class="ja">🚗 Hungary roadtrip</th><th class="jb">🇬🇧 London week</th></tr></thead>
+      <tbody>
+        <tr><td>Vibe</td><td class="ja">Relaxed, romantic, spontaneous</td><td class="jb">Big bucket-list city trip</td></tr>
+        <tr><td>Travel</td><td class="ja">One car rental, zero flights</td><td class="jb">2 flights, ~2 half-days lost to airports</td></tr>
+        <tr><td>Cost (mid)</td><td class="ja">Lower — car + cheap HU food</td><td class="jb">Higher — flights + pricey London stays</td></tr>
+        <tr><td>Saved pins</td><td class="ja">Budapest + Balaton + Danube Bend</td><td class="jb">80+ London pins finally used</td></tr>
+        <tr><td>Weather</td><td class="ja">Hot 30°C+, but a lake to dive into</td><td class="jb">Milder ~23°C, but crowded &amp; peak-price</td></tr>
+      </tbody>
+    </table>
+    <div class="rec">
+      💡 <b>My pick at mid budget: the Hungary roadtrip.</b> London's flights and hotels eat the margin fast and cost you two airport half-days — while late-July Balaton is genuinely magic. London is the better <i>splurge</i>: if the budget loosens, flip to Option B. Either way the Budapest bookends don't change.
+    </div>
+  </div>
+</section>
+
+<!-- ════════ FOOTER ════════ -->
+<footer class="wrap">
+  <a class="gobtn" href="activities.html">🎯 Pick your activities →</a>
+  <a class="gobtn" href="saved-places.html" style="margin-left:10px; background:var(--forest)">📍 Review saved places →</a>
+  <p class="heart" style="margin-top:26px">🎟️ ❤️ 🗺️</p>
+  <p>186 saved places live in <a href="maps-list-matija-tundi.md">maps-list-matija-tundi.md</a> · <a href="maps-list-matija-tundi.csv">.csv</a><br/>
+  Drop photos into a <code>photos/</code> folder next to this file and swap them into the marked slots.</p>
+</footer>
+
+<script>
+  // segmented control
+  const opts = document.querySelector('.options');
+  document.querySelectorAll('.switch button').forEach(b=>{
+    b.addEventListener('click',()=>{
+      document.querySelectorAll('.switch button').forEach(x=>x.classList.remove('on'));
+      b.classList.add('on');
+      opts.dataset.view = b.dataset.v;
+    });
+  });
+  // entrance is pure CSS (.reveal) — no observer needed
+</script>
+</body>
+</html>

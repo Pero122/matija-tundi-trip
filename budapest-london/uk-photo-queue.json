@@ -1,0 +1,597 @@
+[
+ {
+  "name": "Big Ben & Houses of Parliament",
+  "v": "must",
+  "slug": "big-ben-and-houses-of-parliament",
+  "query": "Big Ben & Houses of Parliament London",
+  "note": ""
+ },
+ {
+  "name": "Tower Bridge",
+  "v": "must",
+  "slug": "tower-bridge",
+  "query": "Tower Bridge London",
+  "note": ""
+ },
+ {
+  "name": "Buckingham Palace",
+  "v": "must",
+  "slug": "buckingham-palace",
+  "query": "Buckingham Palace London",
+  "note": ""
+ },
+ {
+  "name": "Westminster Abbey",
+  "v": "must",
+  "slug": "westminster-abbey",
+  "query": "Westminster Abbey London",
+  "note": ""
+ },
+ {
+  "name": "St. Paul's Cathedral",
+  "v": "must",
+  "slug": "st-pauls-cathedral",
+  "query": "St. Paul's Cathedral London",
+  "note": ""
+ },
+ {
+  "name": "St Pancras International",
+  "v": "worth",
+  "slug": "st-pancras-international",
+  "query": "St Pancras International London",
+  "note": ""
+ },
+ {
+  "name": "Horse Guards Parade",
+  "v": "worth",
+  "slug": "horse-guards-parade",
+  "query": "Horse Guards Parade London",
+  "note": ""
+ },
+ {
+  "name": "Old Royal Naval College (Greenwich)",
+  "v": "worth",
+  "slug": "old-royal-naval-college-greenwich",
+  "query": "Old Royal Naval College Greenwich",
+  "note": "Want the Painted Hall or the riverside baroque facade."
+ },
+ {
+  "name": "Notting Hill",
+  "v": "worth",
+  "slug": "notting-hill",
+  "query": "Notting Hill London",
+  "note": ""
+ },
+ {
+  "name": "St Katharine Docks",
+  "v": "worth",
+  "slug": "st-katharine-docks",
+  "query": "St Katharine Docks London",
+  "note": ""
+ },
+ {
+  "name": "Southwark Cathedral",
+  "v": "maybe",
+  "slug": "southwark-cathedral",
+  "query": "Southwark Cathedral London",
+  "note": ""
+ },
+ {
+  "name": "The Charterhouse",
+  "v": "maybe",
+  "slug": "the-charterhouse",
+  "query": "The Charterhouse London",
+  "note": ""
+ },
+ {
+  "name": "Fulham Palace",
+  "v": "maybe",
+  "slug": "fulham-palace",
+  "query": "Fulham Palace London",
+  "note": ""
+ },
+ {
+  "name": "Mayfair",
+  "v": "maybe",
+  "slug": "mayfair",
+  "query": "Mayfair London",
+  "note": ""
+ },
+ {
+  "name": "Canary Wharf Estate",
+  "v": "maybe",
+  "slug": "canary-wharf-estate",
+  "query": "Canary Wharf Estate London",
+  "note": ""
+ },
+ {
+  "name": "The British Museum",
+  "v": "must",
+  "slug": "the-british-museum",
+  "query": "The British Museum London",
+  "note": ""
+ },
+ {
+  "name": "Natural History Museum",
+  "v": "must",
+  "slug": "natural-history-museum",
+  "query": "Natural History Museum London",
+  "note": ""
+ },
+ {
+  "name": "Sir John Soane's Museum",
+  "v": "worth",
+  "slug": "sir-john-soanes-museum",
+  "query": "Sir John Soane's Museum London",
+  "note": ""
+ },
+ {
+  "name": "Science Museum",
+  "v": "worth",
+  "slug": "science-museum",
+  "query": "Science Museum London",
+  "note": ""
+ },
+ {
+  "name": "National Maritime Museum",
+  "v": "worth",
+  "slug": "national-maritime-museum",
+  "query": "National Maritime Museum London",
+  "note": ""
+ },
+ {
+  "name": "Somerset House",
+  "v": "worth",
+  "slug": "somerset-house",
+  "query": "Somerset House London",
+  "note": ""
+ },
+ {
+  "name": "Paradox Museum London",
+  "v": "worth",
+  "slug": "paradox-museum-london",
+  "query": "Paradox Museum London London",
+  "note": ""
+ },
+ {
+  "name": "Halcyon Gallery",
+  "v": "maybe",
+  "slug": "halcyon-gallery",
+  "query": "Halcyon Gallery London",
+  "note": ""
+ },
+ {
+  "name": "Hunterian Museum",
+  "v": "maybe",
+  "slug": "hunterian-museum",
+  "query": "Hunterian Museum London",
+  "note": ""
+ },
+ {
+  "name": "British Museum Reading Room",
+  "v": "maybe",
+  "slug": "british-museum-reading-room",
+  "query": "British Museum Reading Room London",
+  "note": ""
+ },
+ {
+  "name": "Wimbledon Lawn Tennis Museum",
+  "v": "maybe",
+  "slug": "wimbledon-lawn-tennis-museum",
+  "query": "Wimbledon Lawn Tennis Museum London",
+  "note": ""
+ },
+ {
+  "name": "Madame Tussauds London",
+  "v": "maybe",
+  "slug": "madame-tussauds-london",
+  "query": "Madame Tussauds London London",
+  "note": ""
+ },
+ {
+  "name": "Mundo Pixar Experience",
+  "v": "maybe",
+  "slug": "mundo-pixar-experience",
+  "query": "Mundo Pixar Experience Wembley Park London",
+  "note": "CONFIRMED Wembley Park (Fulton Rd HA9). Touring show."
+ },
+ {
+  "name": "Sky Garden",
+  "v": "must",
+  "slug": "sky-garden",
+  "query": "Sky Garden 20 Fenchurch Street London",
+  "note": ""
+ },
+ {
+  "name": "Horizon 22",
+  "v": "must",
+  "slug": "horizon-22",
+  "query": "Horizon 22 22 Bishopsgate London",
+  "note": ""
+ },
+ {
+  "name": "Primrose Hill",
+  "v": "must",
+  "slug": "primrose-hill",
+  "query": "Primrose Hill London",
+  "note": ""
+ },
+ {
+  "name": "The Shard",
+  "v": "worth",
+  "slug": "the-shard",
+  "query": "The Shard London",
+  "note": ""
+ },
+ {
+  "name": "The Garden at 120",
+  "v": "worth",
+  "slug": "the-garden-at-120",
+  "query": "The Garden at 120 Fen Court London",
+  "note": ""
+ },
+ {
+  "name": "Crossrail Place Roof Garden",
+  "v": "worth",
+  "slug": "crossrail-place-roof-garden",
+  "query": "Crossrail Place Roof Garden London",
+  "note": ""
+ },
+ {
+  "name": "Barbican Conservatory",
+  "v": "worth",
+  "slug": "barbican-conservatory",
+  "query": "Barbican Conservatory London",
+  "note": ""
+ },
+ {
+  "name": "Sunken Garden (Kensington Palace)",
+  "v": "worth",
+  "slug": "sunken-garden-kensington-palace",
+  "query": "Sunken Garden Kensington Palace London",
+  "note": ""
+ },
+ {
+  "name": "The Post Building Roof Garden",
+  "v": "maybe",
+  "slug": "the-post-building-roof-garden",
+  "query": "The Post Building Roof Garden London",
+  "note": ""
+ },
+ {
+  "name": "The Regent's Park",
+  "v": "must",
+  "slug": "the-regents-park",
+  "query": "The Regent's Park London",
+  "note": ""
+ },
+ {
+  "name": "Richmond Park",
+  "v": "worth",
+  "slug": "richmond-park",
+  "query": "Richmond Park London",
+  "note": ""
+ },
+ {
+  "name": "Isabella Plantation",
+  "v": "worth",
+  "slug": "isabella-plantation",
+  "query": "Isabella Plantation London",
+  "note": ""
+ },
+ {
+  "name": "Eden Dock",
+  "v": "maybe",
+  "slug": "eden-dock",
+  "query": "Eden Dock London",
+  "note": ""
+ },
+ {
+  "name": "Covent Garden",
+  "v": "must",
+  "slug": "covent-garden",
+  "query": "Covent Garden London",
+  "note": ""
+ },
+ {
+  "name": "Borough Market",
+  "v": "must",
+  "slug": "borough-market",
+  "query": "Borough Market London",
+  "note": ""
+ },
+ {
+  "name": "Camden Market",
+  "v": "must",
+  "slug": "camden-market",
+  "query": "Camden Market London",
+  "note": ""
+ },
+ {
+  "name": "Portobello Road Market",
+  "v": "worth",
+  "slug": "portobello-road-market",
+  "query": "Portobello Road Market London",
+  "note": ""
+ },
+ {
+  "name": "Harrods",
+  "v": "worth",
+  "slug": "harrods",
+  "query": "Harrods London",
+  "note": ""
+ },
+ {
+  "name": "Selfridges",
+  "v": "worth",
+  "slug": "selfridges",
+  "query": "Selfridges London",
+  "note": ""
+ },
+ {
+  "name": "Oxford Street",
+  "v": "worth",
+  "slug": "oxford-street",
+  "query": "Oxford Street London",
+  "note": ""
+ },
+ {
+  "name": "Charing Cross Road",
+  "v": "maybe",
+  "slug": "charing-cross-road",
+  "query": "Charing Cross Road London",
+  "note": ""
+ },
+ {
+  "name": "Cahoots",
+  "v": "must",
+  "slug": "cahoots",
+  "query": "Cahoots London",
+  "note": ""
+ },
+ {
+  "name": "Trafalgar Tavern",
+  "v": "worth",
+  "slug": "trafalgar-tavern",
+  "query": "Trafalgar Tavern London",
+  "note": ""
+ },
+ {
+  "name": "Voyage Lounge London",
+  "v": "maybe",
+  "slug": "voyage-lounge-london",
+  "query": "Voyage Lounge London London",
+  "note": ""
+ },
+ {
+  "name": "A West End show",
+  "v": "must",
+  "slug": "a-west-end-show",
+  "query": "Shaftesbury Avenue theatres London",
+  "note": "Concept, not one place — grab an iconic West End theatre marquee / theatre-row shot (e.g. Shaftesbury Ave, Lyceum, Palace Theatre)."
+ },
+ {
+  "name": "Royal Ballet and Opera",
+  "v": "worth",
+  "slug": "royal-ballet-and-opera",
+  "query": "Royal Opera House Covent Garden London",
+  "note": ""
+ },
+ {
+  "name": "Electric Cinema (Portobello)",
+  "v": "worth",
+  "slug": "electric-cinema-portobello",
+  "query": "Electric Cinema London",
+  "note": ""
+ },
+ {
+  "name": "Barbican Centre",
+  "v": "maybe",
+  "slug": "barbican-centre",
+  "query": "Barbican Centre London",
+  "note": ""
+ },
+ {
+  "name": "Soho",
+  "v": "worth",
+  "slug": "soho",
+  "query": "Soho London",
+  "note": ""
+ },
+ {
+  "name": "Dock X",
+  "v": "maybe",
+  "slug": "dock-x",
+  "query": "Dock X London",
+  "note": ""
+ },
+ {
+  "name": "Outernet London",
+  "v": "worth",
+  "slug": "outernet-london",
+  "query": "Outernet London London",
+  "note": ""
+ },
+ {
+  "name": "London Eye",
+  "v": "worth",
+  "slug": "london-eye",
+  "query": "London Eye London",
+  "note": ""
+ },
+ {
+  "name": "London Cable Car (IFS Cloud)",
+  "v": "worth",
+  "slug": "london-cable-car-ifs-cloud",
+  "query": "IFS Cloud Cable Car London",
+  "note": ""
+ },
+ {
+  "name": "Treetop Walkway (Kew)",
+  "v": "worth",
+  "slug": "treetop-walkway-kew",
+  "query": "Treetop Walkway Kew Gardens",
+  "note": ""
+ },
+ {
+  "name": "Babylon Park London",
+  "v": "maybe",
+  "slug": "babylon-park-london",
+  "query": "Babylon Park London London",
+  "note": ""
+ },
+ {
+  "name": "Platform 9¾",
+  "v": "maybe",
+  "slug": "platform-9",
+  "query": "Platform 9¾ London",
+  "note": ""
+ },
+ {
+  "name": "Skuna Hot Tub Boats (Canary Wharf)",
+  "v": "worth",
+  "slug": "skuna-hot-tub-boats-canary-wharf",
+  "query": "Skuna Hot Tub Boats London",
+  "note": ""
+ },
+ {
+  "name": "Alpha Guns London (Camden)",
+  "v": "worth",
+  "slug": "alpha-guns-london-camden",
+  "query": "Alpha Guns London London",
+  "note": ""
+ },
+ {
+  "name": "Wimbledon Park Tennis Courts",
+  "v": "maybe",
+  "slug": "wimbledon-park-tennis-courts",
+  "query": "Wimbledon Park Tennis Courts London",
+  "note": ""
+ },
+ {
+  "name": "Pottery Cafe",
+  "v": "worth",
+  "slug": "pottery-cafe",
+  "query": "Pottery Cafe London",
+  "note": ""
+ },
+ {
+  "name": "Java Whiskers Cat Café (White City)",
+  "v": "maybe",
+  "slug": "java-whiskers-white-city",
+  "query": "Java Whiskers Cat Café London",
+  "note": ""
+ },
+ {
+  "name": "Java Whiskers Cat Café (Marylebone)",
+  "v": "maybe",
+  "slug": "java-whiskers-marylebone",
+  "query": "Java Whiskers Cat Café London",
+  "note": ""
+ },
+ {
+  "name": "The Summerhouse",
+  "v": "worth",
+  "slug": "the-summerhouse",
+  "query": "The Summerhouse London",
+  "note": ""
+ },
+ {
+  "name": "Chinatown",
+  "v": "worth",
+  "slug": "chinatown",
+  "query": "Chinatown London",
+  "note": ""
+ },
+ {
+  "name": "Il Botanico Pasticceria e Gelateria",
+  "v": "worth",
+  "slug": "il-botanico-pasticceria-e-gelateria",
+  "query": "Il Botanico Pasticceria Gelateria Camden High Street London",
+  "note": "CONFIRMED 261 Camden High St NW1 — the Camden gelateria."
+ },
+ {
+  "name": "Haute Dolci (The O2)",
+  "v": "maybe",
+  "slug": "haute-dolci-the-o2",
+  "query": "Haute Dolci London",
+  "note": ""
+ },
+ {
+  "name": "Thames Clipper (London Eye Pier)",
+  "v": "worth",
+  "slug": "thames-clipper-london-eye-pier",
+  "query": "Uber Boat Thames Clippers London Eye Pier",
+  "note": "Pier isn't photogenic — grab a Thames Clipper boat on the river."
+ },
+ {
+  "name": "Thames Clipper (North Greenwich Pier)",
+  "v": "maybe",
+  "slug": "thames-clipper-north-greenwich-pier",
+  "query": "Uber Boat Thames Clippers North Greenwich",
+  "note": "Grab a Thames Clipper boat / O2 backdrop; must differ from the London Eye Pier shot."
+ },
+ {
+  "name": "Windsor Castle",
+  "v": "worth",
+  "slug": "windsor-castle",
+  "query": "Windsor Castle",
+  "note": ""
+ },
+ {
+  "name": "Oxford",
+  "v": "worth",
+  "slug": "oxford",
+  "query": "Oxford England city dreaming spires",
+  "note": "The CITY, not Oxford Street — Radcliffe Camera / college spires."
+ },
+ {
+  "name": "Cambridge",
+  "v": "worth",
+  "slug": "cambridge",
+  "query": "Cambridge England punting King's College",
+  "note": "The CITY — punting on the Cam / King's College Chapel."
+ },
+ {
+  "name": "Tate Modern",
+  "v": "worth",
+  "slug": "tate-modern",
+  "query": "Tate Modern London",
+  "note": ""
+ },
+ {
+  "name": "Hyde Park & Kensington Gardens",
+  "v": "worth",
+  "slug": "hyde-park-and-kensington-gardens",
+  "query": "Hyde Park London",
+  "note": ""
+ },
+ {
+  "name": "Neal's Yard",
+  "v": "worth",
+  "slug": "neals-yard",
+  "query": "Neal's Yard London",
+  "note": ""
+ },
+ {
+  "name": "Leadenhall Market",
+  "v": "worth",
+  "slug": "leadenhall-market",
+  "query": "Leadenhall Market London",
+  "note": ""
+ },
+ {
+  "name": "Royal Observatory Greenwich",
+  "v": "worth",
+  "slug": "royal-observatory-greenwich",
+  "query": "Royal Observatory Greenwich London",
+  "note": ""
+ },
+ {
+  "name": "Kyoto Garden, Holland Park",
+  "v": "worth",
+  "slug": "kyoto-garden-holland-park",
+  "query": "Kyoto Garden Holland Park London",
+  "note": ""
+ }
+]

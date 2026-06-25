@@ -1,0 +1,205 @@
+[
+ {
+  "name": "Soho",
+  "v": "worth",
+  "slug": "soho",
+  "query": "Soho London",
+  "note": ""
+ },
+ {
+  "name": "Dock X",
+  "v": "maybe",
+  "slug": "dock-x",
+  "query": "Dock X London",
+  "note": ""
+ },
+ {
+  "name": "Outernet London",
+  "v": "worth",
+  "slug": "outernet-london",
+  "query": "Outernet London London",
+  "note": ""
+ },
+ {
+  "name": "London Eye",
+  "v": "worth",
+  "slug": "london-eye",
+  "query": "London Eye London",
+  "note": ""
+ },
+ {
+  "name": "London Cable Car (IFS Cloud)",
+  "v": "worth",
+  "slug": "london-cable-car-ifs-cloud",
+  "query": "IFS Cloud Cable Car London",
+  "note": ""
+ },
+ {
+  "name": "Treetop Walkway (Kew)",
+  "v": "worth",
+  "slug": "treetop-walkway-kew",
+  "query": "Treetop Walkway Kew Gardens",
+  "note": ""
+ },
+ {
+  "name": "Babylon Park London",
+  "v": "maybe",
+  "slug": "babylon-park-london",
+  "query": "Babylon Park London London",
+  "note": ""
+ },
+ {
+  "name": "Platform 9¾",
+  "v": "maybe",
+  "slug": "platform-9",
+  "query": "Platform 9¾ London",
+  "note": ""
+ },
+ {
+  "name": "Skuna Hot Tub Boats (Canary Wharf)",
+  "v": "worth",
+  "slug": "skuna-hot-tub-boats-canary-wharf",
+  "query": "Skuna Hot Tub Boats London",
+  "note": ""
+ },
+ {
+  "name": "Alpha Guns London (Camden)",
+  "v": "worth",
+  "slug": "alpha-guns-london-camden",
+  "query": "Alpha Guns London London",
+  "note": ""
+ },
+ {
+  "name": "Wimbledon Park Tennis Courts",
+  "v": "maybe",
+  "slug": "wimbledon-park-tennis-courts",
+  "query": "Wimbledon Park Tennis Courts London",
+  "note": ""
+ },
+ {
+  "name": "Pottery Cafe",
+  "v": "worth",
+  "slug": "pottery-cafe",
+  "query": "Pottery Cafe London",
+  "note": ""
+ },
+ {
+  "name": "Java Whiskers Cat Café (White City)",
+  "v": "maybe",
+  "slug": "java-whiskers-white-city",
+  "query": "Java Whiskers Cat Café London",
+  "note": ""
+ },
+ {
+  "name": "Java Whiskers Cat Café (Marylebone)",
+  "v": "maybe",
+  "slug": "java-whiskers-marylebone",
+  "query": "Java Whiskers Cat Café London",
+  "note": ""
+ },
+ {
+  "name": "The Summerhouse",
+  "v": "worth",
+  "slug": "the-summerhouse",
+  "query": "The Summerhouse London",
+  "note": ""
+ },
+ {
+  "name": "Chinatown",
+  "v": "worth",
+  "slug": "chinatown",
+  "query": "Chinatown London",
+  "note": ""
+ },
+ {
+  "name": "Il Botanico Pasticceria e Gelateria",
+  "v": "worth",
+  "slug": "il-botanico-pasticceria-e-gelateria",
+  "query": "Il Botanico Pasticceria Gelateria Camden High Street London",
+  "note": "CONFIRMED 261 Camden High St NW1 — the Camden gelateria."
+ },
+ {
+  "name": "Haute Dolci (The O2)",
+  "v": "maybe",
+  "slug": "haute-dolci-the-o2",
+  "query": "Haute Dolci London",
+  "note": ""
+ },
+ {
+  "name": "Thames Clipper (London Eye Pier)",
+  "v": "worth",
+  "slug": "thames-clipper-london-eye-pier",
+  "query": "Uber Boat Thames Clippers London Eye Pier",
+  "note": "Pier isn't photogenic — grab a Thames Clipper boat on the river."
+ },
+ {
+  "name": "Thames Clipper (North Greenwich Pier)",
+  "v": "maybe",
+  "slug": "thames-clipper-north-greenwich-pier",
+  "query": "Uber Boat Thames Clippers North Greenwich",
+  "note": "Grab a Thames Clipper boat / O2 backdrop; must differ from the London Eye Pier shot."
+ },
+ {
+  "name": "Windsor Castle",
+  "v": "worth",
+  "slug": "windsor-castle",
+  "query": "Windsor Castle",
+  "note": ""
+ },
+ {
+  "name": "Oxford",
+  "v": "worth",
+  "slug": "oxford",
+  "query": "Oxford England city dreaming spires",
+  "note": "The CITY, not Oxford Street — Radcliffe Camera / college spires."
+ },
+ {
+  "name": "Cambridge",
+  "v": "worth",
+  "slug": "cambridge",
+  "query": "Cambridge England punting King's College",
+  "note": "The CITY — punting on the Cam / King's College Chapel."
+ },
+ {
+  "name": "Tate Modern",
+  "v": "worth",
+  "slug": "tate-modern",
+  "query": "Tate Modern London",
+  "note": ""
+ },
+ {
+  "name": "Hyde Park & Kensington Gardens",
+  "v": "worth",
+  "slug": "hyde-park-and-kensington-gardens",
+  "query": "Hyde Park London",
+  "note": ""
+ },
+ {
+  "name": "Neal's Yard",
+  "v": "worth",
+  "slug": "neals-yard",
+  "query": "Neal's Yard London",
+  "note": ""
+ },
+ {
+  "name": "Leadenhall Market",
+  "v": "worth",
+  "slug": "leadenhall-market",
+  "query": "Leadenhall Market London",
+  "note": ""
+ },
+ {
+  "name": "Royal Observatory Greenwich",
+  "v": "worth",
+  "slug": "royal-observatory-greenwich",
+  "query": "Royal Observatory Greenwich London",
+  "note": ""
+ },
+ {
+  "name": "Kyoto Garden, Holland Park",
+  "v": "worth",
+  "slug": "kyoto-garden-holland-park",
+  "query": "Kyoto Garden Holland Park London",
+  "note": ""
+ }
+]

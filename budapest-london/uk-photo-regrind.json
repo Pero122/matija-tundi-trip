@@ -1,0 +1,89 @@
+[
+ {
+  "slug": "notting-hill",
+  "query": "Notting Hill pastel houses Portobello Road London",
+  "want": "a row of pastel-coloured terraced townhouses / Portobello Road street",
+  "avoid": "canals, narrowboats, Camden"
+ },
+ {
+  "slug": "british-museum-reading-room",
+  "query": "British Museum Great Court Reading Room dome London",
+  "want": "the circular blue-and-gold domed Reading Room OR the glass-roofed Great Court atrium with the round white drum in the centre",
+  "avoid": "any single artefact / sculpture / gallery object"
+ },
+ {
+  "slug": "sunken-garden-kensington-palace",
+  "query": "Sunken Garden Kensington Palace flowers pond London",
+  "want": "the formal walled sunken flower garden with tiered flowerbeds around a long central lily pond",
+  "avoid": "the Diana Memorial Fountain (a granite water ring) — that's the wrong place"
+ },
+ {
+  "slug": "hunterian-museum",
+  "query": "Hunterian Museum Royal College of Surgeons gallery London",
+  "want": "a wide gallery hall / specimen-wall view",
+  "avoid": "a single isolated specimen jar on black"
+ },
+ {
+  "slug": "richmond-park",
+  "query": "Richmond Park deer parkland oaks London",
+  "want": "open grassland with deer and ancient oak trees, big sky",
+  "avoid": "ornamental garden ponds / azaleas (that's Isabella Plantation)"
+ },
+ {
+  "slug": "camden-market",
+  "query": "Camden Market stalls Camden Lock signage London",
+  "want": "market buildings, the Camden Lock sign, food stalls / crowds",
+  "avoid": "plain canal + narrowboats with no market visible"
+ },
+ {
+  "slug": "harrods",
+  "query": "Harrods Knightsbridge building facade illuminated night London",
+  "want": "the iconic terracotta Harrods building exterior, ideally lit up",
+  "avoid": "interior concession boutiques (e.g. a Fendi shop) with no Harrods identity"
+ },
+ {
+  "slug": "soho",
+  "query": "Soho London Old Compton Street streets nightlife",
+  "want": "a lively Soho street scene",
+  "avoid": "Chinatown lanterns/gates (that's a different place)"
+ },
+ {
+  "slug": "dock-x",
+  "query": "Dock X Canada Water London event venue",
+  "want": "the Dock X venue exterior or a recognisable event-space interior",
+  "avoid": "an ornate ocean-liner corridor / unrelated immersive-show set"
+ },
+ {
+  "slug": "platform-9",
+  "query": "Platform 9 3/4 Kings Cross trolley sign London",
+  "want": "the half-luggage-trolley embedded in the wall under the 'Platform 9¾' sign, clean",
+  "avoid": "frames dominated by a tourist posing (wand/scarf)"
+ },
+ {
+  "slug": "skuna-hot-tub-boats-canary-wharf",
+  "query": "Skuna hot tub boats Canary Wharf London",
+  "want": "a wood-fired round HOT TUB boat with people in the water",
+  "avoid": "the BBQ/dining boats (right brand, wrong product)"
+ },
+ {
+  "slug": "old-royal-naval-college-greenwich",
+  "second": true,
+  "query": "Old Royal Naval College Greenwich Painted Hall ceiling London",
+  "want": "the Painted Hall interior OR baroque riverside facade",
+  "avoid": "a person's face filling the foreground"
+ },
+ {
+  "slug": "outernet-london",
+  "second": true,
+  "query": "Outernet London Now Building immersive screens interior",
+  "want": "the wraparound immersive LED interior",
+  "avoid": "daytime exterior with ads/delivery van"
+ },
+ {
+  "slug": "haute-dolci-the-o2",
+  "second": true,
+  "query": "Haute Dolci dessert plating London",
+  "want": "a clean appetising dessert / interior shot",
+  "avoid": "a cropped person's torso in frame"
+ }
+]

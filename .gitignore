@@ -1,0 +1,12 @@
+# macOS
+.DS_Store
+
+# Python / tooling cruft
+__pycache__/
+*.pyc
+.venv/
+
+# editor
+*.swp
+.idea/
+.vscode/
