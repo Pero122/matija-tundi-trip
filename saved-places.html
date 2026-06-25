@@ -85,6 +85,8 @@
     background:linear-gradient(135deg, rgba(224,163,44,.22), rgba(31,74,64,.16))}
   .verdict{position:absolute; left:10px; bottom:10px; font-weight:700; font-size:.76rem; padding:5px 11px; border-radius:100px;
     border:2px solid var(--ink); box-shadow:0 4px 10px -4px rgba(0,0,0,.4)}
+  .corro{position:absolute; top:10px; left:10px; background:rgba(44,33,24,.86); color:#fff;
+    font-size:.7rem; font-weight:700; padding:3px 8px; border-radius:100px; letter-spacing:.02em}
   .v-must{background:var(--green); color:#fff} .v-worth{background:var(--mustard); color:var(--ink)}
   .v-maybe{background:var(--paper); color:var(--ink)} .v-skip{background:var(--skip); color:#fff}
 
@@ -439,6 +441,8 @@ const state = {country:"Hungary", verdicts:new Set(), cats:new Set(), srcs:new S
 
 /* ---------- card ---------- */
 function card(p){
+  const id = pid(p);
+  const pk = getPick(id);
   const imgs = p.img ? (Array.isArray(p.img) ? p.img : [p.img]) : [];
   const multi = imgs.length > 1;
   let media;
@@ -452,14 +456,22 @@ function card(p){
   const vlabel = {must:"🟢 Must-see", worth:"👍 Worth it", maybe:"🟡 If you have time", skip:"🔴 Skip"}[p.v];
   const tags = (p.cat||[]).map(c=>`<span class="ptag">${CATS[c].e} ${CATS[c].l}</span>`).join("");
   const srcs = (p.src||[]).map(s=>`<span>${SRCS[s].e} ${SRCS[s].l}</span>`).join("");
+  const nsrc = (p.src||[]).length;
+  const corro = nsrc >= 2 ? `<span class="corro">🔥 ${nsrc} sources</span>` : "";
   return `<article class="pcard">
-    <div class="pimg${multi?" carousel":""}" data-i="0">${media}<span class="verdict v-${p.v}">${vlabel}</span></div>
+    <div class="pimg${multi?" carousel":""}" data-i="0">${media}<span class="verdict v-${p.v}">${vlabel}</span>${corro}</div>
     <div class="pbody">
       <div class="ptop"><h3>${p.n}</h3>${p.r?`<span class="rate">★ ${p.r}</span>`:""}</div>
       <div class="ptags">${tags}</div>
       <p class="what">${p.what}</p>
       <p class="why"><b>Verdict:</b> ${p.why}</p>
       <div class="psrc">${srcs}</div>
+      <div class="vote" data-id="${id}">
+        <div class="vrow"><span class="vname">Matija</span><span class="stars" data-who="m">${stars(pk.m)}</span></div>
+        <div class="vrow"><span class="vname">Tündi</span><span class="stars" data-who="t">${stars(pk.t)}</span></div>
+        <button class="notetoggle${pk.note?" has":""}">📝 ${pk.note?"note ●":"note ▾"}</button>
+        <div class="notewrap" ${pk.note?"":"hidden"}><textarea class="noteinput" rows="2" placeholder="Write a note…">${escapeHtml(pk.note)}</textarea></div>
+      </div>
     </div>
   </article>`;
 }
