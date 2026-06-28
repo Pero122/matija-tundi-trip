@@ -14,3 +14,7 @@ __pycache__/
 # PartyKit generated static bundle (regenerate with deploy/build.sh)
 deploy/public/
 .partykit/
+
+# TripAdvisor scraper tooling stays local — only the built Discover page ships publicly
+budapest-london/tripadvisor/*
+!budapest-london/tripadvisor/index.html
