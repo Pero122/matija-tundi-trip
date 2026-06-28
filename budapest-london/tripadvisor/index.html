@@ -44,15 +44,15 @@ h1{margin:0 0 8px;font-size:16px}
 .blurb{color:#c4c9d2;font-size:11.5px;line-height:1.35;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
 .cat{font-size:10.5px;color:#7d8590}
 .lanes{display:flex;flex-direction:column;gap:5px;margin-top:auto;padding-top:7px;border-top:1px solid var(--line)}
-.lane{display:flex;align-items:center;gap:6px}
-.lane .who{font-size:11px;font-weight:700;width:46px;flex:none}
+.lane{display:flex;align-items:flex-start;gap:6px}
+.lane .who{font-size:11px;font-weight:700;width:46px;flex:none;padding-top:6px}
 .lane.mn .who{color:var(--ven)} .lane.tn .who{color:var(--exp)}
-.stars{display:flex;gap:1px;flex:none}
+.stars{display:flex;gap:1px;flex:none;padding-top:3px}
 .st{font-size:15px;color:#3a4150;line-height:1}
 .st.on{color:var(--acc)}
 .lane.editable .st{cursor:pointer}
 .lane.editable .st:hover,.lane.editable .st:hover~.st{}
-.lnote{flex:1;min-width:0;font:inherit;font-size:11px;padding:3px 6px;border-radius:5px;border:1px solid var(--line);background:#0f1115;color:var(--txt)}
+.lnote{flex:1;min-width:0;font:inherit;font-size:11px;font-family:inherit;line-height:1.45;padding:4px 6px;border-radius:5px;border:1px solid var(--line);background:#0f1115;color:var(--txt);resize:vertical;min-height:26px;max-height:240px;overflow-y:auto;white-space:pre-wrap;word-break:break-word}
 .lnote::placeholder{color:#5b636e}
 .lane.mn .lnote{border-left:2px solid var(--ven)} .lane.tn .lnote{border-left:2px solid var(--exp)}
 .lnote[readonly]{opacity:.7;cursor:default;background:#14171d}
@@ -106,6 +106,8 @@ let me=null, cloud={};                 // cloud: place_key -> { user_id -> row }
 const $=s=>document.querySelector(s), grid=$("#grid");
 const key=d=>d.city+"|"+d.n;
 const esc=s=>(s||"").replace(/"/g,"&quot;");
+const escT=s=>(s||"").replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
+function autosize(t){ if(!t) return; t.style.height='auto'; t.style.height=Math.min(t.scrollHeight+2,240)+'px'; }
 const cardEls={};                      // place_key -> card element (for live patching)
 const F={city:"",type:"",cat:"",sub:"",minr:0,minv:0,q:"",sort:"score",mine:false};
 
@@ -164,7 +166,7 @@ function laneHTML(d){
     return `<div class="lane ${p.cls} ${editable?'editable':'ro'}" data-person="${p.key}">
       <span class="who">${p.label}</span>
       <span class="stars">${stars}</span>
-      <input class="lnote" placeholder="${editable?'note…':'—'}" value="${esc(row.note)}" ${editable?'':'readonly'}></div>`;
+      <textarea class="lnote" rows="1" placeholder="${editable?'note…':'—'}" ${editable?'':'readonly'}>${escT(row.note)}</textarea></div>`;
   }).join("");
 }
 function buildCard(d){
@@ -193,12 +195,12 @@ function wireCard(el,d){
       saveMine(pk,{rating:nv||null}); markRated(el,pk);
     };});
     const ln=lane.querySelector(".lnote");
-    ln.oninput=()=>saveMine(pk,{note:ln.value});
+    ln.oninput=()=>{ autosize(ln); saveMine(pk,{note:ln.value}); };
   });
 }
 function patchCard(pk){ const el=cardEls[pk]; if(!el) return;
   const d=DATA.find(x=>key(x)===pk); if(!d) return;
-  const lanes=el.querySelector(".lanes"); if(lanes){ lanes.innerHTML=laneHTML(d); wireCard(el,d); markRated(el,pk); } }
+  const lanes=el.querySelector(".lanes"); if(lanes){ lanes.innerHTML=laneHTML(d); wireCard(el,d); markRated(el,pk); lanes.querySelectorAll(".lnote").forEach(autosize); } }
 
 // ---------- render ----------
 function render(){
@@ -215,6 +217,7 @@ function render(){
   rows.sort((a,b)=> F.sort==="n"?a.n.localeCompare(b.n):(b[F.sort]||0)-(a[F.sort]||0));
   grid.innerHTML=""; for(const k in cardEls) delete cardEls[k];
   rows.slice(0,600).forEach(d=>{ const el=buildCard(d); cardEls[key(d)]=el; grid.appendChild(el); });
+  grid.querySelectorAll(".lnote").forEach(autosize);
   $("#shown").textContent=rows.length; $("#empty").hidden=rows.length>0; updateStats();
 }
 function updateStats(){ const n=me?Object.keys(cloud).filter(pk=>(myRow(pk)||{}).rating>0).length:0; $("#np").textContent=n; }
