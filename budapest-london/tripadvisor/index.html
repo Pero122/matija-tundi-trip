@@ -120,10 +120,17 @@ function refreshSubs(){const cur=$("#sub").value;$("#sub").innerHTML='<option va
 refreshSubs();
 
 // ---------- auth ----------
-async function initAuth(){ render();                                  // cards show immediately — never block on auth/network
-  try{ const {data}=await sb.auth.getSession(); me=data.session?.user||null; }catch(e){ console.error("getSession",e); }
-  paintAuth(); render(); if(me){ await loadCloud(); render(); } }
-sb.auth.onAuthStateChange(async (_e,s)=>{ const was=me?.id; me=s?.user||null; paintAuth(); if(me) await loadCloud(); else cloud={}; if(me?.id!==was) render(); });
+function applySession(session){
+  const was=me?.id; me=session?.user||null; paintAuth();
+  if(me?.id===was) return;                                  // no auth change → nothing to redraw
+  render();                                                 // redraw lanes for the new auth state
+  if(me) loadCloud().then(render).catch(e=>console.error("loadCloud",e));
+  else cloud={};
+}
+// CRITICAL: never `await` supabase calls INSIDE onAuthStateChange — it deadlocks the auth
+// client (every later getSession/query hangs forever → blank page). Defer out of the callback.
+sb.auth.onAuthStateChange((_event,session)=>{ setTimeout(()=>applySession(session),0); });
+function initAuth(){ render(); }                            // cards immediately; INITIAL_SESSION drives auth
 function paintAuth(){
   const ab=$("#authbar");
   if(me){ const pk=personOf(me.email);
