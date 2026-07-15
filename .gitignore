@@ -12,9 +12,20 @@ __pycache__/
 .vscode/
 
 # PartyKit generated static bundle (regenerate with deploy/build.sh)
-deploy/public/
+deploy/public
+deploy/.site-releases/
+deploy/.build.lock
 .partykit/
 
-# TripAdvisor scraper tooling stays local — only the built Discover page ships publicly
+# TripAdvisor raw pages and generated datasets stay local. Keep the small,
+# repeatable crawler pipeline and its tests in version control.
 budapest-london/tripadvisor/*
 !budapest-london/tripadvisor/index.html
+!budapest-london/tripadvisor/supabase_setup.sql
+!budapest-london/tripadvisor/scrape_ta.py
+!budapest-london/tripadvisor/dedup.py
+!budapest-london/tripadvisor/build_review.py
+!budapest-london/tripadvisor/test_scrape_ta.py
+!budapest-london/tripadvisor/existing_names.json
+!budapest-london/tripadvisor/README.md
+!budapest-london/tripadvisor/validate_discover_groups.mjs

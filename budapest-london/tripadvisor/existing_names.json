@@ -1,0 +1,3117 @@
+{
+ "HU": [
+  {
+   "n": "Vajdahunyad Castle",
+   "cat": [
+    "landmarks"
+   ],
+   "src": [
+    "list",
+    "claude"
+   ]
+  },
+  {
+   "n": "Heroes' Square",
+   "cat": [
+    "landmarks"
+   ],
+   "src": [
+    "list",
+    "claude"
+   ]
+  },
+  {
+   "n": "Citadel (Citadella)",
+   "cat": [
+    "landmarks",
+    "views"
+   ],
+   "src": [
+    "list",
+    "claude"
+   ]
+  },
+  {
+   "n": "Lágymányosi ELTE Campus",
+   "cat": [
+    "landmarks"
+   ],
+   "src": [
+    "list",
+    "claude"
+   ]
+  },
+  {
+   "n": "Hopp Ferenc Museum",
+   "cat": [
+    "museums"
+   ],
+   "src": [
+    "list",
+    "claude"
+   ]
+  },
+  {
+   "n": "Rudas Thermal Bath",
+   "cat": [
+    "baths"
+   ],
+   "src": [
+    "list",
+    "claude"
+   ]
+  },
+  {
+   "n": "SPARTY — Széchenyi bath party",
+   "cat": [
+    "baths",
+    "shows"
+   ],
+   "src": [
+    "list",
+    "claude"
+   ]
+  },
+  {
+   "n": "City Park (Városliget)",
+   "cat": [
+    "parks"
+   ],
+   "src": [
+    "list",
+    "claude"
+   ]
+  },
+  {
+   "n": "Musical Fountain",
+   "cat": [
+    "parks"
+   ],
+   "src": [
+    "list",
+    "claude"
+   ]
+  },
+  {
+   "n": "Marina sétány (the dropped pin)",
+   "cat": [
+    "parks",
+    "views"
+   ],
+   "src": [
+    "list",
+    "claude"
+   ]
+  },
+  {
+   "n": "Szabadidőpark",
+   "cat": [
+    "parks"
+   ],
+   "src": [
+    "list",
+    "claude"
+   ]
+  },
+  {
+   "n": "József Gruber Reservoir",
+   "cat": [
+    "views",
+    "parks"
+   ],
+   "src": [
+    "list",
+    "claude"
+   ]
+  },
+  {
+   "n": "Gerecse Landscape Reserve",
+   "cat": [
+    "parks",
+    "daytrip"
+   ],
+   "src": [
+    "list",
+    "claude"
+   ]
+  },
+  {
+   "n": "Budapest Zoo & Botanical Garden",
+   "cat": [
+    "zoo"
+   ],
+   "src": [
+    "list",
+    "claude"
+   ]
+  },
+  {
+   "n": "Zugliget Chairlift (Libegő)",
+   "cat": [
+    "attractions",
+    "views"
+   ],
+   "src": [
+    "list",
+    "claude"
+   ]
+  },
+  {
+   "n": "BalloonFly",
+   "cat": [
+    "attractions",
+    "views"
+   ],
+   "src": [
+    "list",
+    "claude"
+   ]
+  },
+  {
+   "n": "Ferris Wheel (Budapest Eye)",
+   "cat": [
+    "attractions",
+    "views"
+   ],
+   "src": [
+    "list",
+    "claude"
+   ]
+  },
+  {
+   "n": "Budapest Jazz Club",
+   "cat": [
+    "shows"
+   ],
+   "src": [
+    "list",
+    "claude"
+   ]
+  },
+  {
+   "n": "for sale pub",
+   "cat": [
+    "bars"
+   ],
+   "src": [
+    "list",
+    "claude"
+   ]
+  },
+  {
+   "n": "A Kemencés",
+   "cat": [
+    "food"
+   ],
+   "src": [
+    "list",
+    "claude"
+   ]
+  },
+  {
+   "n": "Retro Lángos Budapest",
+   "cat": [
+    "food"
+   ],
+   "src": [
+    "list",
+    "claude"
+   ]
+  },
+  {
+   "n": "Pirate Empire",
+   "cat": [
+    "food"
+   ],
+   "src": [
+    "list",
+    "claude"
+   ]
+  },
+  {
+   "n": "Nándori Cukrászda",
+   "cat": [
+    "food"
+   ],
+   "src": [
+    "list",
+    "claude"
+   ]
+  },
+  {
+   "n": "Karimi Gyros",
+   "cat": [
+    "food"
+   ],
+   "src": [
+    "list",
+    "claude"
+   ]
+  },
+  {
+   "n": "Esetleg Bisztró",
+   "cat": [
+    "food"
+   ],
+   "src": [
+    "list",
+    "claude"
+   ]
+  },
+  {
+   "n": "The Spot Budapest",
+   "cat": [
+    "food"
+   ],
+   "src": [
+    "list",
+    "claude"
+   ]
+  },
+  {
+   "n": "Pastamore Budapest",
+   "cat": [
+    "food"
+   ],
+   "src": [
+    "list",
+    "claude"
+   ]
+  },
+  {
+   "n": "Négy Muskétás Étterem",
+   "cat": [
+    "food"
+   ],
+   "src": [
+    "list",
+    "claude"
+   ]
+  },
+  {
+   "n": "Bujdosó Székely Étterem",
+   "cat": [
+    "food"
+   ],
+   "src": [
+    "list",
+    "claude"
+   ]
+  },
+  {
+   "n": "Csali Csárda",
+   "cat": [
+    "food",
+    "daytrip"
+   ],
+   "src": [
+    "list",
+    "claude"
+   ]
+  },
+  {
+   "n": "Zoo Café",
+   "cat": [
+    "food"
+   ],
+   "src": [
+    "list",
+    "claude"
+   ]
+  },
+  {
+   "n": "Saloon Pizzéria",
+   "cat": [
+    "food"
+   ],
+   "src": [
+    "list",
+    "claude"
+   ]
+  },
+  {
+   "n": "Queen's Court Hotel & Residence",
+   "cat": [
+    "stay"
+   ],
+   "src": [
+    "list",
+    "claude"
+   ]
+  },
+  {
+   "n": "Aquaworld Budapest",
+   "cat": [
+    "waterpark"
+   ],
+   "src": [
+    "claude",
+    "google"
+   ]
+  },
+  {
+   "n": "Annagóra Aquapark",
+   "cat": [
+    "waterpark",
+    "daytrip"
+   ],
+   "src": [
+    "claude",
+    "google"
+   ]
+  },
+  {
+   "n": "Hungarospa Hajdúszoboszló",
+   "cat": [
+    "waterpark",
+    "daytrip"
+   ],
+   "src": [
+    "claude",
+    "google"
+   ]
+  },
+  {
+   "n": "Lupa Beach",
+   "cat": [
+    "waterpark"
+   ],
+   "src": [
+    "claude",
+    "google"
+   ]
+  },
+  {
+   "n": "Quad / ATV tour",
+   "cat": [
+    "adrenaline"
+   ],
+   "src": [
+    "getyourguide"
+   ]
+  },
+  {
+   "n": "Buggy off-road tour",
+   "cat": [
+    "adrenaline"
+   ],
+   "src": [
+    "getyourguide"
+   ]
+  },
+  {
+   "n": "Cyberjump trampoline park",
+   "cat": [
+    "adrenaline"
+   ],
+   "src": [
+    "claude",
+    "google"
+   ]
+  },
+  {
+   "n": "Jet-ski / SUP on Balaton",
+   "cat": [
+    "adrenaline",
+    "daytrip"
+   ],
+   "src": [
+    "claude"
+   ]
+  },
+  {
+   "n": "EXIT THE ROOM",
+   "cat": [
+    "escape"
+   ],
+   "src": [
+    "claude"
+   ]
+  },
+  {
+   "n": "AROOM (ex-Locked Room)",
+   "cat": [
+    "escape"
+   ],
+   "src": [
+    "claude",
+    "google"
+   ]
+  },
+  {
+   "n": "E-Exit",
+   "cat": [
+    "escape"
+   ],
+   "src": [
+    "claude",
+    "google"
+   ]
+  },
+  {
+   "n": "Neverland",
+   "cat": [
+    "escape"
+   ],
+   "src": [
+    "claude",
+    "google"
+   ]
+  },
+  {
+   "n": "Pinball Museum (Flippermúzeum)",
+   "cat": [
+    "attractions"
+   ],
+   "src": [
+    "claude",
+    "google"
+   ]
+  },
+  {
+   "n": "Museum of Illusions",
+   "cat": [
+    "attractions"
+   ],
+   "src": [
+    "claude",
+    "google"
+   ]
+  },
+  {
+   "n": "Pálvölgy Cave adventure",
+   "cat": [
+    "adrenaline",
+    "attractions"
+   ],
+   "src": [
+    "claude",
+    "google"
+   ]
+  },
+  {
+   "n": "Hospital in the Rock",
+   "cat": [
+    "museums",
+    "attractions"
+   ],
+   "src": [
+    "claude",
+    "google"
+   ]
+  },
+  {
+   "n": "House of Houdini",
+   "cat": [
+    "shows",
+    "museums"
+   ],
+   "src": [
+    "claude",
+    "google"
+   ]
+  },
+  {
+   "n": "Szimpla Kert & ruin bars",
+   "cat": [
+    "bars"
+   ],
+   "src": [
+    "claude",
+    "google"
+   ]
+  },
+  {
+   "n": "Danube night cruise",
+   "cat": [
+    "boats"
+   ],
+   "src": [
+    "claude"
+   ]
+  },
+  {
+   "n": "Shooting range experience",
+   "cat": [
+    "adrenaline"
+   ],
+   "src": [
+    "claude"
+   ]
+  },
+  {
+   "n": "Visegrád adventure day",
+   "cat": [
+    "adrenaline",
+    "daytrip"
+   ],
+   "src": [
+    "claude"
+   ]
+  },
+  {
+   "n": "Go-karting",
+   "cat": [
+    "adrenaline"
+   ],
+   "src": [
+    "claude"
+   ]
+  },
+  {
+   "n": "Paintball / airsoft",
+   "cat": [
+    "adrenaline"
+   ],
+   "src": [
+    "claude"
+   ]
+  },
+  {
+   "n": "Tank driving experience",
+   "cat": [
+    "adrenaline",
+    "daytrip"
+   ],
+   "src": [
+    "claude"
+   ]
+  },
+  {
+   "n": "Caving adventure tour",
+   "cat": [
+    "adrenaline"
+   ],
+   "src": [
+    "claude"
+   ]
+  },
+  {
+   "n": "Zero Latency free-roam VR",
+   "cat": [
+    "vr"
+   ],
+   "src": [
+    "claude"
+   ]
+  },
+  {
+   "n": "Laser tag arena",
+   "cat": [
+    "adrenaline"
+   ],
+   "src": [
+    "claude"
+   ]
+  },
+  {
+   "n": "Bowling night",
+   "cat": [
+    "attractions"
+   ],
+   "src": [
+    "claude"
+   ]
+  },
+  {
+   "n": "Axe-throwing bar",
+   "cat": [
+    "adrenaline",
+    "bars"
+   ],
+   "src": [
+    "claude"
+   ]
+  },
+  {
+   "n": "Bubble football",
+   "cat": [
+    "adrenaline"
+   ],
+   "src": [
+    "claude"
+   ]
+  },
+  {
+   "n": "Indoor bouldering",
+   "cat": [
+    "adrenaline"
+   ],
+   "src": [
+    "claude"
+   ]
+  },
+  {
+   "n": "Adventure mini-golf",
+   "cat": [
+    "attractions"
+   ],
+   "src": [
+    "claude"
+   ]
+  },
+  {
+   "n": "Beer bike / party bike",
+   "cat": [
+    "bars"
+   ],
+   "src": [
+    "claude"
+   ]
+  },
+  {
+   "n": "Danube kayak / canoe tour",
+   "cat": [
+    "adrenaline",
+    "boats"
+   ],
+   "src": [
+    "claude"
+   ]
+  },
+  {
+   "n": "SUP on the Danube",
+   "cat": [
+    "adrenaline"
+   ],
+   "src": [
+    "claude"
+   ]
+  },
+  {
+   "n": "E-bike city tour",
+   "cat": [
+    "tours"
+   ],
+   "src": [
+    "claude"
+   ]
+  },
+  {
+   "n": "Segway tour",
+   "cat": [
+    "tours"
+   ],
+   "src": [
+    "claude"
+   ]
+  },
+  {
+   "n": "Margaret Island pedal-cart (bringóhintó)",
+   "cat": [
+    "parks"
+   ],
+   "src": [
+    "claude"
+   ]
+  },
+  {
+   "n": "Danube party cruise",
+   "cat": [
+    "boats"
+   ],
+   "src": [
+    "claude"
+   ]
+  },
+  {
+   "n": "Ruin-bar pub crawl",
+   "cat": [
+    "bars"
+   ],
+   "src": [
+    "claude"
+   ]
+  },
+  {
+   "n": "Lázár Equestrian Park",
+   "cat": [
+    "daytrip"
+   ],
+   "src": [
+    "claude"
+   ]
+  },
+  {
+   "n": "Lake Hévíz thermal lake",
+   "cat": [
+    "baths",
+    "daytrip"
+   ],
+   "src": [
+    "claude"
+   ]
+  },
+  {
+   "n": "Miskolctapolca cave bath",
+   "cat": [
+    "baths",
+    "daytrip"
+   ],
+   "src": [
+    "claude"
+   ]
+  },
+  {
+   "n": "Etyek wine & cellar day",
+   "cat": [
+    "foodwine",
+    "daytrip"
+   ],
+   "src": [
+    "claude"
+   ]
+  },
+  {
+   "n": "Pálinka tasting",
+   "cat": [
+    "food"
+   ],
+   "src": [
+    "claude"
+   ]
+  },
+  {
+   "n": "Children's Railway & cogwheel railway",
+   "cat": [
+    "attractions"
+   ],
+   "src": [
+    "claude"
+   ]
+  },
+  {
+   "n": "Palatinus outdoor pools",
+   "cat": [
+    "waterpark"
+   ],
+   "src": [
+    "claude"
+   ]
+  },
+  {
+   "n": "Gellért Thermal Bath",
+   "cat": [
+    "baths"
+   ],
+   "src": [
+    "claude"
+   ]
+  },
+  {
+   "n": "Lukács Baths",
+   "cat": [
+    "baths"
+   ],
+   "src": [
+    "claude"
+   ]
+  },
+  {
+   "n": "Király Baths",
+   "cat": [
+    "baths"
+   ],
+   "src": [
+    "claude"
+   ]
+  },
+  {
+   "n": "Veli Bej Baths",
+   "cat": [
+    "baths"
+   ],
+   "src": [
+    "claude"
+   ]
+  },
+  {
+   "n": "Instant-Fogasház",
+   "cat": [
+    "bars"
+   ],
+   "src": [
+    "claude"
+   ]
+  },
+  {
+   "n": "Mazel Tov",
+   "cat": [
+    "bars"
+   ],
+   "src": [
+    "claude"
+   ]
+  },
+  {
+   "n": "360 Bar",
+   "cat": [
+    "bars",
+    "views"
+   ],
+   "src": [
+    "claude"
+   ]
+  },
+  {
+   "n": "High Note SkyBar",
+   "cat": [
+    "bars",
+    "views"
+   ],
+   "src": [
+    "claude"
+   ]
+  },
+  {
+   "n": "A38 Ship",
+   "cat": [
+    "shows",
+    "bars"
+   ],
+   "src": [
+    "claude"
+   ]
+  },
+  {
+   "n": "Akvárium Klub",
+   "cat": [
+    "shows"
+   ],
+   "src": [
+    "claude"
+   ]
+  },
+  {
+   "n": "Római-part riverside bars",
+   "cat": [
+    "bars"
+   ],
+   "src": [
+    "claude"
+   ]
+  },
+  {
+   "n": "Great Market Hall",
+   "cat": [
+    "markets",
+    "food"
+   ],
+   "src": [
+    "claude"
+   ]
+  },
+  {
+   "n": "Karaván street food",
+   "cat": [
+    "food"
+   ],
+   "src": [
+    "claude"
+   ]
+  },
+  {
+   "n": "Gozsdu Udvar",
+   "cat": [
+    "bars",
+    "food"
+   ],
+   "src": [
+    "claude"
+   ]
+  },
+  {
+   "n": "New York Café",
+   "cat": [
+    "food"
+   ],
+   "src": [
+    "claude"
+   ]
+  },
+  {
+   "n": "Gelarto Rosa",
+   "cat": [
+    "food"
+   ],
+   "src": [
+    "claude"
+   ]
+  },
+  {
+   "n": "Budapest food walking tour",
+   "cat": [
+    "tours",
+    "food"
+   ],
+   "src": [
+    "claude"
+   ]
+  },
+  {
+   "n": "Goulash cooking class",
+   "cat": [
+    "classes"
+   ],
+   "src": [
+    "claude"
+   ]
+  },
+  {
+   "n": "Faust Wine Cellar",
+   "cat": [
+    "foodwine"
+   ],
+   "src": [
+    "claude"
+   ]
+  },
+  {
+   "n": "Craft beer crawl",
+   "cat": [
+    "bars"
+   ],
+   "src": [
+    "claude"
+   ]
+  },
+  {
+   "n": "Zwack Unicum tasting",
+   "cat": [
+    "foodwine"
+   ],
+   "src": [
+    "claude"
+   ]
+  },
+  {
+   "n": "Szentendre day trip",
+   "cat": [
+    "daytrip"
+   ],
+   "src": [
+    "claude"
+   ]
+  },
+  {
+   "n": "Eger day trip",
+   "cat": [
+    "daytrip",
+    "foodwine"
+   ],
+   "src": [
+    "claude"
+   ]
+  },
+  {
+   "n": "Lake Balaton (Siófok)",
+   "cat": [
+    "daytrip"
+   ],
+   "src": [
+    "claude"
+   ]
+  },
+  {
+   "n": "Tihany day trip",
+   "cat": [
+    "daytrip"
+   ],
+   "src": [
+    "claude"
+   ]
+  },
+  {
+   "n": "Danube Bend boat day",
+   "cat": [
+    "daytrip",
+    "boats"
+   ],
+   "src": [
+    "claude"
+   ]
+  },
+  {
+   "n": "Elizabeth Lookout Tower",
+   "cat": [
+    "views"
+   ],
+   "src": [
+    "claude"
+   ]
+  },
+  {
+   "n": "Normafa",
+   "cat": [
+    "parks",
+    "views"
+   ],
+   "src": [
+    "claude"
+   ]
+  },
+  {
+   "n": "Miniversum",
+   "cat": [
+    "attractions"
+   ],
+   "src": [
+    "claude"
+   ]
+  },
+  {
+   "n": "Szamos Chocolate Museum",
+   "cat": [
+    "food"
+   ],
+   "src": [
+    "claude"
+   ]
+  },
+  {
+   "n": "Tropicarium",
+   "cat": [
+    "zoo"
+   ],
+   "src": [
+    "claude"
+   ]
+  },
+  {
+   "n": "CSOPA Science Centre",
+   "cat": [
+    "attractions"
+   ],
+   "src": [
+    "claude"
+   ]
+  },
+  {
+   "n": "Board-game café",
+   "cat": [
+    "food"
+   ],
+   "src": [
+    "claude"
+   ]
+  },
+  {
+   "n": "Cat café",
+   "cat": [
+    "animalcafe"
+   ],
+   "src": [
+    "claude"
+   ]
+  },
+  {
+   "n": "Folklore dance show & dinner",
+   "cat": [
+    "shows"
+   ],
+   "src": [
+    "claude"
+   ]
+  },
+  {
+   "n": "Organ concert, St Stephen's Basilica",
+   "cat": [
+    "shows"
+   ],
+   "src": [
+    "claude"
+   ]
+  },
+  {
+   "n": "Capital Circus of Budapest",
+   "cat": [
+    "shows"
+   ],
+   "src": [
+    "claude"
+   ]
+  },
+  {
+   "n": "Hungarian State Opera",
+   "cat": [
+    "shows"
+   ],
+   "src": [
+    "claude"
+   ]
+  },
+  {
+   "n": "Hungarian Grand Prix (Hungaroring)",
+   "cat": [
+    "adrenaline"
+   ],
+   "src": [
+    "claude"
+   ]
+  },
+  {
+   "n": "Chimney cake (kürtőskalács)",
+   "cat": [
+    "food"
+   ],
+   "src": [
+    "claude"
+   ]
+  },
+  {
+   "n": "Buda Castle Funicular (Sikló)",
+   "cat": [
+    "attractions",
+    "views"
+   ],
+   "src": [
+    "claude"
+   ]
+  },
+  {
+   "n": "Scenic Tram 2",
+   "cat": [
+    "attractions"
+   ],
+   "src": [
+    "claude"
+   ]
+  },
+  {
+   "n": "Memento Park",
+   "cat": [
+    "attractions"
+   ],
+   "src": [
+    "claude"
+   ]
+  },
+  {
+   "n": "Claustrophilia",
+   "cat": [
+    "escape"
+   ],
+   "src": [
+    "claude"
+   ]
+  },
+  {
+   "n": "Gül Baba Türbe",
+   "cat": [
+    "views"
+   ],
+   "src": [
+    "claude"
+   ]
+  },
+  {
+   "n": "Spa & massage day",
+   "cat": [
+    "spa"
+   ],
+   "src": [
+    "claude"
+   ]
+  },
+  {
+   "n": "Thermal Beer Spa",
+   "cat": [
+    "spa"
+   ],
+   "src": [
+    "claude"
+   ]
+  },
+  {
+   "n": "Rooftop open-air cinema",
+   "cat": [
+    "shows"
+   ],
+   "src": [
+    "claude"
+   ]
+  },
+  {
+   "n": "Karaoke bar",
+   "cat": [
+    "bars"
+   ],
+   "src": [
+    "claude"
+   ]
+  },
+  {
+   "n": "Pottery / ceramics workshop",
+   "cat": [
+    "classes"
+   ],
+   "src": [
+    "claude"
+   ]
+  }
+ ],
+ "UK": [
+  {
+   "n": "Big Ben & Houses of Parliament",
+   "cat": [
+    "landmarks"
+   ],
+   "src": [
+    "list",
+    "claude"
+   ]
+  },
+  {
+   "n": "Tower Bridge",
+   "cat": [
+    "landmarks"
+   ],
+   "src": [
+    "list",
+    "claude"
+   ]
+  },
+  {
+   "n": "Buckingham Palace",
+   "cat": [
+    "landmarks"
+   ],
+   "src": [
+    "list",
+    "claude"
+   ]
+  },
+  {
+   "n": "Westminster Abbey",
+   "cat": [
+    "landmarks"
+   ],
+   "src": [
+    "list",
+    "claude"
+   ]
+  },
+  {
+   "n": "St. Paul's Cathedral",
+   "cat": [
+    "landmarks"
+   ],
+   "src": [
+    "list",
+    "claude"
+   ]
+  },
+  {
+   "n": "St Pancras International",
+   "cat": [
+    "landmarks"
+   ],
+   "src": [
+    "list",
+    "claude"
+   ]
+  },
+  {
+   "n": "Horse Guards Parade",
+   "cat": [
+    "landmarks"
+   ],
+   "src": [
+    "list",
+    "claude"
+   ]
+  },
+  {
+   "n": "Old Royal Naval College (Greenwich)",
+   "cat": [
+    "landmarks"
+   ],
+   "src": [
+    "list",
+    "claude"
+   ]
+  },
+  {
+   "n": "Notting Hill",
+   "cat": [
+    "landmarks",
+    "views"
+   ],
+   "src": [
+    "list",
+    "claude"
+   ]
+  },
+  {
+   "n": "St Katharine Docks",
+   "cat": [
+    "views",
+    "food"
+   ],
+   "src": [
+    "list",
+    "claude"
+   ]
+  },
+  {
+   "n": "Southwark Cathedral",
+   "cat": [
+    "landmarks"
+   ],
+   "src": [
+    "list",
+    "claude"
+   ]
+  },
+  {
+   "n": "The Charterhouse",
+   "cat": [
+    "landmarks",
+    "museums"
+   ],
+   "src": [
+    "list",
+    "claude"
+   ]
+  },
+  {
+   "n": "Fulham Palace",
+   "cat": [
+    "landmarks",
+    "parks"
+   ],
+   "src": [
+    "list",
+    "claude"
+   ]
+  },
+  {
+   "n": "Mayfair",
+   "cat": [
+    "landmarks"
+   ],
+   "src": [
+    "list",
+    "claude"
+   ]
+  },
+  {
+   "n": "Canary Wharf Estate",
+   "cat": [
+    "landmarks"
+   ],
+   "src": [
+    "list",
+    "claude"
+   ]
+  },
+  {
+   "n": "The British Museum",
+   "cat": [
+    "museums"
+   ],
+   "src": [
+    "list",
+    "claude"
+   ]
+  },
+  {
+   "n": "Natural History Museum",
+   "cat": [
+    "museums"
+   ],
+   "src": [
+    "list",
+    "claude"
+   ]
+  },
+  {
+   "n": "Sir John Soane's Museum",
+   "cat": [
+    "museums"
+   ],
+   "src": [
+    "list",
+    "claude"
+   ]
+  },
+  {
+   "n": "Science Museum",
+   "cat": [
+    "museums"
+   ],
+   "src": [
+    "list",
+    "claude"
+   ]
+  },
+  {
+   "n": "National Maritime Museum",
+   "cat": [
+    "museums"
+   ],
+   "src": [
+    "list",
+    "claude"
+   ]
+  },
+  {
+   "n": "Somerset House",
+   "cat": [
+    "museums",
+    "landmarks"
+   ],
+   "src": [
+    "list",
+    "claude"
+   ]
+  },
+  {
+   "n": "Paradox Museum London",
+   "cat": [
+    "museums",
+    "attractions"
+   ],
+   "src": [
+    "list",
+    "claude"
+   ]
+  },
+  {
+   "n": "Halcyon Gallery",
+   "cat": [
+    "museums"
+   ],
+   "src": [
+    "list",
+    "claude"
+   ]
+  },
+  {
+   "n": "Hunterian Museum",
+   "cat": [
+    "museums"
+   ],
+   "src": [
+    "list",
+    "claude"
+   ]
+  },
+  {
+   "n": "British Museum Reading Room",
+   "cat": [
+    "museums"
+   ],
+   "src": [
+    "list",
+    "claude"
+   ]
+  },
+  {
+   "n": "Wimbledon Lawn Tennis Museum",
+   "cat": [
+    "museums"
+   ],
+   "src": [
+    "list",
+    "claude"
+   ]
+  },
+  {
+   "n": "Madame Tussauds London",
+   "cat": [
+    "attractions",
+    "museums"
+   ],
+   "src": [
+    "list",
+    "claude"
+   ]
+  },
+  {
+   "n": "Mundo Pixar Experience",
+   "cat": [
+    "attractions",
+    "museums"
+   ],
+   "src": [
+    "list",
+    "claude"
+   ]
+  },
+  {
+   "n": "Sky Garden",
+   "cat": [
+    "views",
+    "parks"
+   ],
+   "src": [
+    "list",
+    "claude"
+   ]
+  },
+  {
+   "n": "Horizon 22",
+   "cat": [
+    "views"
+   ],
+   "src": [
+    "list",
+    "claude"
+   ]
+  },
+  {
+   "n": "Primrose Hill",
+   "cat": [
+    "views",
+    "parks"
+   ],
+   "src": [
+    "list",
+    "claude"
+   ]
+  },
+  {
+   "n": "The Shard",
+   "cat": [
+    "views",
+    "landmarks"
+   ],
+   "src": [
+    "list",
+    "claude"
+   ]
+  },
+  {
+   "n": "The Garden at 120",
+   "cat": [
+    "views",
+    "parks"
+   ],
+   "src": [
+    "list",
+    "claude"
+   ]
+  },
+  {
+   "n": "Crossrail Place Roof Garden",
+   "cat": [
+    "parks",
+    "views"
+   ],
+   "src": [
+    "list",
+    "claude"
+   ]
+  },
+  {
+   "n": "Barbican Conservatory",
+   "cat": [
+    "parks",
+    "views"
+   ],
+   "src": [
+    "list",
+    "claude"
+   ]
+  },
+  {
+   "n": "Sunken Garden (Kensington Palace)",
+   "cat": [
+    "parks",
+    "views"
+   ],
+   "src": [
+    "list",
+    "claude"
+   ]
+  },
+  {
+   "n": "The Post Building Roof Garden",
+   "cat": [
+    "views",
+    "parks"
+   ],
+   "src": [
+    "list",
+    "claude"
+   ]
+  },
+  {
+   "n": "The Regent's Park",
+   "cat": [
+    "parks"
+   ],
+   "src": [
+    "list",
+    "claude"
+   ]
+  },
+  {
+   "n": "Richmond Park",
+   "cat": [
+    "parks"
+   ],
+   "src": [
+    "list",
+    "claude"
+   ]
+  },
+  {
+   "n": "Isabella Plantation",
+   "cat": [
+    "parks"
+   ],
+   "src": [
+    "list",
+    "claude"
+   ]
+  },
+  {
+   "n": "Eden Dock",
+   "cat": [
+    "parks"
+   ],
+   "src": [
+    "list",
+    "claude"
+   ]
+  },
+  {
+   "n": "Covent Garden",
+   "cat": [
+    "markets",
+    "shows"
+   ],
+   "src": [
+    "list",
+    "claude"
+   ]
+  },
+  {
+   "n": "Borough Market",
+   "cat": [
+    "markets",
+    "food"
+   ],
+   "src": [
+    "list",
+    "claude"
+   ]
+  },
+  {
+   "n": "Camden Market",
+   "cat": [
+    "markets",
+    "food"
+   ],
+   "src": [
+    "list",
+    "claude"
+   ]
+  },
+  {
+   "n": "Portobello Road Market",
+   "cat": [
+    "markets"
+   ],
+   "src": [
+    "list",
+    "claude"
+   ]
+  },
+  {
+   "n": "Harrods",
+   "cat": [
+    "markets"
+   ],
+   "src": [
+    "list",
+    "claude"
+   ]
+  },
+  {
+   "n": "Selfridges",
+   "cat": [
+    "markets"
+   ],
+   "src": [
+    "list",
+    "claude"
+   ]
+  },
+  {
+   "n": "Oxford Street",
+   "cat": [
+    "markets"
+   ],
+   "src": [
+    "list",
+    "claude"
+   ]
+  },
+  {
+   "n": "Charing Cross Road",
+   "cat": [
+    "markets"
+   ],
+   "src": [
+    "list",
+    "claude"
+   ]
+  },
+  {
+   "n": "Cahoots",
+   "cat": [
+    "bars",
+    "shows"
+   ],
+   "src": [
+    "list",
+    "claude"
+   ]
+  },
+  {
+   "n": "Trafalgar Tavern",
+   "cat": [
+    "bars",
+    "food"
+   ],
+   "src": [
+    "list",
+    "claude"
+   ]
+  },
+  {
+   "n": "Voyage Lounge London",
+   "cat": [
+    "bars"
+   ],
+   "src": [
+    "list",
+    "claude"
+   ]
+  },
+  {
+   "n": "A West End show",
+   "cat": [
+    "shows"
+   ],
+   "src": [
+    "list",
+    "claude"
+   ]
+  },
+  {
+   "n": "Royal Ballet and Opera",
+   "cat": [
+    "shows"
+   ],
+   "src": [
+    "list",
+    "claude"
+   ]
+  },
+  {
+   "n": "Electric Cinema (Portobello)",
+   "cat": [
+    "shows"
+   ],
+   "src": [
+    "list",
+    "claude"
+   ]
+  },
+  {
+   "n": "Barbican Centre",
+   "cat": [
+    "shows",
+    "landmarks"
+   ],
+   "src": [
+    "list",
+    "claude"
+   ]
+  },
+  {
+   "n": "Soho",
+   "cat": [
+    "shows",
+    "food"
+   ],
+   "src": [
+    "list",
+    "claude"
+   ]
+  },
+  {
+   "n": "Dock X",
+   "cat": [
+    "shows"
+   ],
+   "src": [
+    "list",
+    "claude"
+   ]
+  },
+  {
+   "n": "Outernet London",
+   "cat": [
+    "attractions",
+    "vr"
+   ],
+   "src": [
+    "list",
+    "claude"
+   ]
+  },
+  {
+   "n": "London Eye",
+   "cat": [
+    "attractions",
+    "views"
+   ],
+   "src": [
+    "list",
+    "claude"
+   ]
+  },
+  {
+   "n": "London Cable Car (IFS Cloud)",
+   "cat": [
+    "attractions",
+    "views"
+   ],
+   "src": [
+    "list",
+    "claude"
+   ]
+  },
+  {
+   "n": "Treetop Walkway (Kew)",
+   "cat": [
+    "attractions",
+    "views"
+   ],
+   "src": [
+    "list",
+    "claude"
+   ]
+  },
+  {
+   "n": "Babylon Park London",
+   "cat": [
+    "attractions"
+   ],
+   "src": [
+    "list",
+    "claude"
+   ]
+  },
+  {
+   "n": "Platform 9¾",
+   "cat": [
+    "attractions"
+   ],
+   "src": [
+    "list",
+    "claude"
+   ]
+  },
+  {
+   "n": "Skuna Hot Tub Boats (Canary Wharf)",
+   "cat": [
+    "attractions",
+    "baths"
+   ],
+   "src": [
+    "list",
+    "claude"
+   ]
+  },
+  {
+   "n": "Alpha Guns London (Camden)",
+   "cat": [
+    "adrenaline"
+   ],
+   "src": [
+    "list",
+    "claude"
+   ]
+  },
+  {
+   "n": "Wimbledon Park Tennis Courts",
+   "cat": [
+    "adrenaline"
+   ],
+   "src": [
+    "list",
+    "claude"
+   ]
+  },
+  {
+   "n": "Pottery Cafe",
+   "cat": [
+    "classes"
+   ],
+   "src": [
+    "list",
+    "claude"
+   ]
+  },
+  {
+   "n": "Java Whiskers Cat Café (White City)",
+   "cat": [
+    "animalcafe"
+   ],
+   "src": [
+    "list",
+    "claude"
+   ]
+  },
+  {
+   "n": "Java Whiskers Cat Café (Marylebone)",
+   "cat": [
+    "animalcafe"
+   ],
+   "src": [
+    "list",
+    "claude"
+   ]
+  },
+  {
+   "n": "The Summerhouse",
+   "cat": [
+    "food"
+   ],
+   "src": [
+    "list",
+    "claude"
+   ]
+  },
+  {
+   "n": "Chinatown",
+   "cat": [
+    "food"
+   ],
+   "src": [
+    "list",
+    "claude"
+   ]
+  },
+  {
+   "n": "Il Botanico Pasticceria e Gelateria",
+   "cat": [
+    "food"
+   ],
+   "src": [
+    "list",
+    "claude"
+   ]
+  },
+  {
+   "n": "Haute Dolci (The O2)",
+   "cat": [
+    "food"
+   ],
+   "src": [
+    "list",
+    "claude"
+   ]
+  },
+  {
+   "n": "Thames Clipper (London Eye Pier)",
+   "cat": [
+    "boats"
+   ],
+   "src": [
+    "list",
+    "claude"
+   ]
+  },
+  {
+   "n": "Thames Clipper (North Greenwich Pier)",
+   "cat": [
+    "boats"
+   ],
+   "src": [
+    "list",
+    "claude"
+   ]
+  },
+  {
+   "n": "Windsor Castle",
+   "cat": [
+    "daytrip",
+    "landmarks"
+   ],
+   "src": [
+    "list",
+    "claude"
+   ]
+  },
+  {
+   "n": "Oxford",
+   "cat": [
+    "daytrip"
+   ],
+   "src": [
+    "list",
+    "claude"
+   ]
+  },
+  {
+   "n": "Cambridge",
+   "cat": [
+    "daytrip"
+   ],
+   "src": [
+    "list",
+    "claude"
+   ]
+  },
+  {
+   "n": "Tate Modern",
+   "cat": [
+    "museums",
+    "views"
+   ],
+   "src": [
+    "claude"
+   ]
+  },
+  {
+   "n": "Hyde Park & Kensington Gardens",
+   "cat": [
+    "parks"
+   ],
+   "src": [
+    "claude"
+   ]
+  },
+  {
+   "n": "Neal's Yard",
+   "cat": [
+    "views"
+   ],
+   "src": [
+    "claude"
+   ]
+  },
+  {
+   "n": "Leadenhall Market",
+   "cat": [
+    "markets",
+    "views"
+   ],
+   "src": [
+    "claude"
+   ]
+  },
+  {
+   "n": "Royal Observatory Greenwich",
+   "cat": [
+    "museums",
+    "views"
+   ],
+   "src": [
+    "claude"
+   ]
+  },
+  {
+   "n": "Kyoto Garden, Holland Park",
+   "cat": [
+    "parks"
+   ],
+   "src": [
+    "claude"
+   ]
+  },
+  {
+   "n": "The Lion King",
+   "cat": [
+    "shows"
+   ],
+   "src": [
+    "claude"
+   ]
+  },
+  {
+   "n": "Hamilton",
+   "cat": [
+    "shows"
+   ],
+   "src": [
+    "claude"
+   ]
+  },
+  {
+   "n": "Wicked",
+   "cat": [
+    "shows"
+   ],
+   "src": [
+    "claude"
+   ]
+  },
+  {
+   "n": "Hadestown",
+   "cat": [
+    "shows"
+   ],
+   "src": [
+    "claude"
+   ]
+  },
+  {
+   "n": "Mamma Mia!",
+   "cat": [
+    "shows"
+   ],
+   "src": [
+    "claude"
+   ]
+  },
+  {
+   "n": "SIX",
+   "cat": [
+    "shows"
+   ],
+   "src": [
+    "claude"
+   ]
+  },
+  {
+   "n": "The Crystal Maze LIVE Experience",
+   "cat": [
+    "escape"
+   ],
+   "src": [
+    "claude",
+    "google"
+   ]
+  },
+  {
+   "n": "clueQuest",
+   "cat": [
+    "escape"
+   ],
+   "src": [
+    "claude",
+    "google"
+   ]
+  },
+  {
+   "n": "Sherlock: The Official Live Game",
+   "cat": [
+    "escape"
+   ],
+   "src": [
+    "claude"
+   ]
+  },
+  {
+   "n": "Up at The O2",
+   "cat": [
+    "adrenaline",
+    "views"
+   ],
+   "src": [
+    "claude",
+    "google"
+   ]
+  },
+  {
+   "n": "Lee Valley White Water Centre",
+   "cat": [
+    "adrenaline"
+   ],
+   "src": [
+    "claude",
+    "google"
+   ]
+  },
+  {
+   "n": "Thames RIB speedboat",
+   "cat": [
+    "adrenaline",
+    "boats"
+   ],
+   "src": [
+    "claude",
+    "google"
+   ]
+  },
+  {
+   "n": "iFLY indoor skydiving",
+   "cat": [
+    "adrenaline"
+   ],
+   "src": [
+    "claude",
+    "google"
+   ]
+  },
+  {
+   "n": "Whistle Punks axe throwing",
+   "cat": [
+    "adrenaline"
+   ],
+   "src": [
+    "claude",
+    "google"
+   ]
+  },
+  {
+   "n": "Frameless",
+   "cat": [
+    "vr"
+   ],
+   "src": [
+    "claude",
+    "google"
+   ]
+  },
+  {
+   "n": "ABBA Voyage",
+   "cat": [
+    "shows",
+    "vr"
+   ],
+   "src": [
+    "claude",
+    "google"
+   ]
+  },
+  {
+   "n": "Twist Museum",
+   "cat": [
+    "vr",
+    "museums"
+   ],
+   "src": [
+    "claude",
+    "google"
+   ]
+  },
+  {
+   "n": "Swingers / Junkyard / Puttshack",
+   "cat": [
+    "bars",
+    "attractions"
+   ],
+   "src": [
+    "claude",
+    "google"
+   ]
+  },
+  {
+   "n": "Clays",
+   "cat": [
+    "bars",
+    "attractions"
+   ],
+   "src": [
+    "claude",
+    "google"
+   ]
+  },
+  {
+   "n": "Bounce ping-pong",
+   "cat": [
+    "bars",
+    "attractions"
+   ],
+   "src": [
+    "claude",
+    "google"
+   ]
+  },
+  {
+   "n": "Secret Cinema: Grease",
+   "cat": [
+    "shows"
+   ],
+   "src": [
+    "claude"
+   ]
+  },
+  {
+   "n": "Center Parcs — Subtropical Swimming Paradise",
+   "cat": [
+    "waterpark",
+    "daytrip"
+   ],
+   "src": [
+    "claude",
+    "google"
+   ]
+  },
+  {
+   "n": "Thorpe Park",
+   "cat": [
+    "themepark",
+    "daytrip"
+   ],
+   "src": [
+    "claude"
+   ]
+  },
+  {
+   "n": "Sandbox VR / DNA VR",
+   "cat": [
+    "vr"
+   ],
+   "src": [
+    "claude"
+   ]
+  },
+  {
+   "n": "The Slide @ ArcelorMittal Orbit",
+   "cat": [
+    "adrenaline",
+    "views"
+   ],
+   "src": [
+    "claude"
+   ]
+  },
+  {
+   "n": "Capital Karts",
+   "cat": [
+    "adrenaline"
+   ],
+   "src": [
+    "claude"
+   ]
+  },
+  {
+   "n": "Flight Club / Boom Battle Bar",
+   "cat": [
+    "bars",
+    "attractions"
+   ],
+   "src": [
+    "claude"
+   ]
+  },
+  {
+   "n": "WakeUp Docklands",
+   "cat": [
+    "adrenaline"
+   ],
+   "src": [
+    "claude"
+   ]
+  },
+  {
+   "n": "Warner Bros. Studio Tour — Harry Potter",
+   "cat": [
+    "daytrip"
+   ],
+   "src": [
+    "claude"
+   ]
+  },
+  {
+   "n": "Chessington World of Adventures",
+   "cat": [
+    "themepark",
+    "daytrip"
+   ],
+   "src": [
+    "claude"
+   ]
+  },
+  {
+   "n": "ZSL London Zoo",
+   "cat": [
+    "zoo"
+   ],
+   "src": [
+    "claude"
+   ]
+  },
+  {
+   "n": "SEA LIFE London Aquarium",
+   "cat": [
+    "zoo"
+   ],
+   "src": [
+    "claude"
+   ]
+  },
+  {
+   "n": "Go Ape treetop adventure",
+   "cat": [
+    "adrenaline"
+   ],
+   "src": [
+    "claude"
+   ]
+  },
+  {
+   "n": "Trampoline park",
+   "cat": [
+    "adrenaline"
+   ],
+   "src": [
+    "claude"
+   ]
+  },
+  {
+   "n": "Indoor bouldering",
+   "cat": [
+    "adrenaline"
+   ],
+   "src": [
+    "claude"
+   ]
+  },
+  {
+   "n": "Hampstead Heath swimming ponds",
+   "cat": [
+    "parks"
+   ],
+   "src": [
+    "claude"
+   ]
+  },
+  {
+   "n": "Serpentine Lido",
+   "cat": [
+    "baths"
+   ],
+   "src": [
+    "claude"
+   ]
+  },
+  {
+   "n": "Zip Now London",
+   "cat": [
+    "adrenaline"
+   ],
+   "src": [
+    "claude"
+   ]
+  },
+  {
+   "n": "The London Dungeon",
+   "cat": [
+    "attractions"
+   ],
+   "src": [
+    "claude"
+   ]
+  },
+  {
+   "n": "Ripley's Believe It or Not!",
+   "cat": [
+    "attractions"
+   ],
+   "src": [
+    "claude"
+   ]
+  },
+  {
+   "n": "Electric Gamebox",
+   "cat": [
+    "vr"
+   ],
+   "src": [
+    "claude"
+   ]
+  },
+  {
+   "n": "Otherworld VR",
+   "cat": [
+    "vr"
+   ],
+   "src": [
+    "claude"
+   ]
+  },
+  {
+   "n": "Lightroom",
+   "cat": [
+    "vr"
+   ],
+   "src": [
+    "claude"
+   ]
+  },
+  {
+   "n": "Roller disco",
+   "cat": [
+    "attractions"
+   ],
+   "src": [
+    "claude"
+   ]
+  },
+  {
+   "n": "Bowling (All Star Lanes)",
+   "cat": [
+    "attractions"
+   ],
+   "src": [
+    "claude"
+   ]
+  },
+  {
+   "n": "Toca Social",
+   "cat": [
+    "attractions",
+    "bars"
+   ],
+   "src": [
+    "claude"
+   ]
+  },
+  {
+   "n": "London Shuffle Club",
+   "cat": [
+    "bars"
+   ],
+   "src": [
+    "claude"
+   ]
+  },
+  {
+   "n": "Karaoke box (Lucky Voice)",
+   "cat": [
+    "bars"
+   ],
+   "src": [
+    "claude"
+   ]
+  },
+  {
+   "n": "Comedy club night",
+   "cat": [
+    "shows"
+   ],
+   "src": [
+    "claude"
+   ]
+  },
+  {
+   "n": "Delta Force paintball",
+   "cat": [
+    "adrenaline"
+   ],
+   "src": [
+    "claude"
+   ]
+  },
+  {
+   "n": "Regent's Canal kayak / SUP",
+   "cat": [
+    "adrenaline"
+   ],
+   "src": [
+    "claude"
+   ]
+  },
+  {
+   "n": "Helicopter tour over London",
+   "cat": [
+    "tours",
+    "views"
+   ],
+   "src": [
+    "claude"
+   ]
+  },
+  {
+   "n": "Hot-air balloon over London",
+   "cat": [
+    "adrenaline",
+    "views"
+   ],
+   "src": [
+    "claude"
+   ]
+  },
+  {
+   "n": "Mamma Mia! The Party",
+   "cat": [
+    "shows"
+   ],
+   "src": [
+    "claude"
+   ]
+  },
+  {
+   "n": "Gin distillery experience",
+   "cat": [
+    "foodwine"
+   ],
+   "src": [
+    "claude"
+   ]
+  },
+  {
+   "n": "Brighton seaside day trip",
+   "cat": [
+    "daytrip"
+   ],
+   "src": [
+    "claude"
+   ]
+  },
+  {
+   "n": "The Phantom of the Opera",
+   "cat": [
+    "shows"
+   ],
+   "src": [
+    "claude"
+   ]
+  },
+  {
+   "n": "Les Misérables",
+   "cat": [
+    "shows"
+   ],
+   "src": [
+    "claude"
+   ]
+  },
+  {
+   "n": "Moulin Rouge! The Musical",
+   "cat": [
+    "shows"
+   ],
+   "src": [
+    "claude"
+   ]
+  },
+  {
+   "n": "Cabaret at the Kit Kat Club",
+   "cat": [
+    "shows"
+   ],
+   "src": [
+    "claude"
+   ]
+  },
+  {
+   "n": "Stranger Things: The First Shadow",
+   "cat": [
+    "shows"
+   ],
+   "src": [
+    "claude"
+   ]
+  },
+  {
+   "n": "Open-Air Theatre, Regent's Park",
+   "cat": [
+    "shows"
+   ],
+   "src": [
+    "claude"
+   ]
+  },
+  {
+   "n": "BBC Proms",
+   "cat": [
+    "shows"
+   ],
+   "src": [
+    "claude"
+   ]
+  },
+  {
+   "n": "Shakespeare's Globe",
+   "cat": [
+    "shows"
+   ],
+   "src": [
+    "claude"
+   ]
+  },
+  {
+   "n": "Monopoly Lifesized",
+   "cat": [
+    "attractions"
+   ],
+   "src": [
+    "claude"
+   ]
+  },
+  {
+   "n": "Dans le Noir?",
+   "cat": [
+    "food"
+   ],
+   "src": [
+    "claude"
+   ]
+  },
+  {
+   "n": "Seven Dials Market",
+   "cat": [
+    "food"
+   ],
+   "src": [
+    "claude"
+   ]
+  },
+  {
+   "n": "Mercato Metropolitano",
+   "cat": [
+    "food"
+   ],
+   "src": [
+    "claude"
+   ]
+  },
+  {
+   "n": "Old Spitalfields Market",
+   "cat": [
+    "markets"
+   ],
+   "src": [
+    "claude"
+   ]
+  },
+  {
+   "n": "Brick Lane",
+   "cat": [
+    "markets"
+   ],
+   "src": [
+    "claude"
+   ]
+  },
+  {
+   "n": "Maltby Street Market",
+   "cat": [
+    "food"
+   ],
+   "src": [
+    "claude"
+   ]
+  },
+  {
+   "n": "BOXPARK Shoreditch",
+   "cat": [
+    "food"
+   ],
+   "src": [
+    "claude"
+   ]
+  },
+  {
+   "n": "Greenwich Market",
+   "cat": [
+    "markets"
+   ],
+   "src": [
+    "claude"
+   ]
+  },
+  {
+   "n": "Frank's Café, Peckham",
+   "cat": [
+    "bars",
+    "views"
+   ],
+   "src": [
+    "claude"
+   ]
+  },
+  {
+   "n": "Ballie Ballerson",
+   "cat": [
+    "bars"
+   ],
+   "src": [
+    "claude"
+   ]
+  },
+  {
+   "n": "Evans & Peel Detective Agency",
+   "cat": [
+    "bars"
+   ],
+   "src": [
+    "claude"
+   ]
+  },
+  {
+   "n": "God's Own Junkyard",
+   "cat": [
+    "attractions"
+   ],
+   "src": [
+    "claude"
+   ]
+  },
+  {
+   "n": "Cocktail-making class",
+   "cat": [
+    "classes"
+   ],
+   "src": [
+    "claude"
+   ]
+  },
+  {
+   "n": "Duck & Waffle",
+   "cat": [
+    "food",
+    "views"
+   ],
+   "src": [
+    "claude"
+   ]
+  },
+  {
+   "n": "Novelty Automation",
+   "cat": [
+    "attractions"
+   ],
+   "src": [
+    "claude"
+   ]
+  },
+  {
+   "n": "Viktor Wynd Museum of Curiosities",
+   "cat": [
+    "museums"
+   ],
+   "src": [
+    "claude"
+   ]
+  },
+  {
+   "n": "Postal Museum & Mail Rail",
+   "cat": [
+    "attractions"
+   ],
+   "src": [
+    "claude"
+   ]
+  },
+  {
+   "n": "London Transport Museum",
+   "cat": [
+    "attractions"
+   ],
+   "src": [
+    "claude"
+   ]
+  },
+  {
+   "n": "Leake Street graffiti tunnel",
+   "cat": [
+    "attractions"
+   ],
+   "src": [
+    "claude"
+   ]
+  },
+  {
+   "n": "Serpentine pedalos",
+   "cat": [
+    "parks"
+   ],
+   "src": [
+    "claude"
+   ]
+  },
+  {
+   "n": "Lift 109, Battersea Power Station",
+   "cat": [
+    "views"
+   ],
+   "src": [
+    "claude"
+   ]
+  },
+  {
+   "n": "Crystal Palace dinosaurs",
+   "cat": [
+    "parks"
+   ],
+   "src": [
+    "claude"
+   ]
+  },
+  {
+   "n": "Kew Gardens",
+   "cat": [
+    "parks"
+   ],
+   "src": [
+    "claude"
+   ]
+  },
+  {
+   "n": "Seven Sisters cliffs",
+   "cat": [
+    "daytrip"
+   ],
+   "src": [
+    "claude"
+   ]
+  },
+  {
+   "n": "Stadium tour",
+   "cat": [
+    "tours"
+   ],
+   "src": [
+    "claude"
+   ]
+  },
+  {
+   "n": "Cricket at Lord's / The Oval",
+   "cat": [
+    "shows"
+   ],
+   "src": [
+    "claude"
+   ]
+  },
+  {
+   "n": "Lee Valley VeloPark",
+   "cat": [
+    "adrenaline"
+   ],
+   "src": [
+    "claude"
+   ]
+  },
+  {
+   "n": "Padel London",
+   "cat": [
+    "adrenaline"
+   ],
+   "src": [
+    "claude"
+   ]
+  },
+  {
+   "n": "Sixes Social Cricket",
+   "cat": [
+    "bars"
+   ],
+   "src": [
+    "claude"
+   ]
+  },
+  {
+   "n": "The Cotswolds",
+   "cat": [
+    "daytrip"
+   ],
+   "src": [
+    "claude"
+   ]
+  },
+  {
+   "n": "Legoland Windsor",
+   "cat": [
+    "themepark",
+    "daytrip"
+   ],
+   "src": [
+    "claude"
+   ]
+  },
+  {
+   "n": "Margate & Dreamland",
+   "cat": [
+    "daytrip"
+   ],
+   "src": [
+    "claude"
+   ]
+  },
+  {
+   "n": "Bath",
+   "cat": [
+    "daytrip"
+   ],
+   "src": [
+    "claude"
+   ]
+  },
+  {
+   "n": "Whitstable",
+   "cat": [
+    "daytrip"
+   ],
+   "src": [
+    "claude"
+   ]
+  },
+  {
+   "n": "Bottomless drag brunch",
+   "cat": [
+    "shows"
+   ],
+   "src": [
+    "claude"
+   ]
+  },
+  {
+   "n": "Afternoon tea bus tour",
+   "cat": [
+    "tours"
+   ],
+   "src": [
+    "claude"
+   ]
+  },
+  {
+   "n": "Thames dinner cruise",
+   "cat": [
+    "boats"
+   ],
+   "src": [
+    "claude"
+   ]
+  },
+  {
+   "n": "London Ghost Bus Tour",
+   "cat": [
+    "tours"
+   ],
+   "src": [
+    "claude"
+   ]
+  },
+  {
+   "n": "Rooftop Film Club",
+   "cat": [
+    "shows"
+   ],
+   "src": [
+    "claude"
+   ]
+  },
+  {
+   "n": "Cutty Sark",
+   "cat": [
+    "attractions"
+   ],
+   "src": [
+    "claude"
+   ]
+  },
+  {
+   "n": "Regent's Canal waterbus",
+   "cat": [
+    "boats"
+   ],
+   "src": [
+    "claude"
+   ]
+  }
+ ]
+}
