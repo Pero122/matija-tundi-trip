@@ -1,0 +1,762 @@
+{
+  "Attraction_Review:19082577": {
+    "brief": {
+      "what": "Édes Napok is Budapest's annual chocolate and sweets festival, bringing more than 100 confectioners and exhibitors to the square by St Stephen's Basilica.",
+      "do": "Browse the stalls, sample or buy chocolate, cakes and ice cream, and watch the announced demonstrations or stage programs.",
+      "why": "Keep it as a seasonal maybe if you both enjoy desserts and food festivals. Do not plan around it until the organizer publishes the 2026 Budapest dates.",
+      "researchStatus": "grounded",
+      "source": "https://edesnapok.hu/",
+      "sourceLabel": "Édes Napok official site",
+      "checkedAt": "2026-07-16"
+    },
+    "pricing": {
+      "status": "not-published",
+      "checkedAt": "2026-07-16",
+      "source": "https://edesnapok.hu/",
+      "sourceLabel": "Édes Napok official site",
+      "note": "The organizer has not yet published a 2026 Budapest visitor price or date; food and purchases would be extra.",
+      "packages": []
+    }
+  },
+  "Attraction_Review:26591733": {
+    "brief": {
+      "what": "Gravity Boulder Bar is an indoor rope-free climbing gym in Mammut 1, with roughly 4–4.5 metre bouldering walls plus rental equipment, coaching, showers and a sauna.",
+      "do": "Register, rent shoes and chalk if needed, warm up, then solve colour-graded climbing problems; a first-timer ticket includes equipment and sauna access.",
+      "why": "A strong rainy-day choice if you want something active together, including for beginners. Skip it if either of you dislikes climbing or controlled falls.",
+      "researchStatus": "grounded",
+      "source": "https://gravitybudapest.com/en/prices/",
+      "sourceLabel": "Gravity Boulder Bar official price list",
+      "checkedAt": "2026-07-16"
+    },
+    "pricing": {
+      "status": "priced",
+      "checkedAt": "2026-07-16",
+      "source": "https://gravitybudapest.com/en/prices/",
+      "sourceLabel": "Gravity Boulder Bar official price list dated 19 March 2026",
+      "startingPrice": {"kind": "from", "amount": "2800", "currency": "HUF", "unit": "person"},
+      "context": {"currencyShown": "HUF"},
+      "note": "Time band and equipment determine the total; the first-timer package is usually the simplest tourist option.",
+      "packages": [
+        {
+          "name": "Flow entrance",
+          "description": "Unlimited adult entry during the quietest weekday hours.",
+          "availability": "available",
+          "price": {"kind": "exact", "amount": "2800", "currency": "HUF", "unit": "person"},
+          "conditions": ["Weekdays before 08:00 or after 21:00", "Equipment rental is extra"]
+        },
+        {
+          "name": "Off-peak entrance",
+          "description": "Unlimited adult entry without rental equipment.",
+          "availability": "available",
+          "price": {"kind": "exact", "amount": "3500", "currency": "HUF", "unit": "person"},
+          "conditions": ["Weekdays before 15:00 and Saturdays", "Equipment rental is extra"]
+        },
+        {
+          "name": "Peak entrance",
+          "description": "Unlimited adult entry without rental equipment.",
+          "availability": "available",
+          "price": {"kind": "exact", "amount": "4200", "currency": "HUF", "unit": "person"},
+          "conditions": ["Weekdays after 15:00 and Sundays", "Equipment rental is extra"]
+        },
+        {
+          "name": "Off-peak entrance + shoes + chalk",
+          "description": "Adult entry with the basic climbing equipment a visitor normally needs.",
+          "availability": "available",
+          "price": {"kind": "exact", "amount": "4500", "currency": "HUF", "unit": "person"},
+          "conditions": ["Weekdays before 15:00 and Saturdays"]
+        },
+        {
+          "name": "Peak entrance + shoes + chalk",
+          "description": "Adult entry with climbing-shoe and chalk rental during busier hours.",
+          "availability": "available",
+          "price": {"kind": "exact", "amount": "5200", "currency": "HUF", "unit": "person"},
+          "conditions": ["Weekdays after 15:00 and Sundays"]
+        },
+        {
+          "name": "First-timer package",
+          "description": "Adult first visit including equipment and sauna access.",
+          "availability": "available",
+          "price": {"kind": "exact", "amount": "4900", "currency": "HUF", "unit": "person"},
+          "conditions": ["Peak-time price shown on the official list"]
+        }
+      ]
+    }
+  },
+  "Attraction_Review:10020415": {
+    "brief": {
+      "what": "The Budapest International Book Festival is a four-day literary fair at Hungexpo with more than 50,000 books and hundreds of author talks, launches, signings and children's programs.",
+      "do": "Browse Hungarian and international publishers, choose English-accessible talks, meet authors and explore the children's literature area if relevant.",
+      "why": "Excellent and free for book lovers, but only on 1–4 October 2026. Check each program's language before committing time.",
+      "researchStatus": "grounded",
+      "source": "https://en.bookfestival.hu/invitation",
+      "sourceLabel": "Budapest International Book Festival official invitation",
+      "checkedAt": "2026-07-16"
+    },
+    "pricing": {
+      "status": "free",
+      "checkedAt": "2026-07-16",
+      "source": "https://en.bookfestival.hu/invitation",
+      "sourceLabel": "Budapest International Book Festival official invitation",
+      "note": "The official 2026 invitation says the public programs are free; books and other purchases cost extra.",
+      "packages": [
+        {
+          "name": "Public festival admission",
+          "description": "Entry to the book fair and its public author, launch, signing and children's programs.",
+          "availability": "available",
+          "price": {"kind": "free"},
+          "conditions": ["1–4 October 2026 at Hungexpo", "Program languages vary"]
+        }
+      ]
+    }
+  },
+  "Attraction_Review:33311166": {
+    "brief": {
+      "what": "All Caps is a specialist graffiti and street-art shop selling spray paint, caps, markers, blackbooks, magazines and clothing; it is retail, not an exhibition.",
+      "do": "Browse the art supplies and independent publications, ask staff about local graffiti materials, or pick up a practical creative souvenir.",
+      "why": "Worth a quick stop only if street art or drawing supplies genuinely interest you. The current official address is Párizsi utca 9, open Monday–Saturday 11:00–19:00.",
+      "researchStatus": "grounded",
+      "source": "https://allcaps.hu/contact/?lang=en",
+      "sourceLabel": "All Caps official contact and shop site",
+      "checkedAt": "2026-07-16"
+    },
+    "pricing": {
+      "status": "free",
+      "checkedAt": "2026-07-16",
+      "source": "https://allcaps.hu/?lang=en",
+      "sourceLabel": "All Caps official shop",
+      "note": "There is no admission charge to browse; products have individual retail prices.",
+      "packages": [
+        {
+          "name": "Browse the shop",
+          "description": "Enter and look through the graffiti supplies, books, magazines and clothing.",
+          "availability": "available",
+          "price": {"kind": "free"},
+          "conditions": ["Any purchases are extra"]
+        }
+      ]
+    }
+  },
+  "Attraction_Review:28206679": {
+    "brief": {
+      "what": "Budapest Audio Expo is a two-day audiophile and premium home-cinema exhibition at D50, with headphones, speakers, vinyl, streaming, tape and specialist demonstrations.",
+      "do": "Audition headphones and full systems, compare the same music across formats, and join any published technical or professional sessions.",
+      "why": "A very good niche event if either of you loves hi-fi or music technology; otherwise it is easy to skip. It runs 17–18 October 2026, 10:00–18:00.",
+      "researchStatus": "grounded",
+      "source": "https://www.audioexpo.hu/",
+      "sourceLabel": "Budapest Audio Expo official site",
+      "checkedAt": "2026-07-16"
+    },
+    "pricing": {
+      "status": "not-published",
+      "checkedAt": "2026-07-16",
+      "source": "https://www.audioexpo.hu/hazirend",
+      "sourceLabel": "Budapest Audio Expo official visitor rules",
+      "note": "The organizer confirms that admission requires a ticket but has not yet published the 2026 visitor price.",
+      "packages": []
+    }
+  },
+  "Attraction_Review:26849483": {
+    "brief": {
+      "what": "This legacy listing now corresponds to Vörösmarty Classic Xmas, the Advent market on Vörösmarty Square with craft stalls, winter food, lights, music and family attractions.",
+      "do": "Walk through the decorated market, browse Hungarian crafts, split a warm snack and stay for an announced performance rather than treating it as a full-day sight.",
+      "why": "Good for festive atmosphere, but expect crowds and tourist-area prices. The official site still shows 2025 information, so wait for confirmed 2026 dates.",
+      "researchStatus": "grounded",
+      "source": "https://vorosmartyclassicxmas.hu/en/home/",
+      "sourceLabel": "Vörösmarty Classic Xmas official site",
+      "checkedAt": "2026-07-16"
+    },
+    "pricing": {
+      "status": "free",
+      "checkedAt": "2026-07-16",
+      "source": "https://vorosmartyclassicxmas.hu/en/home/",
+      "sourceLabel": "Vörösmarty Classic Xmas official site",
+      "note": "The square market is open to browse; food, drinks, crafts and optional attractions are purchased separately. Confirm the 2026 event first.",
+      "packages": [
+        {
+          "name": "Market entry",
+          "description": "Walk through the public market and see its seasonal decorations and stage area.",
+          "availability": "date-required",
+          "price": {"kind": "free"},
+          "conditions": ["2026 dates have not yet been announced", "Food, drinks and purchases are extra"]
+        }
+      ]
+    }
+  },
+  "Attraction_Review:33392555": {
+    "brief": {
+      "what": "Zsolnay boutiques sell Hungarian art porcelain, tableware, jewellery and decorative pieces known for the brand's colourful eosin glazing; this is premium shopping, not a museum.",
+      "do": "Browse the designs, compare practical tableware with collectible pieces, and choose among the official Budapest branches before travelling there.",
+      "why": "A worthwhile design-and-souvenir stop if you like ceramics or Hungarian craftsmanship. Skip it if neither of you wants retail or fragile luggage.",
+      "researchStatus": "grounded",
+      "source": "https://www.zsolnay.hu/pages/stores-stockists",
+      "sourceLabel": "Zsolnay official stores and stockists",
+      "checkedAt": "2026-07-16"
+    },
+    "pricing": {
+      "status": "free",
+      "checkedAt": "2026-07-16",
+      "source": "https://www.zsolnay.hu/pages/stores-stockists",
+      "sourceLabel": "Zsolnay official stores and stockists",
+      "note": "Browsing an official boutique has no admission charge; each porcelain or jewellery item has its own retail price.",
+      "packages": [
+        {
+          "name": "Browse a Zsolnay boutique",
+          "description": "Visit one official Budapest branch and look through its current collection.",
+          "availability": "available",
+          "price": {"kind": "free"},
+          "conditions": ["Purchases are extra", "Choose the branch before visiting"]
+        }
+      ]
+    }
+  },
+  "Attraction_Review:32835577": {
+    "brief": {
+      "what": "RS9 is a small independent cellar theatre near the Great Synagogue, presenting intimate plays, movement theatre, readings, recitals and contemporary music.",
+      "do": "Pick one performance whose language and style suit you, book the exact show, and arrive early enough for the compact cellar venue.",
+      "why": "A good local-culture evening when an English or otherwise accessible production lines up. Most programming is Hungarian, and cellar access may be a constraint.",
+      "researchStatus": "grounded",
+      "source": "https://rs9.hu/rs9-theatre/",
+      "sourceLabel": "RS9 Theatre official site",
+      "checkedAt": "2026-07-16"
+    },
+    "pricing": {
+      "status": "priced",
+      "checkedAt": "2026-07-16",
+      "source": "https://rs9.hu/musorok/honap/2026-04/",
+      "sourceLabel": "RS9 Theatre official 2026 performance listings",
+      "note": "The exact show controls the price; the range shown comes from official April–May 2026 listings and should be rechecked when booking.",
+      "packages": [
+        {
+          "name": "Listed performance ticket",
+          "description": "One seat for a scheduled RS9 theatre, dance or music performance.",
+          "availability": "date-required",
+          "price": {"kind": "range", "minAmount": "4500", "maxAmount": "5500", "currency": "HUF", "unit": "person"},
+          "conditions": ["Representative official 2026 listings", "Choose a performance and verify its language"]
+        }
+      ]
+    }
+  },
+  "Attraction_Review:27530284": {
+    "brief": {
+      "what": "Open Road Days is part of a Hungarian motorcycle and Harley-Davidson community calendar, mixing organized rides, test days, meet-ups and occasional multi-day music events.",
+      "do": "Choose one dated event, confirm whether it is a ride, dealership test day or festival, then check licence, bike and registration requirements before going.",
+      "why": "Interesting if motorcycles are a real shared interest, but not a drop-in Budapest attraction. The 2026 calendar changes by event, so never rely on this generic listing alone.",
+      "researchStatus": "grounded",
+      "source": "https://www.openroadfest.hu/en/",
+      "sourceLabel": "Open Road official event site",
+      "checkedAt": "2026-07-16"
+    },
+    "pricing": {
+      "status": "not-published",
+      "checkedAt": "2026-07-16",
+      "source": "https://www.openroadfest.hu/en/",
+      "sourceLabel": "Open Road official event site",
+      "note": "There is no single Open Road Days price: each ride, test day or festival publishes its own terms, and several 2026 details remain pending.",
+      "packages": []
+    }
+  },
+  "Attraction_Review:34503157": {
+    "brief": {
+      "what": "Van Gogh: Immersive Exhibition is a 500 m² projection show using 16 projectors and 360-degree visuals to animate Van Gogh's paintings; a Klimt experience is currently included.",
+      "do": "Walk through the large-scale projections, pause for the sound-and-image sequences and include the complimentary Klimt section if it is still running.",
+      "why": "Choose it for a visually striking, easy indoor hour rather than original artworks. It is extended through 1 November 2026 and closes daily for a technical break from 14:15–15:15.",
+      "researchStatus": "grounded",
+      "source": "https://www.vincenthall.hu/en",
+      "sourceLabel": "Vincent Hall Budapest official site",
+      "checkedAt": "2026-07-16"
+    },
+    "pricing": {
+      "status": "priced",
+      "checkedAt": "2026-07-16",
+      "source": "https://www.vincenthall.hu/en/frida",
+      "sourceLabel": "Vincent Hall Budapest official ticket page",
+      "startingPrice": {"kind": "from", "amount": "4200", "currency": "HUF", "unit": "person"},
+      "context": {"currencyShown": "HUF"},
+      "note": "Concession eligibility requires valid proof; the official site advertises 10% off online purchases.",
+      "packages": [
+        {
+          "name": "Full-price admission",
+          "description": "Standard admission to the current immersive exhibition program.",
+          "availability": "available",
+          "price": {"kind": "exact", "amount": "6000", "currency": "HUF", "unit": "person"},
+          "conditions": ["10% online-purchase discount advertised"]
+        },
+        {
+          "name": "Concession admission",
+          "description": "Reduced admission for eligible seniors, students, children, teachers and people with disabilities.",
+          "availability": "available",
+          "price": {"kind": "exact", "amount": "4200", "currency": "HUF", "unit": "person"},
+          "conditions": ["Valid proof required", "10% online-purchase discount advertised"]
+        },
+        {
+          "name": "Child under four",
+          "description": "Admission for a child younger than four.",
+          "availability": "available",
+          "price": {"kind": "free"}
+        }
+      ]
+    }
+  },
+  "Attraction_Review:33068632": {
+    "brief": {
+      "what": "Kék Ló is an alternative cultural bar and small event space on Salétrom utca, associated with independent fashion, concerts, DJs and experimental community programs.",
+      "do": "Check the venue's current event post first, then go for that specific concert, DJ night or cultural program rather than expecting a conventional attraction.",
+      "why": "Potentially fun for an underground local night, but the listing is sparse and schedules change quickly. Only choose it when a live event appeals to both of you.",
+      "researchStatus": "limited",
+      "source": "https://www.facebook.com/keklomaganmuvhaz/",
+      "sourceLabel": "Kék Ló official social page",
+      "checkedAt": "2026-07-16"
+    },
+    "pricing": {
+      "status": "not-published",
+      "checkedAt": "2026-07-16",
+      "source": "https://www.facebook.com/keklomaganmuvhaz/",
+      "sourceLabel": "Kék Ló official social page",
+      "note": "There is no stable general admission price; any cover charge belongs to the specific announced event.",
+      "packages": []
+    }
+  },
+  "Attraction_Review:34452252": {
+    "brief": {
+      "what": "HELLOSUN is a small-group yoga studio near Normafa, offering guided group classes, private yoga and longer beginner programs in a quiet Buda setting.",
+      "do": "Reserve a small-group class that fits your level, tell the instructor if it is your first session, and combine it with a Normafa walk if the timing works.",
+      "why": "A calm, active option if Tündi also likes yoga; the studio is outside the centre, so it is not worth the trip for a reluctant participant.",
+      "researchStatus": "grounded",
+      "source": "https://www.hellosunyoga.com/arak",
+      "sourceLabel": "HELLOSUN Yoga Studio official price page",
+      "checkedAt": "2026-07-16"
+    },
+    "pricing": {
+      "status": "priced",
+      "checkedAt": "2026-07-16",
+      "source": "https://www.hellosunyoga.com/arak",
+      "sourceLabel": "HELLOSUN Yoga Studio official price page",
+      "startingPrice": {"kind": "from", "amount": "3500", "currency": "HUF", "unit": "person"},
+      "context": {"currencyShown": "HUF"},
+      "packages": [
+        {
+          "name": "First visit",
+          "description": "Discounted first small-group yoga class for a new guest.",
+          "availability": "available",
+          "price": {"kind": "exact", "amount": "3500", "currency": "HUF", "unit": "person"},
+          "conditions": ["Must be used within one month"]
+        },
+        {
+          "name": "Single small-group class",
+          "description": "One regular small-group yoga class.",
+          "availability": "available",
+          "price": {"kind": "exact", "amount": "6500", "currency": "HUF", "unit": "person"},
+          "conditions": ["Must be used within one month"]
+        },
+        {
+          "name": "Five-class pass",
+          "description": "Five small-group yoga classes for one named guest.",
+          "availability": "available",
+          "price": {"kind": "exact", "amount": "31000", "currency": "HUF", "unit": "person"},
+          "conditions": ["Valid three months", "Not transferable"]
+        },
+        {
+          "name": "Unlimited month",
+          "description": "Unlimited group classes for one month.",
+          "availability": "available",
+          "price": {"kind": "exact", "amount": "38000", "currency": "HUF", "unit": "person"},
+          "conditions": ["Not transferable", "Some workshops excluded"]
+        }
+      ]
+    }
+  },
+  "Attraction_Review:28020651": {
+    "brief": {
+      "what": "BKK's heritage services run restored vintage and retro trams, buses and trolleybuses on selected Budapest routes, especially weekends from May to October.",
+      "do": "Choose a published vehicle and route, ride it for the city views and transport history, and use BudapestGO or onboard staff for the correct heritage fare.",
+      "why": "A charming, low-cost add-on for transport or photography fans, especially the Danube-side tram. It is schedule-dependent, not a hop-on attraction available every day.",
+      "researchStatus": "grounded",
+      "source": "https://bkk.hu/en/travel-information/special-and-heritage-transport-services/heritage-transport-services/heritage-transport-services-in-budapest/heritage-services-in-budapest.6000/",
+      "sourceLabel": "BKK official heritage-service timetable",
+      "checkedAt": "2026-07-16"
+    },
+    "pricing": {
+      "status": "priced",
+      "checkedAt": "2026-07-16",
+      "source": "https://bkk.hu/en/tickets-and-passes/prices/",
+      "sourceLabel": "BKK official fare list",
+      "startingPrice": {"kind": "from", "amount": "600", "currency": "HUF", "unit": "person"},
+      "context": {"currencyShown": "HUF"},
+      "packages": [
+        {
+          "name": "Heritage service single ticket",
+          "description": "One uninterrupted trip on an eligible heritage service.",
+          "availability": "available",
+          "price": {"kind": "exact", "amount": "600", "currency": "HUF", "unit": "person"},
+          "conditions": ["Not valid for heritage cruise or photo rides"]
+        },
+        {
+          "name": "Heritage service travelcard",
+          "description": "Unlimited eligible heritage-service trips on the selected day.",
+          "availability": "available",
+          "price": {"kind": "exact", "amount": "2400", "currency": "HUF", "unit": "person"},
+          "conditions": ["Valid on the indicated day", "Heritage cruise lines excluded"]
+        }
+      ]
+    }
+  },
+  "Attraction_Review:34449537": {
+    "brief": {
+      "what": "Duna Poker Center is a live poker room on the first floor of Duna Plaza, running cash tables, scheduled tournaments and changing jackpot promotions.",
+      "do": "Check the live table and tournament schedule, set a hard loss and time limit, bring valid ID, and choose a stake or buy-in you can comfortably lose.",
+      "why": "Only consider it if both of you actively want poker. It is gambling rather than sightseeing, prices and schedules move daily, and losses can exceed the listed buy-in.",
+      "researchStatus": "grounded",
+      "source": "https://dunapoker.hu/",
+      "sourceLabel": "Duna Poker Center official live schedule",
+      "checkedAt": "2026-07-16"
+    },
+    "pricing": {
+      "status": "priced",
+      "checkedAt": "2026-07-16",
+      "source": "https://dunapoker.hu/",
+      "sourceLabel": "Duna Poker Center official live schedule",
+      "startingPrice": {"kind": "from", "amount": "2500", "currency": "HUF", "unit": "buy-in"},
+      "context": {"currencyShown": "HUF"},
+      "note": "These are stakes or tournament buy-ins, not a capped entertainment fee; additional re-buys and gambling losses are possible.",
+      "packages": [
+        {
+          "name": "Cash-game minimum buy-in",
+          "description": "Minimum amount shown for joining an active cash-game table.",
+          "availability": "available",
+          "price": {"kind": "exact", "amount": "10000", "currency": "HUF", "unit": "buy-in"},
+          "conditions": ["Table availability changes live", "Actual losses can exceed the minimum"]
+        },
+        {
+          "name": "Scheduled tournament entry",
+          "description": "Representative entry range shown across the current official weekly tournament schedule.",
+          "availability": "date-required",
+          "price": {"kind": "range", "minAmount": "2500", "maxAmount": "25000", "currency": "HUF", "unit": "buy-in"},
+          "conditions": ["Exact tournament controls the price", "Re-buy or re-entry may cost extra"]
+        }
+      ]
+    }
+  },
+  "Attraction_Review:32877475": {
+    "brief": {
+      "what": "Gellért Spa Beauty Salon is a separate cosmetic-treatment salon inside the Gellért Spa building, offering facials, face and neck massage, waxing and HIFU treatments.",
+      "do": "Book a specific treatment, enter at Kelenhegyi út 4 and follow the corridor to the salon. Confirm access arrangements when booking because this is not a thermal-bath admission ticket.",
+      "why": "Consider it for a focused beauty or relaxation treatment, not for the historic pools. The salon publishes clear treatment prices, but a normal Budapest spa visit is a different purchase.",
+      "researchStatus": "grounded",
+      "source": "https://gellertspabeautysalon.hu/treatments/",
+      "sourceLabel": "Gellért Spa Beauty Salon official treatment list",
+      "checkedAt": "2026-07-17"
+    },
+    "pricing": {
+      "status": "priced",
+      "checkedAt": "2026-07-17",
+      "source": "https://gellertspabeautysalon.hu/prices/",
+      "sourceLabel": "Gellért Spa Beauty Salon official price list",
+      "startingPrice": {"kind": "from", "amount": "10800", "currency": "HUF", "unit": "person"},
+      "context": {"currencyShown": "HUF"},
+      "note": "Prices are per treatment. The official salon list is separate from thermal-bath admission; confirm whether any spa-building access is required when booking.",
+      "packages": [
+        {
+          "name": "Face, neck and décolletage massage",
+          "description": "A 20-minute cosmetic massage focused on the face, neck and upper chest.",
+          "availability": "available",
+          "price": {"kind": "exact", "amount": "10800", "currency": "HUF", "unit": "person"}
+        },
+        {
+          "name": "Facial without cleaning",
+          "description": "A 30-minute facial treatment without extraction or deep cleaning.",
+          "availability": "available",
+          "price": {"kind": "exact", "amount": "20000", "currency": "HUF", "unit": "person"}
+        },
+        {
+          "name": "Facial cleansing treatment",
+          "description": "A 60-minute facial with skin cleaning.",
+          "availability": "available",
+          "price": {"kind": "exact", "amount": "24000", "currency": "HUF", "unit": "person"}
+        },
+        {
+          "name": "Sensitive or dry-skin facial",
+          "description": "A 45-minute facial tailored to sensitive or dry skin.",
+          "availability": "available",
+          "price": {"kind": "exact", "amount": "24000", "currency": "HUF", "unit": "person"}
+        },
+        {
+          "name": "OxyGeneo treatment",
+          "description": "A 30-minute oxygenating facial treatment.",
+          "availability": "available",
+          "price": {"kind": "exact", "amount": "28000", "currency": "HUF", "unit": "person"}
+        },
+        {
+          "name": "Cleansing and moisturising facial",
+          "description": "An 80-minute combined deep-cleansing and moisturising treatment.",
+          "availability": "available",
+          "price": {"kind": "exact", "amount": "32000", "currency": "HUF", "unit": "person"}
+        },
+        {
+          "name": "Luxury facial treatment",
+          "description": "The salon's 90-minute premium facial program.",
+          "availability": "available",
+          "price": {"kind": "exact", "amount": "42000", "currency": "HUF", "unit": "person"}
+        },
+        {
+          "name": "HIFU treatment",
+          "description": "A 90-minute high-intensity focused ultrasound cosmetic treatment.",
+          "availability": "available",
+          "price": {"kind": "exact", "amount": "140000", "currency": "HUF", "unit": "person"}
+        }
+      ]
+    }
+  },
+  "AttractionProductReview:17683683": {
+    "brief": {
+      "what": "Budapest by Night Photo Walk is a three-hour, English-language small-group photography workshop led by photojournalist Warren Richardson, with a maximum of six participants.",
+      "do": "Bring your own camera, tripod, spare battery and memory card, then practise night exposure and composition around the Danube from blue hour onward. The walk starts and ends at Vigadó tér 3.",
+      "why": "Choose it if you genuinely want hands-on night-photography coaching from an award-winning photojournalist. It is costly and equipment-led, so it is poor value for casual phone snapshots.",
+      "researchStatus": "grounded",
+      "source": "https://www.tripadvisor.com/AttractionProductReview-g274887-d17683683-Budapest_by_Night_Photo_Walk-Budapest_Central_Hungary.html",
+      "sourceLabel": "Current exact TripAdvisor product page",
+      "checkedAt": "2026-07-17"
+    },
+    "pricing": {
+      "status": "priced",
+      "checkedAt": "2026-07-17",
+      "source": "https://www.tripadvisor.com/AttractionProductReview-g274887-d17683683-Budapest_by_Night_Photo_Walk-Budapest_Central_Hungary.html",
+      "sourceLabel": "Current exact TripAdvisor product page",
+      "startingPrice": {"kind": "from", "amount": "142.63", "currency": "USD", "unit": "person"},
+      "context": {"currencyShown": "USD"},
+      "note": "The marketplace shows an advertised starting price; the exact date and traveller selection controls the final quote.",
+      "packages": [
+        {
+          "name": "Three-hour small-group night photo walk",
+          "description": "English photography instruction for up to six people; participants supply their own camera gear.",
+          "availability": "date-required",
+          "price": {"kind": "from", "amount": "142.63", "currency": "USD", "unit": "person"},
+          "conditions": ["Select a date and traveller count for the live total", "Camera, tripod, spare battery and memory card are not supplied"]
+        }
+      ]
+    }
+  },
+  "Attraction_Review:23581611": {
+    "brief": {
+      "what": "V.30 Belvárosi Sportközpont is a modern public sports centre with a 25-metre pool, teaching pool, thermal-water wellness area, saunas, steam room, jacuzzi, gym, studios, sports hall and climbing wall.",
+      "do": "Choose a timed swimming, wellness or combined ticket and bring swimwear, towel, flip-flops and a swim cap. Tourist tickets have time limits, so check in and out carefully.",
+      "why": "A practical rainy-day swim or wellness option in central Pest, especially if you want exercise rather than a historic bath. District-resident discounts generally do not apply to visitors.",
+      "researchStatus": "grounded",
+      "source": "https://www.v30sportkozpont.hu/",
+      "sourceLabel": "V.30 Belvárosi Sportközpont official site",
+      "checkedAt": "2026-07-17"
+    },
+    "pricing": {
+      "status": "priced",
+      "checkedAt": "2026-07-17",
+      "source": "https://www.v30sportkozpont.hu/arlista/",
+      "sourceLabel": "V.30 official public price list",
+      "startingPrice": {"kind": "from", "amount": "3000", "currency": "HUF", "unit": "person"},
+      "context": {"currencyShown": "HUF"},
+      "note": "Public visitor prices are shown; cheaper District V resident rates require eligibility. Time overruns can incur an extra fee.",
+      "packages": [
+        {
+          "name": "Weekday early swimming",
+          "description": "A 100-minute swimming ticket before 14:00 on a weekday.",
+          "availability": "available",
+          "price": {"kind": "exact", "amount": "3000", "currency": "HUF", "unit": "person"}
+        },
+        {
+          "name": "Standard swimming",
+          "description": "A 100-minute public swimming ticket outside the early weekday band.",
+          "availability": "available",
+          "price": {"kind": "exact", "amount": "3450", "currency": "HUF", "unit": "person"}
+        },
+        {
+          "name": "Wellness ticket",
+          "description": "A 100-minute visit to the thermal-water wellness and sauna facilities.",
+          "availability": "available",
+          "price": {"kind": "exact", "amount": "5500", "currency": "HUF", "unit": "person"}
+        },
+        {
+          "name": "Weekend relax ticket",
+          "description": "A 130-minute weekend swimming and wellness visit.",
+          "availability": "available",
+          "price": {"kind": "exact", "amount": "5500", "currency": "HUF", "unit": "person"}
+        },
+        {
+          "name": "All-inclusive ticket",
+          "description": "A 230-minute combined sports-centre package with the broadest facility access.",
+          "availability": "available",
+          "price": {"kind": "exact", "amount": "12900", "currency": "HUF", "unit": "person"}
+        }
+      ]
+    }
+  },
+  "Attraction_Review:23762663": {
+    "brief": {
+      "what": "TopSpin Asztalitenisz Club is a dedicated indoor table-tennis hall where visitors can rent a table, join open training or book an English- or German-speaking private coach.",
+      "do": "Reserve a table or lesson in advance. Bring a partner for ordinary table rental or the weekday training ticket; a coach and table are included in private lessons.",
+      "why": "A good low-stakes rainy-day activity if both of you like playing, with coaching available for beginners. Skip it if only one person wants to play and neither wants a lesson.",
+      "researchStatus": "grounded",
+      "source": "https://topspin-ac.iwk.hu/pingpongasztal-foglalas/",
+      "sourceLabel": "TopSpin official table-booking page",
+      "checkedAt": "2026-07-17"
+    },
+    "pricing": {
+      "status": "priced",
+      "checkedAt": "2026-07-17",
+      "source": "https://topspin-ac.hu/prices/",
+      "sourceLabel": "TopSpin official price list",
+      "startingPrice": {"kind": "from", "amount": "2500", "currency": "HUF", "unit": "person"},
+      "context": {"currencyShown": "HUF"},
+      "note": "The official page still labels some prices 2024/2025, so re-confirm them when reserving. Table-rental prices cover the table, not each player.",
+      "packages": [
+        {
+          "name": "Weekday open-training ticket",
+          "description": "One person may use the hall during the weekday daytime training window.",
+          "availability": "available",
+          "price": {"kind": "exact", "amount": "2500", "currency": "HUF", "unit": "person"},
+          "conditions": ["Weekdays 09:30–16:30", "Bring a playing partner"]
+        },
+        {
+          "name": "One-hour table rental",
+          "description": "One table for up to four players for 60 minutes.",
+          "availability": "available",
+          "price": {"kind": "exact", "amount": "4000", "currency": "HUF", "unit": "table"},
+          "conditions": ["Maximum four players per table"]
+        },
+        {
+          "name": "Ten-hour table pass",
+          "description": "A ten-hour bundle of table-rental time.",
+          "availability": "available",
+          "price": {"kind": "exact", "amount": "35000", "currency": "HUF", "unit": "table"}
+        },
+        {
+          "name": "60-minute private lesson",
+          "description": "A one-hour private lesson including coach and table rental.",
+          "availability": "date-required",
+          "price": {"kind": "exact", "amount": "10000", "currency": "HUF", "unit": "lesson"},
+          "conditions": ["English- or German-speaking coaching can be requested"]
+        },
+        {
+          "name": "90-minute private lesson",
+          "description": "A 90-minute private lesson including coach and table rental.",
+          "availability": "date-required",
+          "price": {"kind": "exact", "amount": "15000", "currency": "HUF", "unit": "lesson"},
+          "conditions": ["English- or German-speaking coaching can be requested"]
+        }
+      ]
+    }
+  },
+  "Attraction_Review:28984791": {
+    "brief": {
+      "what": "Benczúr Garden Playground is a small public children's playground near Andrássy Avenue, designed as a fairy-tale town around a plane tree with climbing structures, swings, a sandbox and a tube slide.",
+      "do": "Let children explore the animal-themed climbing frame, nets, ladders, tunnels and swings; free toilets and a baby-changing facility are available on site.",
+      "why": "Useful as a free break for a family with young children, but not an adult attraction. Matija and Tündi should normally skip it unless travelling with a child.",
+      "researchStatus": "grounded",
+      "source": "https://www.budapestinfo.hu/fr/10-meilleures-aires-de-jeux-a-budapest",
+      "sourceLabel": "Budapestinfo official city playground guide, translated to English",
+      "checkedAt": "2026-07-17"
+    },
+    "pricing": {
+      "status": "free",
+      "checkedAt": "2026-07-17",
+      "source": "https://www.budapestinfo.hu/fr/10-meilleures-aires-de-jeux-a-budapest",
+      "sourceLabel": "Budapestinfo official city playground guide",
+      "note": "This is an ungated public playground; ordinary travel costs are not included.",
+      "packages": [
+        {
+          "name": "Public playground entry",
+          "description": "Use of the climbing structures, sandbox, swings and slide.",
+          "availability": "available",
+          "price": {"kind": "free"}
+        }
+      ]
+    }
+  },
+  "Attraction_Review:15181693": {
+    "brief": {
+      "what": "Ördög-orom is a protected 312-metre limestone outcrop in the Buda Hills, with quarry geology, interpretation boards and viewpoints over Buda and the city.",
+      "do": "Follow BKK's approximately 5 km Ördög-orom–Széchenyi-hegy loop, allow about 90 minutes, and include the Ördög-szószék rock and nearby Children's Railway area.",
+      "why": "A worthwhile free half-day add-on for a short scenic hike without leaving Budapest. It is a natural trail rather than a managed attraction, so use proper shoes and avoid poor weather.",
+      "researchStatus": "grounded",
+      "source": "https://bkk.hu/rolunk/programok-a-bkk-val/kirandulas-a-bkk-val/gyalogturak/",
+      "sourceLabel": "BKK official Budapest walking-route guide, translated to English",
+      "checkedAt": "2026-07-17"
+    },
+    "pricing": {
+      "status": "free",
+      "checkedAt": "2026-07-17",
+      "source": "https://bkk.hu/rolunk/programok-a-bkk-val/kirandulas-a-bkk-val/gyalogturak/",
+      "sourceLabel": "BKK official Budapest walking-route guide",
+      "note": "The reserve and walking route have no admission charge; public transport to the trail is separate.",
+      "packages": [
+        {
+          "name": "Ördög-orom walking route",
+          "description": "Self-guided access to the protected outcrop and the approximately 5 km loop.",
+          "availability": "available",
+          "price": {"kind": "free"},
+          "conditions": ["Outdoor conditions apply", "Public transport is extra"]
+        }
+      ]
+    }
+  },
+  "Attraction_Review:26772998": {
+    "brief": {
+      "what": "Balogh Ádám Rock is a 1.08-hectare protected limestone outcrop with a short signed nature trail, three interpretation panels and a viewpoint over Budapest's second and twelfth districts.",
+      "do": "Enter near Balogh Ádám utca and Endrődi Sándor utca, follow the green-triangle markers and read the geology, plant and wildlife panels along the roughly 200-metre trail.",
+      "why": "A free, compact nature-and-viewpoint stop rather than a destination hike. The route is steep and stepped, so skip it with a stroller, wheelchair, bicycle or poor footing.",
+      "researchStatus": "grounded",
+      "source": "https://budapest.hu/api/file/doc/termeszetismereti_tanosvenyek_budapesten_konyv_2018_web.pdf",
+      "sourceLabel": "City of Budapest official nature-trail guide, translated to English",
+      "checkedAt": "2026-07-17"
+    },
+    "pricing": {
+      "status": "free",
+      "checkedAt": "2026-07-17",
+      "source": "https://budapest.hu/api/file/doc/termeszetismereti_tanosvenyek_budapesten_konyv_2018_web.pdf",
+      "sourceLabel": "City of Budapest official nature-trail guide",
+      "note": "The protected area and trail are free; ordinary transport costs are separate.",
+      "packages": [
+        {
+          "name": "Self-guided nature trail",
+          "description": "Public access to the approximately 200-metre signed trail and viewpoint.",
+          "availability": "available",
+          "price": {"kind": "free"},
+          "conditions": ["Pedestrians only", "Steep steps make the route inaccessible to wheels"]
+        }
+      ]
+    }
+  },
+  "Attraction_Review:19451955": {
+    "brief": {
+      "what": "Pethő Travel currently operates door-to-door airport transfers from more than 650 towns in eastern Hungary to Budapest, Vienna and Bratislava airports; it is not a normal Budapest-hotel shuttle.",
+      "do": "Use the official quote calculator only if your route starts in eastern Hungary, enter the exact town, flight and passenger details, and choose shared Economy or private Business service.",
+      "why": "Potentially useful after an eastern-Hungary road trip, with flight tracking and home pickup. Skip it for a central-Budapest airport run because the old listing description obscures the company's actual service area.",
+      "researchStatus": "grounded",
+      "source": "https://pethotravel.com/",
+      "sourceLabel": "Pethő Travel official service description",
+      "checkedAt": "2026-07-17"
+    },
+    "pricing": {
+      "status": "priced",
+      "checkedAt": "2026-07-17",
+      "source": "https://pethotravel.com/araink",
+      "sourceLabel": "Pethő Travel official price page, translated to English",
+      "startingPrice": {"kind": "from", "amount": "29990", "currency": "HUF", "unit": "person"},
+      "context": {"currencyShown": "HUF"},
+      "note": "These are advertised starting prices. Origin, destination, date, passenger count and luggage determine the exact quote.",
+      "packages": [
+        {
+          "name": "Economy shared transfer",
+          "description": "Door-to-door shared airport transfer from an eligible eastern-Hungary town.",
+          "availability": "date-required",
+          "price": {"kind": "from", "amount": "29990", "currency": "HUF", "unit": "person"},
+          "conditions": ["Exact origin and airport must be quoted", "Other passengers may share the vehicle"]
+        },
+        {
+          "name": "Business private transfer",
+          "description": "Private vehicle transfer from an eligible eastern-Hungary origin.",
+          "availability": "date-required",
+          "price": {"kind": "from", "amount": "74990", "currency": "HUF", "unit": "vehicle"},
+          "conditions": ["Exact origin and airport must be quoted", "Vehicle capacity and luggage limits apply"]
+        }
+      ]
+    }
+  }
+}

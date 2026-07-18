@@ -8,13 +8,22 @@ create table if not exists public.picks (
   id          uuid primary key default gen_random_uuid(),
   user_id     uuid not null default auth.uid() references auth.users(id) on delete cascade,
   owner_email text default (auth.jwt() ->> 'email'),
-  place_key   text not null,                       -- canonical "city|ta:route:id" (legacy aliases still read)
+  place_key   text not null,                       -- activity key, or reserved @discover-group:v1|city|group-id
   rating      int check (rating between 0 and 5), -- 0..5 stars
   keep        text,                               -- 'yes' | 'no' | null
   note        text,
+  reviewed    boolean not null default false,      -- category list was looked through; separate from visiting/rating
+  reviewed_revision text,                         -- inventory fingerprint; stale when a crawl changes the category
   updated_at  timestamptz not null default now(),
   unique (user_id, place_key)
 );
+
+-- Upgrade existing projects created before category-level collaboration.
+alter table public.picks add column if not exists reviewed boolean;
+update public.picks set reviewed = false where reviewed is null;
+alter table public.picks alter column reviewed set default false;
+alter table public.picks alter column reviewed set not null;
+alter table public.picks add column if not exists reviewed_revision text;
 
 create table if not exists public.trip_members (
   person_key  text primary key check (person_key in ('matija', 'tundi')),
