@@ -10,22 +10,46 @@ const require = createRequire(import.meta.url);
 const projectRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const manifest = require(path.join(projectRoot, "trip-map-photos.js"));
 const force = process.argv.includes("--force");
+const stopFilterArgument = process.argv.find((argument) => argument.startsWith("--stop="));
+const stopFilter = stopFilterArgument?.slice("--stop=".length) || "";
+if (stopFilterArgument && !stopFilter) throw new Error("--stop requires a non-empty trip-map stop id");
+if (stopFilter && !manifest.stops[stopFilter]) throw new Error(`Unknown trip-map stop: ${stopFilter}`);
 const concurrency = 6;
-const queue = Object.entries(manifest.stops).flatMap(([stopId, photos]) => photos.map((photo) => ({ stopId, photo })));
+const queue = Object.entries(manifest.stops)
+  .filter(([stopId]) => !stopFilter || stopId === stopFilter)
+  .flatMap(([stopId, photos]) => photos.map((photo) => ({ stopId, photo })));
 const tempRoot = await mkdtemp(path.join(os.tmpdir(), "tundi-trip-map-photos-"));
 const metadataByTitle = new Map();
 const approvedOfficialDomains = new Set([
   "zamardikalandpark.hu",
+  "balatonibob.hu",
   "bfnp.hu",
+  "csodabogyos.hu",
   "muveszetekvolgye.hu",
+  "szilvasvaradbob.hu",
   "zsolnaynegyed.hu",
   "egrivar.hu",
   "zemplen723.eu",
   "zemplenkalandpark.hu",
 ]);
+const approvedEditorialDomains = new Set([
+  "showcaves.com",
+]);
+const approvedWikimediaDomains = new Set([
+  "commons.wikimedia.org",
+  "upload.wikimedia.org",
+]);
 
 function isApprovedOfficialHost(hostname) {
   return [...approvedOfficialDomains].some((domain) => hostname === domain || hostname.endsWith(`.${domain}`));
+}
+
+function isApprovedEditorialHost(hostname) {
+  return [...approvedEditorialDomains].some((domain) => hostname === domain || hostname.endsWith(`.${domain}`));
+}
+
+function isApprovedWikimediaHost(hostname) {
+  return approvedWikimediaDomains.has(hostname);
 }
 
 function assertSafePhoto(item) {
@@ -45,6 +69,13 @@ function assertSafePhoto(item) {
     if (source.protocol !== "https:" || !isApprovedOfficialHost(source.hostname)) throw new Error(`Unsafe official source URL for ${photo.src}`);
     if (asset.protocol !== "https:" || !isApprovedOfficialHost(asset.hostname)) throw new Error(`Unsafe official asset URL for ${photo.src}`);
     if (source.hostname.replace(/^www\./, "") !== asset.hostname.replace(/^www\./, "")) throw new Error(`Official source and asset hosts differ for ${photo.src}`);
+  }
+  if (photo.sourceType === "editorial") {
+    const source = new URL(photo.sourceUrl);
+    const asset = new URL(photo.assetUrl);
+    if (source.protocol !== "https:" || !isApprovedEditorialHost(source.hostname)) throw new Error(`Unsafe editorial source URL for ${photo.src}`);
+    if (asset.protocol !== "https:" || !isApprovedEditorialHost(asset.hostname)) throw new Error(`Unsafe editorial asset URL for ${photo.src}`);
+    if (source.hostname.replace(/^www\./, "") !== asset.hostname.replace(/^www\./, "")) throw new Error(`Editorial source and asset hosts differ for ${photo.src}`);
   }
 }
 
@@ -123,7 +154,11 @@ async function loadCommonsMetadata() {
       redirects: "1",
       titles: batch.join("|"),
     });
-    const response = await fetchWithRetry(`https://commons.wikimedia.org/w/api.php?${params}`, "Commons metadata request");
+    const response = await fetchWithApprovedRedirects(
+      `https://commons.wikimedia.org/w/api.php?${params}`,
+      "Commons metadata request",
+      (candidate) => candidate.protocol === "https:" && isApprovedWikimediaHost(candidate.hostname),
+    );
     const result = await response.json();
     for (const page of result.query?.pages || []) {
       const imageInfo = page?.imageinfo?.[0];
@@ -141,13 +176,16 @@ async function loadCommonsMetadata() {
 }
 
 async function fetchCommonsImage(photo) {
-  if (photo.sourceType === "flickr" || photo.sourceType === "official") {
+  if (["flickr", "official", "editorial"].includes(photo.sourceType)) {
     const label = `${photo.sourceType} image download for ${photo.sourceTitle}`;
     const sourceHostname = new URL(photo.sourceUrl).hostname.replace(/^www\./, "");
     const imageResponse = await fetchWithApprovedRedirects(photo.assetUrl, label, (candidate) => {
       if (candidate.protocol !== "https:") return false;
       if (photo.sourceType === "flickr") return candidate.hostname === "live.staticflickr.com";
-      return isApprovedOfficialHost(candidate.hostname) && candidate.hostname.replace(/^www\./, "") === sourceHostname;
+      const hostIsApproved = photo.sourceType === "official"
+        ? isApprovedOfficialHost(candidate.hostname)
+        : isApprovedEditorialHost(candidate.hostname);
+      return hostIsApproved && candidate.hostname.replace(/^www\./, "") === sourceHostname;
     });
     const bytes = Buffer.from(await imageResponse.arrayBuffer());
     if (bytes.length < 8_000) throw new Error(`Downloaded image is unexpectedly small: ${photo.sourceTitle}`);
@@ -156,8 +194,11 @@ async function fetchCommonsImage(photo) {
   }
   const imageInfo = metadataByTitle.get(titleKey(photo.commonsTitle));
   const imageUrl = imageInfo.thumburl || imageInfo.url;
-  const imageResponse = await fetchWithRetry(imageUrl, `Image download for ${photo.commonsTitle}`);
-  if (!imageResponse.ok) throw new Error(`Image download returned ${imageResponse.status} for ${photo.commonsTitle}`);
+  const imageResponse = await fetchWithApprovedRedirects(
+    imageUrl,
+    `Image download for ${photo.commonsTitle}`,
+    (candidate) => candidate.protocol === "https:" && isApprovedWikimediaHost(candidate.hostname),
+  );
   const bytes = Buffer.from(await imageResponse.arrayBuffer());
   if (bytes.length < 8_000) throw new Error(`Downloaded image is unexpectedly small: ${photo.commonsTitle}`);
   const extension = imageInfo.mime === "image/png" ? ".png" : imageInfo.mime === "image/tiff" ? ".tif" : ".jpg";

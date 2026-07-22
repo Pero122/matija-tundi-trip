@@ -18,21 +18,25 @@
       className: "loop-a",
       stopOrder: Object.freeze([
         "zamardi-adventure-park",
+        "balatonibob-leisure-park",
         "balatonfured-tagore",
         "tihany-abbey",
         "hegyestu-kapolcs",
         "tapolca-lake-cave",
         "szigliget-castle",
+        "csodabogyos-adventure-cave",
         "heviz-thermal-lake",
         "pecs-zsolnay",
       ]),
       mainOrder: Object.freeze([
         "zamardi-adventure-park",
+        "balatonibob-leisure-park",
         "balatonfured-tagore",
         "tihany-abbey",
         "hegyestu-kapolcs",
         "tapolca-lake-cave",
         "szigliget-castle",
+        "csodabogyos-adventure-cave",
         "heviz-thermal-lake",
       ]),
       optionalPaths: Object.freeze([
@@ -76,6 +80,19 @@
     .replaceAll(">", "&gt;")
     .replaceAll('"', "&quot;")
     .replaceAll("'", "&#39;");
+
+  const WORTH_VERDICTS = Object.freeze({
+    must: "🔥 Must-do",
+    maybe: "✨ Worth considering",
+    chill: "😌 Chill pick",
+    skip: "↪ Easy skip",
+  });
+  const WORTH_PAYOFFS = Object.freeze({ high: "Big payoff", medium: "Decent payoff", low: "Low payoff" });
+  const WORTH_EFFORTS = Object.freeze({ low: "Easy", medium: "Some effort", high: "Real effort" });
+
+  function worthLabel(stop) {
+    return WORTH_VERDICTS[stop.worth?.verdict] || "Not assessed yet";
+  }
 
   function wrapPhotoIndex(index, count) {
     if (!Number.isInteger(index) || !Number.isInteger(count) || count < 1) throw new Error("Photo index and count must be valid integers.");
@@ -148,7 +165,7 @@
         const expectedPath = `images/trip-map/${manifest.assetRevision}/${id}/${String(index + 1).padStart(2, "0")}.webp`;
         if (photo.src !== expectedPath) throw new Error(`${label} has an unsafe or unexpected local path.`);
         if (!/^https:\/\//.test(photo.sourceUrl || "") || !/^https:\/\//.test(photo.licenseUrl || "")) throw new Error(`${label} must link to HTTPS source and license pages.`);
-        if (!["wikimedia", "flickr", "official"].includes(photo.sourceType)) throw new Error(`${label} has an unsupported source type.`);
+        if (!["wikimedia", "flickr", "official", "editorial"].includes(photo.sourceType)) throw new Error(`${label} has an unsupported source type.`);
         for (const field of ["alt", "subject", "credit", "license", "sourceTitle", "verification"]) {
           if (typeof photo[field] !== "string" || photo[field].trim().length < 2) throw new Error(`${label} is missing ${field}.`);
         }
@@ -223,6 +240,7 @@
       detailTitle: document.querySelector("#detailTitle"),
       detailArea: document.querySelector("#detailArea"),
       detailRating: document.querySelector("#detailRating"),
+      detailPayoff: document.querySelector("#detailPayoff"),
       detailPhotos: document.querySelector("#detailPhotos"),
       detailBody: document.querySelector("#detailBody"),
       distanceCopy: document.querySelector("#distanceCopy"),
@@ -236,6 +254,7 @@
       lightboxDescription: document.querySelector("#lightboxDescription"),
       lightboxCredit: document.querySelector("#lightboxCredit"),
       lightboxCount: document.querySelector("#lightboxCount"),
+      lightboxStatus: document.querySelector("#lightboxStatus"),
       lightboxStrip: document.querySelector("#lightboxStrip"),
       lightboxMedia: document.querySelector("#lightboxMedia"),
       lightboxError: document.querySelector("#lightboxError"),
@@ -266,7 +285,7 @@
           return `<button class="stop-button" type="button" data-stop-id="${escapeHtml(id)}" data-loop="${loop}" aria-pressed="false">
             <span class="stop-number">${loop}${index + 1}</span>
             <span class="stop-button-name">${escapeHtml(stop.name)}</span>
-            <span class="stop-button-rating">★ ${escapeHtml(stop.rating.value)}</span>
+            <span class="stop-button-payoff ${escapeHtml(stop.worth.verdict)}">${escapeHtml(worthLabel(stop))}</span>
           </button>`;
         }).join("");
       }
@@ -299,6 +318,7 @@
       const request = ++state.lightboxRequest;
       state.lightboxIndex = nextIndex;
       dom.lightboxCount.textContent = `Photo ${nextIndex + 1} of ${photos.length}`;
+      dom.lightboxStatus.textContent = `Photo ${nextIndex + 1} of ${photos.length}: ${photo.subject}`;
       dom.lightboxStop.textContent = stopById.get(state.lightboxStopId)?.name || "Trip photo";
       dom.lightboxTitle.textContent = photo.subject;
       dom.lightboxDescription.textContent = photo.alt;
@@ -385,13 +405,14 @@
       dom.detailTitle.textContent = stop.name;
       dom.detailArea.textContent = stop.area;
       dom.detailRating.innerHTML = `<b>★ ${escapeHtml(stop.rating.value)}</b><span>${escapeHtml(stop.rating.platform)} · ${escapeHtml(stop.rating.reviews)} reviews</span>`;
+      dom.detailPayoff.className = `detail-payoff ${escapeHtml(stop.worth.verdict)}`;
+      dom.detailPayoff.innerHTML = `<span class="payoff-verdict">${escapeHtml(worthLabel(stop))}</span><span class="payoff-metric">🎯 ${escapeHtml(WORTH_PAYOFFS[stop.worth.payoff])}</span><span class="payoff-metric">🥾 ${escapeHtml(WORTH_EFFORTS[stop.worth.effort])}</span><strong>Why it earns the stop:</strong><p>${escapeHtml(stop.hook)}</p>`;
       dom.detailPhotos.innerHTML = renderPhotoGallery(stop, photoManifest);
 
       const packages = stop.price.packages.map((option) => `<li><b>${escapeHtml(option.label)}</b><strong>${escapeHtml(option.price)}</strong>${option.note ? `<small>${escapeHtml(option.note)}</small>` : ""}</li>`).join("");
       const sources = stop.sources.map((source) => `<a class="source-link" href="${escapeHtml(source.url)}" target="_blank" rel="noopener noreferrer">${escapeHtml(source.label)}</a>`).join("");
       const ratingNote = stop.rating.note ? `<small>${escapeHtml(stop.rating.note)}</small>` : "";
       dom.detailBody.innerHTML = `
-        <p class="detail-hook">${escapeHtml(stop.hook)}</p>
         <div class="detail-sections">
           <section class="detail-section"><h4>What is it?</h4><p>${escapeHtml(stop.what)}</p></section>
           <section class="detail-section"><h4>Why Matija may like it</h4><p>${escapeHtml(stop.matija)}</p></section>
@@ -469,7 +490,7 @@
             alt: `${loop}${index + 1}, ${stop.name}`,
             title: `${loop}${index + 1} · ${stop.name}`,
           });
-          marker.bindPopup(`<div class="popup-name">${escapeHtml(stop.name)}</div><div class="popup-meta">${escapeHtml(stop.area)} · ★ ${escapeHtml(stop.rating.value)}</div><div class="popup-action">Full guide updated below ↓</div>`);
+          marker.bindPopup(`<div class="popup-name">${escapeHtml(stop.name)}</div><div class="popup-meta">${escapeHtml(stop.area)} · ★ ${escapeHtml(stop.rating.value)} · ${escapeHtml(worthLabel(stop))}</div><div class="popup-action">Full guide updated below ↓</div>`);
           marker.on("click", () => selectStop(id, { focusMainMap: false, revealOnMobile: false, updateHash: true }));
           marker.addTo(layer);
           state.markerById.set(id, marker);

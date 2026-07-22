@@ -18,6 +18,14 @@
     `<a href="${escapeHtml(source.url)}" target="_blank" rel="noopener noreferrer">${escapeHtml(source.label)}</a>`
   );
 
+  const worthVerdicts = {
+    must: "🔥 Must-do",
+    maybe: "✨ Worth considering",
+    chill: "😌 Chill pick",
+    skip: "↪ Easy skip",
+  };
+  const effortLabels = { low: "🥾 Easy", medium: "🥾 Some effort", high: "🥾 Real effort" };
+
   function renderPriceDetails(price) {
     const packages = Array.isArray(price.packages) ? price.packages : [];
     if (!packages.length) return "";
@@ -44,12 +52,14 @@
             <span><span class="stop-name" role="heading" aria-level="4">${escapeHtml(stop.name)}</span><span class="stop-area">${escapeHtml(stop.area)}</span></span>
           </span>
           <span class="stop-summary-facts">
+            <span class="worth-pill ${escapeHtml(stop.worth.verdict)}">${escapeHtml(worthVerdicts[stop.worth.verdict])}</span>
+            <span class="effort-pill">${escapeHtml(effortLabels[stop.worth.effort])}</span>
             <span class="fit-pill ${escapeHtml(stop.fit.tone)}">${escapeHtml(stop.fit.label)}</span>
             <span class="fact-pill">★ ${escapeHtml(stop.rating.value)} · ${escapeHtml(stop.rating.platform)}</span>
             <span class="fact-pill">${escapeHtml(stop.price.summary)}</span>
             <span class="stop-chev" aria-hidden="true">⌄</span>
           </span>
-          <span class="stop-hook"><b>Memorable bit:</b> ${escapeHtml(stop.hook)}</span>
+          <span class="stop-hook"><b>Why it earns the stop:</b> ${escapeHtml(stop.hook)}</span>
         </summary>
         <div class="stop-body">
           <div class="stop-sections">

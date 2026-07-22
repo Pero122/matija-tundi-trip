@@ -8,11 +8,11 @@
   const raw = {
   "schemaVersion": 1,
   "reviewedAt": "2026-07-22",
-  "assetRevision": "20260722.2",
+  "assetRevision": "20260722.3",
   "stops": {
     "zamardi-adventure-park": [
       {
-        "src": "images/trip-map/20260722.2/zamardi-adventure-park/01.webp",
+        "src": "images/trip-map/20260722.3/zamardi-adventure-park/01.webp",
         "sourceType": "official",
         "sourceTitle": "Forest Zipline — Zamárdi Adventure Park",
         "sourceUrl": "https://zamardikalandpark.hu/en/home/",
@@ -25,7 +25,7 @@
         "assetUrl": "https://zamardikalandpark.hu/wp-content/uploads/2025/01/csuszo_06.jpg"
       },
       {
-        "src": "images/trip-map/20260722.2/zamardi-adventure-park/02.webp",
+        "src": "images/trip-map/20260722.3/zamardi-adventure-park/02.webp",
         "sourceType": "official",
         "sourceTitle": "Lake Zipline — Zamárdi Adventure Park",
         "sourceUrl": "https://zamardikalandpark.hu/en/home/",
@@ -38,7 +38,7 @@
         "assetUrl": "https://zamardikalandpark.hu/wp-content/uploads/2025/01/csuszo_11.jpg"
       },
       {
-        "src": "images/trip-map/20260722.2/zamardi-adventure-park/03.webp",
+        "src": "images/trip-map/20260722.3/zamardi-adventure-park/03.webp",
         "sourceType": "official",
         "sourceTitle": "Bumper Boats — Zamárdi Adventure Park",
         "sourceUrl": "https://zamardikalandpark.hu/en/home/",
@@ -51,7 +51,7 @@
         "assetUrl": "https://zamardikalandpark.hu/wp-content/uploads/2025/01/dodzsem_03.jpg"
       },
       {
-        "src": "images/trip-map/20260722.2/zamardi-adventure-park/04.webp",
+        "src": "images/trip-map/20260722.3/zamardi-adventure-park/04.webp",
         "sourceType": "official",
         "sourceTitle": "Mini Steam Train — Zamárdi Adventure Park",
         "sourceUrl": "https://zamardikalandpark.hu/en/home/",
@@ -64,7 +64,7 @@
         "assetUrl": "https://zamardikalandpark.hu/wp-content/uploads/2025/01/gozos_02.jpg"
       },
       {
-        "src": "images/trip-map/20260722.2/zamardi-adventure-park/05.webp",
+        "src": "images/trip-map/20260722.3/zamardi-adventure-park/05.webp",
         "sourceType": "official",
         "sourceTitle": "High-Rope Course — Zamárdi Adventure Park",
         "sourceUrl": "https://zamardikalandpark.hu/en/home/",
@@ -77,9 +77,76 @@
         "assetUrl": "https://zamardikalandpark.hu/wp-content/uploads/2025/01/kaland_05.jpg"
       }
     ],
+    "balatonibob-leisure-park": [
+      {
+        "src": "images/trip-map/20260722.3/balatonibob-leisure-park/01.webp",
+        "sourceType": "official",
+        "sourceTitle": "Coaster tracks — BalatoniBob Leisure Park",
+        "sourceUrl": "https://balatonibob.hu/en/experiences/coaster-tracks",
+        "alt": "Several riders descend BalatoniBob's hillside coaster tracks with Lake Balaton filling the background.",
+        "subject": "Lake-view coaster setting with riders",
+        "credit": "BalatoniBob Leisure Park (official)",
+        "license": "Official promotional photo",
+        "licenseUrl": "https://balatonibob.hu/en/experiences/coaster-tracks",
+        "verification": "Verified as the official homepage hero: multiple coaster carts, fixed rails, wooded hillside and Lake Balaton are visible together.",
+        "assetUrl": "https://balatonibob.hu/data/image/full/2020/09/23/layer-1.jpg"
+      },
+      {
+        "src": "images/trip-map/20260722.3/balatonibob-leisure-park/02.webp",
+        "sourceType": "official",
+        "sourceTitle": "Panorama coaster route — BalatoniBob Leisure Park",
+        "sourceUrl": "https://balatonibob.hu/en/experiences/coaster-tracks",
+        "alt": "The official blue route diagram for BalatoniBob's Panorama track, including its circular 360-degree turn.",
+        "subject": "Panorama track and its 360-degree turn",
+        "credit": "BalatoniBob Leisure Park (official)",
+        "license": "Official promotional graphic",
+        "licenseUrl": "https://balatonibob.hu/en/experiences/coaster-tracks",
+        "verification": "Verified on the official coaster page beside the Panorama-track description; the blue route visibly includes the track's circular 360-degree turn.",
+        "assetUrl": "https://balatonibob.hu/data/image/full/2024/11/02/panoramapalya-new.jpg"
+      },
+      {
+        "src": "images/trip-map/20260722.3/balatonibob-leisure-park/03.webp",
+        "sourceType": "official",
+        "sourceTitle": "Open-air banked turn — BalatoniBob Leisure Park",
+        "sourceUrl": "https://balatonibob.hu/en/experiences/coaster-tracks",
+        "alt": "A rider speeds through a steep open-air curve on BalatoniBob's fixed-rail coaster.",
+        "subject": "Fast open-air banked turn",
+        "credit": "BalatoniBob Leisure Park (official)",
+        "license": "Official promotional photo",
+        "licenseUrl": "https://balatonibob.hu/en/experiences/coaster-tracks",
+        "verification": "Verified visually on the official coaster page: the rider is leaning into a pronounced outdoor curve on the elevated fixed track.",
+        "assetUrl": "https://balatonibob.hu/data/image/1055x4000/2020/10/07/_b7p4668_corr.jpg"
+      },
+      {
+        "src": "images/trip-map/20260722.3/balatonibob-leisure-park/04.webp",
+        "sourceType": "official",
+        "sourceTitle": "Tunnel coaster route — BalatoniBob Leisure Park",
+        "sourceUrl": "https://balatonibob.hu/en/experiences/coaster-tracks",
+        "alt": "The official red route diagram for BalatoniBob's Tunnel track, including its tight bends and tunnel section.",
+        "subject": "Tunnel-track experience",
+        "credit": "BalatoniBob Leisure Park (official)",
+        "license": "Official promotional photo",
+        "licenseUrl": "https://balatonibob.hu/en/experiences/coaster-tracks",
+        "verification": "Verified on the official coaster page beside the Tunnel-track description; the red route shows the track's distinctive turns and tunnel section.",
+        "assetUrl": "https://balatonibob.hu/data/image/full/2024/11/02/alagutpalya-new.jpg"
+      },
+      {
+        "src": "images/trip-map/20260722.3/balatonibob-leisure-park/05.webp",
+        "sourceType": "official",
+        "sourceTitle": "Floodlit tunnel coaster — BalatoniBob Leisure Park",
+        "sourceUrl": "https://balatonibob.hu/en/experiences/coaster-tracks",
+        "alt": "A coaster cart rushing through BalatoniBob's tunnel amid colourful streaks of light.",
+        "subject": "Floodlit night coaster ride",
+        "credit": "BalatoniBob Leisure Park (official)",
+        "license": "Official promotional photo",
+        "licenseUrl": "https://balatonibob.hu/en/experiences/coaster-tracks",
+        "verification": "Verified visually in the official page gallery: the moving cart and coloured tunnel lights directly show the after-dark ride effect.",
+        "assetUrl": "https://balatonibob.hu/data/image/full/2020/10/06/_b7p4612_corr_web.jpg"
+      }
+    ],
     "balatonfured-tagore": [
       {
-        "src": "images/trip-map/20260722.2/balatonfured-tagore/01.webp",
+        "src": "images/trip-map/20260722.3/balatonfured-tagore/01.webp",
         "sourceType": "wikimedia",
         "sourceTitle": "File:A balatonfüredi Tagore sétány és a Balaton.jpg",
         "sourceUrl": "https://commons.wikimedia.org/wiki/File:A_balatonf%C3%BCredi_Tagore_s%C3%A9t%C3%A1ny_%C3%A9s_a_Balaton.jpg",
@@ -92,7 +159,7 @@
         "commonsTitle": "File:A balatonfüredi Tagore sétány és a Balaton.jpg"
       },
       {
-        "src": "images/trip-map/20260722.2/balatonfured-tagore/02.webp",
+        "src": "images/trip-map/20260722.3/balatonfured-tagore/02.webp",
         "sourceType": "wikimedia",
         "sourceTitle": "File:Balatonfüredi Yacht Club.jpg",
         "sourceUrl": "https://commons.wikimedia.org/wiki/File:Balatonf%C3%BCredi_Yacht_Club.jpg",
@@ -105,7 +172,7 @@
         "commonsTitle": "File:Balatonfüredi Yacht Club.jpg"
       },
       {
-        "src": "images/trip-map/20260722.2/balatonfured-tagore/03.webp",
+        "src": "images/trip-map/20260722.3/balatonfured-tagore/03.webp",
         "sourceType": "wikimedia",
         "sourceTitle": "File:Balatonfüredi strand.jpg",
         "sourceUrl": "https://commons.wikimedia.org/wiki/File:Balatonf%C3%BCredi_strand.jpg",
@@ -118,7 +185,7 @@
         "commonsTitle": "File:Balatonfüredi strand.jpg"
       },
       {
-        "src": "images/trip-map/20260722.2/balatonfured-tagore/04.webp",
+        "src": "images/trip-map/20260722.3/balatonfured-tagore/04.webp",
         "sourceType": "wikimedia",
         "sourceTitle": "File:Tagore Promenade (Balatonfüred).JPG",
         "sourceUrl": "https://commons.wikimedia.org/wiki/File:Tagore_Promenade_(Balatonf%C3%BCred).JPG",
@@ -131,7 +198,7 @@
         "commonsTitle": "File:Tagore Promenade (Balatonfüred).JPG"
       },
       {
-        "src": "images/trip-map/20260722.2/balatonfured-tagore/05.webp",
+        "src": "images/trip-map/20260722.3/balatonfured-tagore/05.webp",
         "sourceType": "wikimedia",
         "sourceTitle": "File:Balatonfured Blaha's Villa.JPG",
         "sourceUrl": "https://commons.wikimedia.org/wiki/File:Balatonfured_Blaha%27s_Villa.JPG",
@@ -146,7 +213,7 @@
     ],
     "tihany-abbey": [
       {
-        "src": "images/trip-map/20260722.2/tihany-abbey/01.webp",
+        "src": "images/trip-map/20260722.3/tihany-abbey/01.webp",
         "sourceType": "wikimedia",
         "sourceTitle": "File:Tihany Abbey (Hungary).jpg",
         "sourceUrl": "https://commons.wikimedia.org/wiki/File:Tihany_Abbey_(Hungary).jpg",
@@ -159,7 +226,7 @@
         "commonsTitle": "File:Tihany Abbey (Hungary).jpg"
       },
       {
-        "src": "images/trip-map/20260722.2/tihany-abbey/02.webp",
+        "src": "images/trip-map/20260722.3/tihany-abbey/02.webp",
         "sourceType": "wikimedia",
         "sourceTitle": "File:Tihany abbey.JPG",
         "sourceUrl": "https://commons.wikimedia.org/wiki/File:Tihany_abbey.JPG",
@@ -172,7 +239,7 @@
         "commonsTitle": "File:Tihany abbey.JPG"
       },
       {
-        "src": "images/trip-map/20260722.2/tihany-abbey/03.webp",
+        "src": "images/trip-map/20260722.3/tihany-abbey/03.webp",
         "sourceType": "wikimedia",
         "sourceTitle": "File:Tihany abbey interor.JPG",
         "sourceUrl": "https://commons.wikimedia.org/wiki/File:Tihany_abbey_interor.JPG",
@@ -185,7 +252,7 @@
         "commonsTitle": "File:Tihany abbey interor.JPG"
       },
       {
-        "src": "images/trip-map/20260722.2/tihany-abbey/04.webp",
+        "src": "images/trip-map/20260722.3/tihany-abbey/04.webp",
         "sourceType": "wikimedia",
         "sourceTitle": "File:Tomb of Andrew I of Hungary.JPG",
         "sourceUrl": "https://commons.wikimedia.org/wiki/File:Tomb_of_Andrew_I_of_Hungary.JPG",
@@ -198,7 +265,7 @@
         "commonsTitle": "File:Tomb of Andrew I of Hungary.JPG"
       },
       {
-        "src": "images/trip-map/20260722.2/tihany-abbey/05.webp",
+        "src": "images/trip-map/20260722.3/tihany-abbey/05.webp",
         "sourceType": "wikimedia",
         "sourceTitle": "File:Tihany i Belső-tó.JPG",
         "sourceUrl": "https://commons.wikimedia.org/wiki/File:Tihany_i_Bels%C5%91-t%C3%B3.JPG",
@@ -213,7 +280,7 @@
     ],
     "tapolca-lake-cave": [
       {
-        "src": "images/trip-map/20260722.2/tapolca-lake-cave/01.webp",
+        "src": "images/trip-map/20260722.3/tapolca-lake-cave/01.webp",
         "sourceType": "wikimedia",
         "sourceTitle": "File:Tapolca Lake Cave 2025 02.jpg",
         "sourceUrl": "https://commons.wikimedia.org/wiki/File:Tapolca_Lake_Cave_2025_02.jpg",
@@ -226,7 +293,7 @@
         "commonsTitle": "File:Tapolca Lake Cave 2025 02.jpg"
       },
       {
-        "src": "images/trip-map/20260722.2/tapolca-lake-cave/02.webp",
+        "src": "images/trip-map/20260722.3/tapolca-lake-cave/02.webp",
         "sourceType": "wikimedia",
         "sourceTitle": "File:Tapolca Lake Cave 2025 03.jpg",
         "sourceUrl": "https://commons.wikimedia.org/wiki/File:Tapolca_Lake_Cave_2025_03.jpg",
@@ -239,7 +306,7 @@
         "commonsTitle": "File:Tapolca Lake Cave 2025 03.jpg"
       },
       {
-        "src": "images/trip-map/20260722.2/tapolca-lake-cave/03.webp",
+        "src": "images/trip-map/20260722.3/tapolca-lake-cave/03.webp",
         "sourceType": "official",
         "sourceTitle": "Tapolca Lake Cave Visitor Centre — official gallery",
         "sourceUrl": "https://www.bfnp.hu/en/latogatohely-1/tapolca-lake-cave-visitor-centre-tapolca-tapolca",
@@ -252,7 +319,7 @@
         "assetUrl": "https://www.bfnp.hu/media/thumbs/ta/po/lc/tapolcai-tavasbarlang-geopark-terem-79e04e41-4171791.jpg"
       },
       {
-        "src": "images/trip-map/20260722.2/tapolca-lake-cave/04.webp",
+        "src": "images/trip-map/20260722.3/tapolca-lake-cave/04.webp",
         "sourceType": "wikimedia",
         "sourceTitle": "File:Lake Cave,Tapolca 2.jpg",
         "sourceUrl": "https://commons.wikimedia.org/wiki/File:Lake_Cave,Tapolca_2.jpg",
@@ -265,7 +332,7 @@
         "commonsTitle": "File:Lake Cave,Tapolca 2.jpg"
       },
       {
-        "src": "images/trip-map/20260722.2/tapolca-lake-cave/05.webp",
+        "src": "images/trip-map/20260722.3/tapolca-lake-cave/05.webp",
         "sourceType": "wikimedia",
         "sourceTitle": "File:A Tapolcai-tavasbarlang egy száraz lábbal járható szakasza.jpg",
         "sourceUrl": "https://commons.wikimedia.org/wiki/File:A_Tapolcai-tavasbarlang_egy_sz%C3%A1raz_l%C3%A1bbal_j%C3%A1rhat%C3%B3_szakasza.jpg",
@@ -280,7 +347,7 @@
     ],
     "szigliget-castle": [
       {
-        "src": "images/trip-map/20260722.2/szigliget-castle/01.webp",
+        "src": "images/trip-map/20260722.3/szigliget-castle/01.webp",
         "sourceType": "wikimedia",
         "sourceTitle": "File:Szigliget castle.jpg",
         "sourceUrl": "https://commons.wikimedia.org/wiki/File:Szigliget_castle.jpg",
@@ -293,7 +360,7 @@
         "commonsTitle": "File:Szigliget castle.jpg"
       },
       {
-        "src": "images/trip-map/20260722.2/szigliget-castle/02.webp",
+        "src": "images/trip-map/20260722.3/szigliget-castle/02.webp",
         "sourceType": "wikimedia",
         "sourceTitle": "File:Szigliget castle (1).jpg",
         "sourceUrl": "https://commons.wikimedia.org/wiki/File:Szigliget_castle_(1).jpg",
@@ -306,7 +373,7 @@
         "commonsTitle": "File:Szigliget castle (1).jpg"
       },
       {
-        "src": "images/trip-map/20260722.2/szigliget-castle/03.webp",
+        "src": "images/trip-map/20260722.3/szigliget-castle/03.webp",
         "sourceType": "wikimedia",
         "sourceTitle": "File:Szigliget castle (2).jpg",
         "sourceUrl": "https://commons.wikimedia.org/wiki/File:Szigliget_castle_(2).jpg",
@@ -319,7 +386,7 @@
         "commonsTitle": "File:Szigliget castle (2).jpg"
       },
       {
-        "src": "images/trip-map/20260722.2/szigliget-castle/04.webp",
+        "src": "images/trip-map/20260722.3/szigliget-castle/04.webp",
         "sourceType": "wikimedia",
         "sourceTitle": "File:Hungary, Szigliget (castel) 1.jpg",
         "sourceUrl": "https://commons.wikimedia.org/wiki/File:Hungary,_Szigliget_(castel)_1.jpg",
@@ -332,7 +399,7 @@
         "commonsTitle": "File:Hungary, Szigliget (castel) 1.jpg"
       },
       {
-        "src": "images/trip-map/20260722.2/szigliget-castle/05.webp",
+        "src": "images/trip-map/20260722.3/szigliget-castle/05.webp",
         "sourceType": "wikimedia",
         "sourceTitle": "File:Várrom (10376. számú műemlék) 10.jpg",
         "sourceUrl": "https://commons.wikimedia.org/wiki/File:V%C3%A1rrom_(10376._sz%C3%A1m%C3%BA_m%C5%B1eml%C3%A9k)_10.jpg",
@@ -345,9 +412,76 @@
         "commonsTitle": "File:Várrom (10376. számú műemlék) 10.jpg"
       }
     ],
+    "csodabogyos-adventure-cave": [
+      {
+        "src": "images/trip-map/20260722.3/csodabogyos-adventure-cave/01.webp",
+        "sourceType": "official",
+        "sourceTitle": "Csodabogyós adventure-cave team — Balaton Uplands National Park",
+        "sourceUrl": "https://www.bfnp.hu/en/latogatohely-1/csodabogyos-cave-balatonederics",
+        "alt": "A group of smiling cavers in muddy overalls, helmets and headlamps at the forest cave entrance.",
+        "subject": "Cavers in helmets and overalls",
+        "credit": "Balaton Uplands National Park Directorate (official)",
+        "license": "Official promotional photo",
+        "licenseUrl": "https://www.bfnp.hu/en/latogatohely-1/csodabogyos-cave-balatonederics",
+        "verification": "Verified in the official attraction gallery: the participants' protective overalls, helmets and headlamps are clearly visible.",
+        "assetUrl": "https://www.bfnp.hu/media/thumbs/ba/la/to/balatonederics-csodabogyos-barlang-lejaratanal-egy-moso-acff257e-4313645.jpg"
+      },
+      {
+        "src": "images/trip-map/20260722.3/csodabogyos-adventure-cave/02.webp",
+        "sourceType": "official",
+        "sourceTitle": "Caver in a tight Csodabogyós passage — Balaton Uplands National Park",
+        "sourceUrl": "https://www.bfnp.hu/en/latogatohely-1/csodabogyos-cave-balatonederics",
+        "alt": "A helmeted caver in protective overalls squeezing through a low natural rock passage.",
+        "subject": "Crawling through a narrow cave passage",
+        "credit": "Balaton Uplands National Park Directorate (official)",
+        "license": "Official promotional photo",
+        "licenseUrl": "https://www.bfnp.hu/en/latogatohely-1/csodabogyos-cave-balatonederics",
+        "verification": "Verified in the official gallery image labelled as a Csodabogyós caver: the helmeted participant is moving through an undeveloped rock passage.",
+        "assetUrl": "https://www.bfnp.hu/media/thumbs/cs/od/ab/csodabogyos-barlang-egyik-barlangasz-holgy-6a959c1d-4268332.jpg"
+      },
+      {
+        "src": "images/trip-map/20260722.3/csodabogyos-adventure-cave/03.webp",
+        "sourceType": "official",
+        "sourceTitle": "Fixed-ladder cave climb — Balaton Uplands National Park",
+        "sourceUrl": "https://www.bfnp.hu/en/latogatohely-1/csodabogyos-cave-balatonederics",
+        "alt": "Two helmeted cavers in red overalls climbing through a tall fissure using a fixed ladder and safety handline.",
+        "subject": "Climbing inside the undeveloped cave",
+        "credit": "Balaton Uplands National Park Directorate (official)",
+        "license": "Official promotional photo",
+        "licenseUrl": "https://www.bfnp.hu/en/latogatohely-1/csodabogyos-cave-balatonederics",
+        "verification": "Verified visually in the official attraction gallery: two equipped cavers, a fixed ladder and a safety line show the hands-on climbing route.",
+        "assetUrl": "https://www.bfnp.hu/media/thumbs/cs/od/ab/csodabogyos-barlang-belulrol-ket-barlangasszal-6a959c1d-4189644.jpg"
+      },
+      {
+        "src": "images/trip-map/20260722.3/csodabogyos-adventure-cave/04.webp",
+        "sourceType": "official",
+        "sourceTitle": "Csodabogyós dripstone chamber — Balaton Uplands National Park",
+        "sourceUrl": "https://www.bfnp.hu/en/latogatohely-1/csodabogyos-cave-balatonederics",
+        "alt": "Tall stalagmites and flowstone formations inside Csodabogyós Cave with a caver for scale.",
+        "subject": "Csodabogyós dripstone formations",
+        "credit": "Balaton Uplands National Park Directorate (official)",
+        "license": "Official promotional photo",
+        "licenseUrl": "https://www.bfnp.hu/en/latogatohely-1/csodabogyos-cave-balatonederics",
+        "verification": "Verified visually in the official gallery: the tall natural dripstone formations and nearby caver establish both geology and scale.",
+        "assetUrl": "https://www.bfnp.hu/media/thumbs/ba/la/to/balatonederics-csodabogyos-barlangban-allo-cseppkovekn-6a959c1d-4313643.jpg"
+      },
+      {
+        "src": "images/trip-map/20260722.3/csodabogyos-adventure-cave/05.webp",
+        "sourceType": "official",
+        "sourceTitle": "Csodabogyós straw-stalactite ceiling — Balaton Uplands National Park",
+        "sourceUrl": "https://www.bfnp.hu/en/latogatohely-1/csodabogyos-cave-balatonederics",
+        "alt": "A helmeted caver beneath a dense ceiling of delicate straw stalactites inside Csodabogyós Cave.",
+        "subject": "Dense straw-stalactite ceiling",
+        "credit": "Balaton Uplands National Park Directorate (official)",
+        "license": "Official promotional photo",
+        "licenseUrl": "https://www.bfnp.hu/en/latogatohely-1/csodabogyos-cave-balatonederics",
+        "verification": "Verified visually in the official attraction gallery: a helmeted caver and the unusually dense straw-stalactite ceiling are both clearly visible.",
+        "assetUrl": "https://www.bfnp.hu/media/thumbs/ba/la/to/balatonederics-csodabogyos-barlangban-egy-barlangasz-reng-6a959c1d-4313644.jpg"
+      }
+    ],
     "heviz-thermal-lake": [
       {
-        "src": "images/trip-map/20260722.2/heviz-thermal-lake/01.webp",
+        "src": "images/trip-map/20260722.3/heviz-thermal-lake/01.webp",
         "sourceType": "flickr",
         "sourceTitle": "Thermal Lake at Hévíz, Hungary",
         "sourceUrl": "https://www.flickr.com/photos/22446827@N02/5215273046",
@@ -360,7 +494,7 @@
         "assetUrl": "https://live.staticflickr.com/4125/5215273046_d4029c5c31_b.jpg"
       },
       {
-        "src": "images/trip-map/20260722.2/heviz-thermal-lake/02.webp",
+        "src": "images/trip-map/20260722.3/heviz-thermal-lake/02.webp",
         "sourceType": "flickr",
         "sourceTitle": "Thermal Lake at Hévíz, Hungary",
         "sourceUrl": "https://www.flickr.com/photos/22446827@N02/5215289294",
@@ -373,7 +507,7 @@
         "assetUrl": "https://live.staticflickr.com/4127/5215289294_928970693f_b.jpg"
       },
       {
-        "src": "images/trip-map/20260722.2/heviz-thermal-lake/03.webp",
+        "src": "images/trip-map/20260722.3/heviz-thermal-lake/03.webp",
         "sourceType": "flickr",
         "sourceTitle": "Thermal Lake at Hévíz, Hungary",
         "sourceUrl": "https://www.flickr.com/photos/22446827@N02/5215281468",
@@ -386,7 +520,7 @@
         "assetUrl": "https://live.staticflickr.com/5166/5215281468_142af8317a_b.jpg"
       },
       {
-        "src": "images/trip-map/20260722.2/heviz-thermal-lake/04.webp",
+        "src": "images/trip-map/20260722.3/heviz-thermal-lake/04.webp",
         "sourceType": "flickr",
         "sourceTitle": "Bathing in Lake Hévíz",
         "sourceUrl": "https://www.flickr.com/photos/9294749@N03/5416399004",
@@ -399,7 +533,7 @@
         "assetUrl": "https://live.staticflickr.com/4149/5416399004_2cb873da63_b.jpg"
       },
       {
-        "src": "images/trip-map/20260722.2/heviz-thermal-lake/05.webp",
+        "src": "images/trip-map/20260722.3/heviz-thermal-lake/05.webp",
         "sourceType": "flickr",
         "sourceTitle": "Waterlillies at Lake Hévíz, Hungary",
         "sourceUrl": "https://www.flickr.com/photos/22446827@N02/5214703135",
@@ -414,7 +548,7 @@
     ],
     "hegyestu-kapolcs": [
       {
-        "src": "images/trip-map/20260722.2/hegyestu-kapolcs/01.webp",
+        "src": "images/trip-map/20260722.3/hegyestu-kapolcs/01.webp",
         "sourceType": "wikimedia",
         "sourceTitle": "File:Hegyestű a Fekete hegyről - panoramio.jpg",
         "sourceUrl": "https://commons.wikimedia.org/wiki/File:Hegyest%C5%B1_a_Fekete_hegyr%C5%91l_-_panoramio.jpg",
@@ -427,7 +561,7 @@
         "commonsTitle": "File:Hegyestű a Fekete hegyről - panoramio.jpg"
       },
       {
-        "src": "images/trip-map/20260722.2/hegyestu-kapolcs/02.webp",
+        "src": "images/trip-map/20260722.3/hegyestu-kapolcs/02.webp",
         "sourceType": "wikimedia",
         "sourceTitle": "File:Hegyestű légi felvételen.jpg",
         "sourceUrl": "https://commons.wikimedia.org/wiki/File:Hegyest%C5%B1_l%C3%A9gi_felv%C3%A9telen.jpg",
@@ -440,7 +574,7 @@
         "commonsTitle": "File:Hegyestű légi felvételen.jpg"
       },
       {
-        "src": "images/trip-map/20260722.2/hegyestu-kapolcs/03.webp",
+        "src": "images/trip-map/20260722.3/hegyestu-kapolcs/03.webp",
         "sourceType": "wikimedia",
         "sourceTitle": "File:Hegyestű Geológiai Bemutatóhely (5).jpg",
         "sourceUrl": "https://commons.wikimedia.org/wiki/File:Hegyest%C5%B1_Geol%C3%B3giai_Bemutat%C3%B3hely_(5).jpg",
@@ -453,7 +587,7 @@
         "commonsTitle": "File:Hegyestű Geológiai Bemutatóhely (5).jpg"
       },
       {
-        "src": "images/trip-map/20260722.2/hegyestu-kapolcs/04.webp",
+        "src": "images/trip-map/20260722.3/hegyestu-kapolcs/04.webp",
         "sourceType": "wikimedia",
         "sourceTitle": "File:Kapolcs.jpg",
         "sourceUrl": "https://commons.wikimedia.org/wiki/File:Kapolcs.jpg",
@@ -466,7 +600,7 @@
         "commonsTitle": "File:Kapolcs.jpg"
       },
       {
-        "src": "images/trip-map/20260722.2/hegyestu-kapolcs/05.webp",
+        "src": "images/trip-map/20260722.3/hegyestu-kapolcs/05.webp",
         "sourceType": "official",
         "sourceTitle": "Valley of Arts — official festival gallery",
         "sourceUrl": "https://www.muveszetekvolgye.hu/",
@@ -481,7 +615,7 @@
     ],
     "pecs-zsolnay": [
       {
-        "src": "images/trip-map/20260722.2/pecs-zsolnay/01.webp",
+        "src": "images/trip-map/20260722.3/pecs-zsolnay/01.webp",
         "sourceType": "wikimedia",
         "sourceTitle": "File:Zsolnay Quarter building.jpg",
         "sourceUrl": "https://commons.wikimedia.org/wiki/File:Zsolnay_Quarter_building.jpg",
@@ -494,7 +628,7 @@
         "commonsTitle": "File:Zsolnay Quarter building.jpg"
       },
       {
-        "src": "images/trip-map/20260722.2/pecs-zsolnay/02.webp",
+        "src": "images/trip-map/20260722.3/pecs-zsolnay/02.webp",
         "sourceType": "official",
         "sourceTitle": "Golden Age of Zsolnay — Gyugyi Collection",
         "sourceUrl": "https://www.zsolnaynegyed.hu/en/programmes/golden-age-of-zsolnay-gyugyi-collection",
@@ -507,7 +641,7 @@
         "verification": "Verified visually in the official collection gallery: the display contains metallic, colour-shifting ceramics on a page that explicitly explains the Zsolnay eosin technique."
       },
       {
-        "src": "images/trip-map/20260722.2/pecs-zsolnay/03.webp",
+        "src": "images/trip-map/20260722.3/pecs-zsolnay/03.webp",
         "sourceType": "wikimedia",
         "sourceTitle": "File:Pécs 061.JPG",
         "sourceUrl": "https://commons.wikimedia.org/wiki/File:P%C3%A9cs_061.JPG",
@@ -520,7 +654,7 @@
         "commonsTitle": "File:Pécs 061.JPG"
       },
       {
-        "src": "images/trip-map/20260722.2/pecs-zsolnay/04.webp",
+        "src": "images/trip-map/20260722.3/pecs-zsolnay/04.webp",
         "sourceType": "wikimedia",
         "sourceTitle": "File:Pécs - Széchenyi Square 01.JPG",
         "sourceUrl": "https://commons.wikimedia.org/wiki/File:P%C3%A9cs_-_Sz%C3%A9chenyi_Square_01.JPG",
@@ -533,7 +667,7 @@
         "commonsTitle": "File:Pécs - Széchenyi Square 01.JPG"
       },
       {
-        "src": "images/trip-map/20260722.2/pecs-zsolnay/05.webp",
+        "src": "images/trip-map/20260722.3/pecs-zsolnay/05.webp",
         "sourceType": "official",
         "sourceTitle": "Zsolnay Mausoleum — Zsolnay Cultural Quarter",
         "sourceUrl": "https://www.zsolnaynegyed.hu/en/programmes/zsolnay-mausoleum",
@@ -548,7 +682,7 @@
     ],
     "eger-castle-bath": [
       {
-        "src": "images/trip-map/20260722.2/eger-castle-bath/01.webp",
+        "src": "images/trip-map/20260722.3/eger-castle-bath/01.webp",
         "sourceType": "wikimedia",
         "sourceTitle": "File:Castle of Eger - panoramio.jpg",
         "sourceUrl": "https://commons.wikimedia.org/wiki/File:Castle%20of%20Eger%20-%20panoramio.jpg",
@@ -561,7 +695,7 @@
         "commonsTitle": "File:Castle of Eger - panoramio.jpg"
       },
       {
-        "src": "images/trip-map/20260722.2/eger-castle-bath/02.webp",
+        "src": "images/trip-map/20260722.3/eger-castle-bath/02.webp",
         "sourceType": "wikimedia",
         "sourceTitle": "File:Eger castle (by Pudelek) 01.JPG",
         "sourceUrl": "https://commons.wikimedia.org/wiki/File:Eger%20castle%20(by%20Pudelek)%2001.JPG",
@@ -574,7 +708,7 @@
         "commonsTitle": "File:Eger castle (by Pudelek) 01.JPG"
       },
       {
-        "src": "images/trip-map/20260722.2/eger-castle-bath/03.webp",
+        "src": "images/trip-map/20260722.3/eger-castle-bath/03.webp",
         "sourceType": "wikimedia",
         "sourceTitle": "File:Minaret a várból - panoramio.jpg",
         "sourceUrl": "https://commons.wikimedia.org/wiki/File:Minaret_a_v%C3%A1rb%C3%B3l_-_panoramio.jpg",
@@ -587,7 +721,7 @@
         "commonsTitle": "File:Minaret a várból - panoramio.jpg"
       },
       {
-        "src": "images/trip-map/20260722.2/eger-castle-bath/04.webp",
+        "src": "images/trip-map/20260722.3/eger-castle-bath/04.webp",
         "sourceType": "official",
         "sourceTitle": "Casemate Exhibitions — Eger Castle",
         "sourceUrl": "https://www.egrivar.hu/en/exhibitions/c/casemate-exhibition-240",
@@ -600,7 +734,7 @@
         "assetUrl": "https://www.egrivar.hu/public/pic/article/cb1076097e2fbed0d3b9fa58b01d3168_big.jpg"
       },
       {
-        "src": "images/trip-map/20260722.2/eger-castle-bath/05.webp",
+        "src": "images/trip-map/20260722.3/eger-castle-bath/05.webp",
         "sourceType": "wikimedia",
         "sourceTitle": "File:Thermal Bath in Eger.JPG",
         "sourceUrl": "https://commons.wikimedia.org/wiki/File:Thermal%20Bath%20in%20Eger.JPG",
@@ -615,7 +749,7 @@
     ],
     "lillafured-bukk": [
       {
-        "src": "images/trip-map/20260722.2/lillafured-bukk/01.webp",
+        "src": "images/trip-map/20260722.3/lillafured-bukk/01.webp",
         "sourceType": "wikimedia",
         "sourceTitle": "File:Lillafüred - Palace.jpg",
         "sourceUrl": "https://commons.wikimedia.org/wiki/File:Lillaf%C3%BCred%20-%20Palace.jpg",
@@ -628,7 +762,7 @@
         "commonsTitle": "File:Lillafüred - Palace.jpg"
       },
       {
-        "src": "images/trip-map/20260722.2/lillafured-bukk/02.webp",
+        "src": "images/trip-map/20260722.3/lillafured-bukk/02.webp",
         "sourceType": "wikimedia",
         "sourceTitle": "File:NarrowGaugeRailwayLillafured02.jpg",
         "sourceUrl": "https://commons.wikimedia.org/wiki/File:NarrowGaugeRailwayLillafured02.jpg",
@@ -641,7 +775,7 @@
         "commonsTitle": "File:NarrowGaugeRailwayLillafured02.jpg"
       },
       {
-        "src": "images/trip-map/20260722.2/lillafured-bukk/03.webp",
+        "src": "images/trip-map/20260722.3/lillafured-bukk/03.webp",
         "sourceType": "wikimedia",
         "sourceTitle": "File:Lillafüred chairlift in summer 02.jpg",
         "sourceUrl": "https://commons.wikimedia.org/wiki/File:Lillaf%C3%BCred_chairlift_in_summer_02.jpg",
@@ -654,7 +788,7 @@
         "commonsTitle": "File:Lillafüred chairlift in summer 02.jpg"
       },
       {
-        "src": "images/trip-map/20260722.2/lillafured-bukk/04.webp",
+        "src": "images/trip-map/20260722.3/lillafured-bukk/04.webp",
         "sourceType": "wikimedia",
         "sourceTitle": "File:Vizeses-Lillafured-Miskolc-Hungary-Europe.jpg",
         "sourceUrl": "https://commons.wikimedia.org/wiki/File:Vizeses-Lillafured-Miskolc-Hungary-Europe.jpg",
@@ -667,7 +801,7 @@
         "commonsTitle": "File:Vizeses-Lillafured-Miskolc-Hungary-Europe.jpg"
       },
       {
-        "src": "images/trip-map/20260722.2/lillafured-bukk/05.webp",
+        "src": "images/trip-map/20260722.3/lillafured-bukk/05.webp",
         "sourceType": "wikimedia",
         "sourceTitle": "File:Lillafüred, Anna-barlang (1).jpg",
         "sourceUrl": "https://commons.wikimedia.org/wiki/File:Lillaf%C3%BCred,%20Anna-barlang%20(1).jpg",
@@ -682,7 +816,7 @@
     ],
     "szalajka-valley": [
       {
-        "src": "images/trip-map/20260722.2/szalajka-valley/01.webp",
+        "src": "images/trip-map/20260722.3/szalajka-valley/01.webp",
         "sourceType": "wikimedia",
         "sourceTitle": "File:Fátoly-vízesés (2019).jpg",
         "sourceUrl": "https://commons.wikimedia.org/wiki/File:F%C3%A1toly-v%C3%ADzes%C3%A9s%20(2019).jpg",
@@ -695,20 +829,20 @@
         "commonsTitle": "File:Fátoly-vízesés (2019).jpg"
       },
       {
-        "src": "images/trip-map/20260722.2/szalajka-valley/02.webp",
-        "sourceType": "wikimedia",
-        "sourceTitle": "File:Szilvásvárad, Pisztrángos-tó.jpg",
-        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Szilv%C3%A1sv%C3%A1rad,%20Pisztr%C3%A1ngos-t%C3%B3.jpg",
-        "alt": "Wooded hills reflected in the calm Pisztrángos, or Trout, Lake in Szalajka Valley.",
-        "subject": "Trout Lake",
-        "credit": "Christo",
-        "license": "CC BY-SA 4.0",
-        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
-        "verification": "The image clearly shows the trout lake and surrounding forest, one of the valley walk’s quieter scenic sections.",
-        "commonsTitle": "File:Szilvásvárad, Pisztrángos-tó.jpg"
+        "src": "images/trip-map/20260722.3/szalajka-valley/02.webp",
+        "sourceType": "official",
+        "sourceTitle": "X-TRÉM Bob action gallery — official",
+        "sourceUrl": "https://www.szilvasvaradbob.hu/en/gallery/",
+        "alt": "A rider in a yellow X-TRÉM alpine bob descends a curved single-rail track through the forest at Szilvásvárad.",
+        "subject": "X‑TRÉM single-rail alpine bob",
+        "credit": "X-TRÉM BOB / GOLDKOV Kft. (official)",
+        "license": "Official promotional photo",
+        "licenseUrl": "https://www.szilvasvaradbob.hu/en/gallery/",
+        "verification": "Visually verified in the official gallery: a seated rider is clearly descending the attraction's curved single steel rail in its forest setting.",
+        "assetUrl": "https://www.szilvasvaradbob.hu/wp-content/uploads/2015/10/xtrembob_06.jpg"
       },
       {
-        "src": "images/trip-map/20260722.2/szalajka-valley/03.webp",
+        "src": "images/trip-map/20260722.3/szalajka-valley/03.webp",
         "sourceType": "wikimedia",
         "sourceTitle": "File:Istállós-kő Cave in Szalajka Valley, Szilvásvárad, 2016 Hungary.jpg",
         "sourceUrl": "https://commons.wikimedia.org/wiki/File:Ist%C3%A1ll%C3%B3s-k%C5%91_Cave_in_Szalajka_Valley%2C_Szilv%C3%A1sv%C3%A1rad%2C_2016_Hungary.jpg",
@@ -721,7 +855,7 @@
         "commonsTitle": "File:Istállós-kő Cave in Szalajka Valley, Szilvásvárad, 2016 Hungary.jpg"
       },
       {
-        "src": "images/trip-map/20260722.2/szalajka-valley/04.webp",
+        "src": "images/trip-map/20260722.3/szalajka-valley/04.webp",
         "sourceType": "wikimedia",
         "sourceTitle": "File:Mk48 403 Szalajka-Fátyolvízesés állomásra érkezik négy teli vagonnal (Birincsik józsef).JPG",
         "sourceUrl": "https://commons.wikimedia.org/wiki/File:Mk48%20403%20Szalajka-F%C3%A1tyolv%C3%ADzes%C3%A9s%20%C3%A1llom%C3%A1sra%20%C3%A9rkezik%20n%C3%A9gy%20teli%20vagonnal%20(Birincsik%20j%C3%B3zsef).JPG",
@@ -734,7 +868,7 @@
         "commonsTitle": "File:Mk48 403 Szalajka-Fátyolvízesés állomásra érkezik négy teli vagonnal (Birincsik józsef).JPG"
       },
       {
-        "src": "images/trip-map/20260722.2/szalajka-valley/05.webp",
+        "src": "images/trip-map/20260722.3/szalajka-valley/05.webp",
         "sourceType": "wikimedia",
         "sourceTitle": "File:Szalajka Spring, Szilvásvárad, 2016 Hungary.jpg",
         "sourceUrl": "https://commons.wikimedia.org/wiki/File:Szalajka%20Spring,%20Szilv%C3%A1sv%C3%A1rad,%202016%20Hungary.jpg",
@@ -749,7 +883,7 @@
     ],
     "aggtelek-baradla": [
       {
-        "src": "images/trip-map/20260722.2/aggtelek-baradla/01.webp",
+        "src": "images/trip-map/20260722.3/aggtelek-baradla/01.webp",
         "sourceType": "wikimedia",
         "sourceTitle": "File:Baradla-barlang aggteleki főbejárat.jpg",
         "sourceUrl": "https://commons.wikimedia.org/wiki/File:Baradla-barlang%20aggteleki%20f%C5%91bej%C3%A1rat.jpg",
@@ -762,7 +896,7 @@
         "commonsTitle": "File:Baradla-barlang aggteleki főbejárat.jpg"
       },
       {
-        "src": "images/trip-map/20260722.2/aggtelek-baradla/02.webp",
+        "src": "images/trip-map/20260722.3/aggtelek-baradla/02.webp",
         "sourceType": "wikimedia",
         "sourceTitle": "File:Aggtelek - Baradla.jpg",
         "sourceUrl": "https://commons.wikimedia.org/wiki/File:Aggtelek%20-%20Baradla.jpg",
@@ -775,7 +909,7 @@
         "commonsTitle": "File:Aggtelek - Baradla.jpg"
       },
       {
-        "src": "images/trip-map/20260722.2/aggtelek-baradla/03.webp",
+        "src": "images/trip-map/20260722.3/aggtelek-baradla/03.webp",
         "sourceType": "wikimedia",
         "sourceTitle": "File:Aggtelek National Park, Baradla Cave.jpg",
         "sourceUrl": "https://commons.wikimedia.org/wiki/File:Aggtelek%20National%20Park,%20Baradla%20Cave.jpg",
@@ -788,7 +922,7 @@
         "commonsTitle": "File:Aggtelek National Park, Baradla Cave.jpg"
       },
       {
-        "src": "images/trip-map/20260722.2/aggtelek-baradla/04.webp",
+        "src": "images/trip-map/20260722.3/aggtelek-baradla/04.webp",
         "sourceType": "wikimedia",
         "sourceTitle": "File:Hungary Baradla.jpg",
         "sourceUrl": "https://commons.wikimedia.org/wiki/File:Hungary%20Baradla.jpg",
@@ -801,22 +935,22 @@
         "commonsTitle": "File:Hungary Baradla.jpg"
       },
       {
-        "src": "images/trip-map/20260722.2/aggtelek-baradla/05.webp",
-        "sourceType": "wikimedia",
-        "sourceTitle": "File:Aggtelek02.JPG",
-        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Aggtelek02.JPG",
-        "alt": "Illuminated limestone chamber and visitor walkway inside Baradla Cave.",
-        "subject": "Baradla Cave chamber",
-        "credit": "Shingohu",
-        "license": "CC BY-SA 3.0",
-        "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/",
-        "verification": "The wide chamber, railings and visitors are clearly visible, giving an accurate sense of the cave’s scale.",
-        "commonsTitle": "File:Aggtelek02.JPG"
+        "src": "images/trip-map/20260722.3/aggtelek-baradla/05.webp",
+        "sourceType": "editorial",
+        "sourceTitle": "Baradla Cave Long Hike",
+        "sourceUrl": "https://www.showcaves.com/english/hu/showcaves/BaradlaHosszutura.html",
+        "alt": "Headlamp-lit hikers cross a simple metal footbridge over the rough, undeveloped floor of Baradla Cave during the Long Tour.",
+        "subject": "Baradla long-tour cavers",
+        "credit": "Show Caves of the World",
+        "license": "Public domain",
+        "licenseUrl": "https://www.showcaves.com/english/hu/showcaves/BaradlaHosszutura.html",
+        "verification": "The source identifies this as the Aggtelek-to-Jósvafő Baradla Long Tour; hikers, personal lights, the rough floor and its simple bridge are all clearly visible.",
+        "assetUrl": "https://www.showcaves.com/images/Big/D300-0339.jpg"
       }
     ],
     "boldogko-castle": [
       {
-        "src": "images/trip-map/20260722.2/boldogko-castle/01.webp",
+        "src": "images/trip-map/20260722.3/boldogko-castle/01.webp",
         "sourceType": "wikimedia",
         "sourceTitle": "File:Boldogkő - Castle.jpg",
         "sourceUrl": "https://commons.wikimedia.org/wiki/File:Boldogk%C5%91%20-%20Castle.jpg",
@@ -829,7 +963,7 @@
         "commonsTitle": "File:Boldogkő - Castle.jpg"
       },
       {
-        "src": "images/trip-map/20260722.2/boldogko-castle/02.webp",
+        "src": "images/trip-map/20260722.3/boldogko-castle/02.webp",
         "sourceType": "wikimedia",
         "sourceTitle": "File:Boldogkő Castle - Hungary - entrance.jpg",
         "sourceUrl": "https://commons.wikimedia.org/wiki/File:Boldogk%C5%91%20Castle%20-%20Hungary%20-%20entrance.jpg",
@@ -842,7 +976,7 @@
         "commonsTitle": "File:Boldogkő Castle - Hungary - entrance.jpg"
       },
       {
-        "src": "images/trip-map/20260722.2/boldogko-castle/03.webp",
+        "src": "images/trip-map/20260722.3/boldogko-castle/03.webp",
         "sourceType": "wikimedia",
         "sourceTitle": "File:Boldogkő Castle - Hungary - the courtyard walls.jpg",
         "sourceUrl": "https://commons.wikimedia.org/wiki/File:Boldogk%C5%91%20Castle%20-%20Hungary%20-%20the%20courtyard%20walls.jpg",
@@ -855,7 +989,7 @@
         "commonsTitle": "File:Boldogkő Castle - Hungary - the courtyard walls.jpg"
       },
       {
-        "src": "images/trip-map/20260722.2/boldogko-castle/04.webp",
+        "src": "images/trip-map/20260722.3/boldogko-castle/04.webp",
         "sourceType": "wikimedia",
         "sourceTitle": "File:Boldogkő Castle - Hungary.jpg",
         "sourceUrl": "https://commons.wikimedia.org/wiki/File:Boldogk%C5%91%20Castle%20-%20Hungary.jpg",
@@ -868,7 +1002,7 @@
         "commonsTitle": "File:Boldogkő Castle - Hungary.jpg"
       },
       {
-        "src": "images/trip-map/20260722.2/boldogko-castle/05.webp",
+        "src": "images/trip-map/20260722.3/boldogko-castle/05.webp",
         "sourceType": "wikimedia",
         "sourceTitle": "File:Boldogkő Castle - wide panorama - Hungary.jpg",
         "sourceUrl": "https://commons.wikimedia.org/wiki/File:Boldogk%C5%91%20Castle%20-%20wide%20panorama%20-%20Hungary.jpg",
@@ -883,7 +1017,7 @@
     ],
     "sarospatak-rakoczi": [
       {
-        "src": "images/trip-map/20260722.2/sarospatak-rakoczi/01.webp",
+        "src": "images/trip-map/20260722.3/sarospatak-rakoczi/01.webp",
         "sourceType": "wikimedia",
         "sourceTitle": "File:Rákóczi vár.JPG",
         "sourceUrl": "https://commons.wikimedia.org/wiki/File:R%C3%A1k%C3%B3czi_v%C3%A1r.JPG",
@@ -896,7 +1030,7 @@
         "commonsTitle": "File:Rákóczi vár.JPG"
       },
       {
-        "src": "images/trip-map/20260722.2/sarospatak-rakoczi/02.webp",
+        "src": "images/trip-map/20260722.3/sarospatak-rakoczi/02.webp",
         "sourceType": "wikimedia",
         "sourceTitle": "File:Sárospatak Castle, 2021-08-17 02.jpg",
         "sourceUrl": "https://commons.wikimedia.org/wiki/File:S%C3%A1rospatak_Castle%2C_2021-08-17_02.jpg",
@@ -909,7 +1043,7 @@
         "commonsTitle": "File:Sárospatak Castle, 2021-08-17 02.jpg"
       },
       {
-        "src": "images/trip-map/20260722.2/sarospatak-rakoczi/03.webp",
+        "src": "images/trip-map/20260722.3/sarospatak-rakoczi/03.webp",
         "sourceType": "wikimedia",
         "sourceTitle": "File:Medieval gun foundry reconstruction in Sárospatak 01.jpg",
         "sourceUrl": "https://commons.wikimedia.org/wiki/File:Medieval_gun_foundry_reconstruction_in_S%C3%A1rospatak_01.jpg",
@@ -922,7 +1056,7 @@
         "commonsTitle": "File:Medieval gun foundry reconstruction in Sárospatak 01.jpg"
       },
       {
-        "src": "images/trip-map/20260722.2/sarospatak-rakoczi/04.webp",
+        "src": "images/trip-map/20260722.3/sarospatak-rakoczi/04.webp",
         "sourceType": "wikimedia",
         "sourceTitle": "File:Castle, Red tower SE, 2020 Sárospatak.jpg",
         "sourceUrl": "https://commons.wikimedia.org/wiki/File:Castle%2C_Red_tower_SE%2C_2020_S%C3%A1rospatak.jpg",
@@ -935,7 +1069,7 @@
         "commonsTitle": "File:Castle, Red tower SE, 2020 Sárospatak.jpg"
       },
       {
-        "src": "images/trip-map/20260722.2/sarospatak-rakoczi/05.webp",
+        "src": "images/trip-map/20260722.3/sarospatak-rakoczi/05.webp",
         "sourceType": "wikimedia",
         "sourceTitle": "File:Rákóczi Múzeum, interior, Sárospatak castle 01.jpg",
         "sourceUrl": "https://commons.wikimedia.org/wiki/File:R%C3%A1k%C3%B3czi_M%C3%BAzeum%2C_interior%2C_S%C3%A1rospatak_castle_01.jpg",
@@ -950,7 +1084,7 @@
     ],
     "fuzer-castle": [
       {
-        "src": "images/trip-map/20260722.2/fuzer-castle/01.webp",
+        "src": "images/trip-map/20260722.3/fuzer-castle/01.webp",
         "sourceType": "wikimedia",
         "sourceTitle": "File:Fuzeri fellegvar molnar gergely.jpg",
         "sourceUrl": "https://commons.wikimedia.org/wiki/File:Fuzeri_fellegvar_molnar_gergely.jpg",
@@ -963,7 +1097,7 @@
         "commonsTitle": "File:Fuzeri fellegvar molnar gergely.jpg"
       },
       {
-        "src": "images/trip-map/20260722.2/fuzer-castle/02.webp",
+        "src": "images/trip-map/20260722.3/fuzer-castle/02.webp",
         "sourceType": "wikimedia",
         "sourceTitle": "File:A füzéri vár távolról.jpg",
         "sourceUrl": "https://commons.wikimedia.org/wiki/File:A_f%C3%BCz%C3%A9ri_v%C3%A1r_t%C3%A1volr%C3%B3l.jpg",
@@ -976,7 +1110,7 @@
         "commonsTitle": "File:A füzéri vár távolról.jpg"
       },
       {
-        "src": "images/trip-map/20260722.2/fuzer-castle/03.webp",
+        "src": "images/trip-map/20260722.3/fuzer-castle/03.webp",
         "sourceType": "wikimedia",
         "sourceTitle": "File:Füzér Vár a kápolna rekonstruált mennyezete.jpg",
         "sourceUrl": "https://commons.wikimedia.org/wiki/File:F%C3%BCz%C3%A9r_V%C3%A1r_a_k%C3%A1polna_rekonstru%C3%A1lt_mennyezete.jpg",
@@ -989,7 +1123,7 @@
         "commonsTitle": "File:Füzér Vár a kápolna rekonstruált mennyezete.jpg"
       },
       {
-        "src": "images/trip-map/20260722.2/fuzer-castle/04.webp",
+        "src": "images/trip-map/20260722.3/fuzer-castle/04.webp",
         "sourceType": "wikimedia",
         "sourceTitle": "File:Füzéri vár bejárata.jpg",
         "sourceUrl": "https://commons.wikimedia.org/wiki/File:F%C3%BCz%C3%A9ri_v%C3%A1r_bej%C3%A1rata.jpg",
@@ -1002,7 +1136,7 @@
         "commonsTitle": "File:Füzéri vár bejárata.jpg"
       },
       {
-        "src": "images/trip-map/20260722.2/fuzer-castle/05.webp",
+        "src": "images/trip-map/20260722.3/fuzer-castle/05.webp",
         "sourceType": "wikimedia",
         "sourceTitle": "File:Füzér vára - 2014.06.19 (18).JPG",
         "sourceUrl": "https://commons.wikimedia.org/wiki/File:F%C3%BCz%C3%A9r_v%C3%A1ra_-_2014.06.19_%2818%29.JPG",
@@ -1017,7 +1151,7 @@
     ],
     "regec-castle": [
       {
-        "src": "images/trip-map/20260722.2/regec-castle/01.webp",
+        "src": "images/trip-map/20260722.3/regec-castle/01.webp",
         "sourceType": "wikimedia",
         "sourceTitle": "File:Regéc vára - légi fotó.jpg",
         "sourceUrl": "https://commons.wikimedia.org/wiki/File:Reg%C3%A9c_v%C3%A1ra_-_l%C3%A9gi_fot%C3%B3.jpg",
@@ -1030,7 +1164,7 @@
         "commonsTitle": "File:Regéc vára - légi fotó.jpg"
       },
       {
-        "src": "images/trip-map/20260722.2/regec-castle/02.webp",
+        "src": "images/trip-map/20260722.3/regec-castle/02.webp",
         "sourceType": "wikimedia",
         "sourceTitle": "File:Regéc Castle - Gateway to the South Tower.jpg",
         "sourceUrl": "https://commons.wikimedia.org/wiki/File:Reg%C3%A9c_Castle_-_Gateway_to_the_South_Tower.jpg",
@@ -1043,7 +1177,7 @@
         "commonsTitle": "File:Regéc Castle - Gateway to the South Tower.jpg"
       },
       {
-        "src": "images/trip-map/20260722.2/regec-castle/03.webp",
+        "src": "images/trip-map/20260722.3/regec-castle/03.webp",
         "sourceType": "wikimedia",
         "sourceTitle": "File:Regéc Castle - view from the south tower - the middle part of palace.jpg",
         "sourceUrl": "https://commons.wikimedia.org/wiki/File:Reg%C3%A9c_Castle_-_view_from_the_south_tower_-_the_middle_part_of_palace.jpg",
@@ -1056,7 +1190,7 @@
         "commonsTitle": "File:Regéc Castle - view from the south tower - the middle part of palace.jpg"
       },
       {
-        "src": "images/trip-map/20260722.2/regec-castle/04.webp",
+        "src": "images/trip-map/20260722.3/regec-castle/04.webp",
         "sourceType": "wikimedia",
         "sourceTitle": "File:Kilátás a Regéci vár ablakából.jpg",
         "sourceUrl": "https://commons.wikimedia.org/wiki/File:Kil%C3%A1t%C3%A1s_a_Reg%C3%A9ci_v%C3%A1r_ablak%C3%A1b%C3%B3l.jpg",
@@ -1069,7 +1203,7 @@
         "commonsTitle": "File:Kilátás a Regéci vár ablakából.jpg"
       },
       {
-        "src": "images/trip-map/20260722.2/regec-castle/05.webp",
+        "src": "images/trip-map/20260722.3/regec-castle/05.webp",
         "sourceType": "wikimedia",
         "sourceTitle": "File:Regéc, vár (1).jpg",
         "sourceUrl": "https://commons.wikimedia.org/wiki/File:Reg%C3%A9c,_v%C3%A1r_(1).jpg",
@@ -1084,7 +1218,7 @@
     ],
     "zemplen-adventure-park": [
       {
-        "src": "images/trip-map/20260722.2/zemplen-adventure-park/01.webp",
+        "src": "images/trip-map/20260722.3/zemplen-adventure-park/01.webp",
         "sourceType": "wikimedia",
         "sourceTitle": "File:Hungary Satoraljaujhely - Zemplén Adventure Park - bob track and chairlift.jpg",
         "sourceUrl": "https://commons.wikimedia.org/wiki/File:Hungary_Satoraljaujhely_-_Zempl%C3%A9n_Adventure_Park_-_bob_track_and_chairlift.jpg",
@@ -1097,7 +1231,7 @@
         "commonsTitle": "File:Hungary Satoraljaujhely - Zemplén Adventure Park - bob track and chairlift.jpg"
       },
       {
-        "src": "images/trip-map/20260722.2/zemplen-adventure-park/02.webp",
+        "src": "images/trip-map/20260722.3/zemplen-adventure-park/02.webp",
         "sourceType": "official",
         "sourceTitle": "Extreme zip lines Sólyom 1 and Sólyom 2 — Zemplén Adventure Park",
         "sourceUrl": "https://zemplenkalandpark.hu/elmenyek/extrem-atcsuszopalyak-a-solyom1-es-a-solyom2/",
@@ -1110,7 +1244,7 @@
         "verification": "Official attraction image visually shows two harnessed riders on the parallel Sólyom cables, with the town and Zemplén landscape clearly visible below."
       },
       {
-        "src": "images/trip-map/20260722.2/zemplen-adventure-park/03.webp",
+        "src": "images/trip-map/20260722.3/zemplen-adventure-park/03.webp",
         "sourceType": "official",
         "sourceTitle": "Bridge of National Unity — Zemplén 723",
         "sourceUrl": "https://zemplen723.eu/en/",
@@ -1123,7 +1257,7 @@
         "verification": "Official aerial image clearly shows the full bridge crossing the valley and its relationship to the town."
       },
       {
-        "src": "images/trip-map/20260722.2/zemplen-adventure-park/04.webp",
+        "src": "images/trip-map/20260722.3/zemplen-adventure-park/04.webp",
         "sourceType": "official",
         "sourceTitle": "High Ropes Course — Zemplén Adventure Park",
         "sourceUrl": "https://zemplen723.eu/en/",
@@ -1136,7 +1270,7 @@
         "verification": "Official image clearly shows a participant clipped into the elevated forest obstacle course."
       },
       {
-        "src": "images/trip-map/20260722.2/zemplen-adventure-park/05.webp",
+        "src": "images/trip-map/20260722.3/zemplen-adventure-park/05.webp",
         "sourceType": "official",
         "sourceTitle": "Dongó Cable Car — Zemplén Adventure Park",
         "sourceUrl": "https://zemplen723.eu/en/",

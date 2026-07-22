@@ -19,12 +19,15 @@ const build = readFileSync(new URL("./deploy/build.sh", import.meta.url), "utf8"
 const serve = readFileSync(new URL("./scripts/serve-local-site.sh", import.meta.url), "utf8");
 const photoDownloader = readFileSync(new URL("./scripts/download-trip-map-photos.mjs", import.meta.url), "utf8");
 const allStops = [...data.loops.A, ...data.loops.B];
+const newStopIds = new Set(["balatonibob-leisure-park", "csodabogyos-adventure-cave"]);
 const expectedGeo = {
   "zamardi-adventure-park": [46.885144, 17.969299, "/way/231872378"],
+  "balatonibob-leisure-park": [47.070604, 18.026418, "balatonibob.hu/en"],
   "balatonfured-tagore": [46.956661, 17.902681, "/way/27016479"],
   "tihany-abbey": [46.913735, 17.889704, "/way/178673759"],
   "tapolca-lake-cave": [46.883255, 17.44346, "/way/170502522"],
   "szigliget-castle": [46.804679, 17.436359, "/relation/8167589"],
+  "csodabogyos-adventure-cave": [46.792263, 17.37005, "bfnp.hu/en/latogatohely-1/csodabogyos"],
   "heviz-thermal-lake": [46.786822, 17.192817, "/way/10418191"],
   "hegyestu-kapolcs": [46.889404, 17.647343, "/node/3081517738"],
   "pecs-zsolnay": [46.077908, 18.248229, "/way/314723496"],
@@ -40,20 +43,27 @@ const expectedGeo = {
 };
 const approvedOfficialDomains = new Set([
   "zamardikalandpark.hu",
+  "balatonibob.hu",
   "bfnp.hu",
+  "csodabogyos.hu",
   "muveszetekvolgye.hu",
+  "szilvasvaradbob.hu",
   "zsolnaynegyed.hu",
   "egrivar.hu",
   "zemplen723.eu",
   "zemplenkalandpark.hu",
 ]);
+const approvedEditorialDomains = new Set(["showcaves.com"]);
 function isApprovedOfficialHost(hostname) {
   return [...approvedOfficialDomains].some((domain) => hostname === domain || hostname.endsWith(`.${domain}`));
 }
+function isApprovedEditorialHost(hostname) {
+  return [...approvedEditorialDomains].some((domain) => hostname === domain || hostname.endsWith(`.${domain}`));
+}
 
-test("all 17 researched stops have sourced coordinates inside Hungary", () => {
-  assert.equal(data.schemaVersion, 2);
-  assert.equal(allStops.length, 17);
+test("all 19 researched stops have sourced coordinates inside Hungary", () => {
+  assert.equal(data.schemaVersion, 4);
+  assert.equal(allStops.length, 19);
   assert.deepEqual(new Set(Object.keys(expectedGeo)), new Set(allStops.map((stop) => stop.id)));
   for (const stop of allStops) {
     const [expectedLat, expectedLng, expectedSource] = expectedGeo[stop.id];
@@ -70,15 +80,17 @@ test("all 17 researched stops have sourced coordinates inside Hungary", () => {
 
 test("explicit route topology resolves every stop without relying on data order", () => {
   const stopById = map.buildStopIndex(data);
-  assert.equal(stopById.size, 17);
+  assert.equal(stopById.size, 19);
 
   assert.deepEqual(map.ROUTES.A.mainOrder, [
     "zamardi-adventure-park",
+    "balatonibob-leisure-park",
     "balatonfured-tagore",
     "tihany-abbey",
     "hegyestu-kapolcs",
     "tapolca-lake-cave",
     "szigliget-castle",
+    "csodabogyos-adventure-cave",
     "heviz-thermal-lake",
   ]);
   assert.deepEqual(map.ROUTES.A.optionalPaths, [["budapest", "pecs-zsolnay", "zamardi-adventure-park"]]);
@@ -104,7 +116,7 @@ test("explicit route topology resolves every stop without relying on data order"
 
   const loopAPath = map.routeCoordinates(map.ROUTES.A, stopById);
   const loopBPath = map.routeCoordinates(map.ROUTES.B, stopById);
-  assert.equal(loopAPath.length, 9);
+  assert.equal(loopAPath.length, 11);
   assert.equal(loopBPath.length, 10);
   assert.deepEqual(loopAPath[0], map.BUDAPEST);
   assert.deepEqual(loopAPath.at(-1), map.BUDAPEST);
@@ -140,7 +152,7 @@ test("every map stop has five unique, attributed, locally hosted photos", () => 
   const stopById = map.buildStopIndex(data);
   assert.equal(map.validatePhotoManifest(photos, stopById), true);
   assert.equal(photos.reviewedAt, "2026-07-22");
-  assert.equal(photos.assetRevision, "20260722.2");
+  assert.equal(photos.assetRevision, "20260722.3");
   assert.deepEqual(new Set(Object.keys(photos.stops)), new Set(allStops.map((stop) => stop.id)));
 
   const hashes = new Set();
@@ -150,7 +162,7 @@ test("every map stop has five unique, attributed, locally hosted photos", () => 
     assert.equal(stopPhotos.length, 5, `${stop.id}: expected five photos`);
     for (const [index, photo] of stopPhotos.entries()) {
       const source = new URL(photo.sourceUrl);
-      assert.ok(source.hostname === "commons.wikimedia.org" || source.hostname === "www.flickr.com" || isApprovedOfficialHost(source.hostname), `${stop.id} #${index + 1}: source host is unsupported`);
+      assert.ok(source.hostname === "commons.wikimedia.org" || source.hostname === "www.flickr.com" || isApprovedOfficialHost(source.hostname) || isApprovedEditorialHost(source.hostname), `${stop.id} #${index + 1}: source host is unsupported`);
       if (photo.sourceType === "wikimedia") {
         assert.match(photo.commonsTitle, /^File:.+/, `${stop.id} #${index + 1}: missing Commons title`);
         assert.equal(source.hostname, "commons.wikimedia.org", `${stop.id} #${index + 1}: Wikimedia source is inconsistent`);
@@ -158,15 +170,23 @@ test("every map stop has five unique, attributed, locally hosted photos", () => 
       } else if (photo.sourceType === "flickr") {
         assert.equal(source.hostname, "www.flickr.com", `${stop.id} #${index + 1}: Flickr source is inconsistent`);
         assert.equal(new URL(photo.assetUrl).hostname, "live.staticflickr.com", `${stop.id} #${index + 1}: Flickr asset host is unsupported`);
-      } else {
+      } else if (photo.sourceType === "official") {
         assert.equal(photo.sourceType, "official", `${stop.id} #${index + 1}: source type is unsupported`);
         assert.ok(isApprovedOfficialHost(source.hostname), `${stop.id} #${index + 1}: official source is inconsistent`);
         assert.ok(isApprovedOfficialHost(new URL(photo.assetUrl).hostname), `${stop.id} #${index + 1}: official asset host is unsupported`);
         assert.equal(source.hostname.replace(/^www\./, ""), new URL(photo.assetUrl).hostname.replace(/^www\./, ""), `${stop.id} #${index + 1}: official source and asset hosts differ`);
+      } else {
+        assert.equal(photo.sourceType, "editorial", `${stop.id} #${index + 1}: source type is unsupported`);
+        assert.ok(isApprovedEditorialHost(source.hostname), `${stop.id} #${index + 1}: editorial source is inconsistent`);
+        assert.ok(isApprovedEditorialHost(new URL(photo.assetUrl).hostname), `${stop.id} #${index + 1}: editorial asset host is unsupported`);
+        assert.equal(source.hostname.replace(/^www\./, ""), new URL(photo.assetUrl).hostname.replace(/^www\./, ""), `${stop.id} #${index + 1}: editorial source and asset hosts differ`);
       }
       if (photo.sourceType === "official") {
-        assert.equal(photo.license, "Official promotional photo", `${stop.id} #${index + 1}: official photo rights label changed`);
+        assert.match(photo.license, /^Official promotional (?:photo|graphic)$/, `${stop.id} #${index + 1}: official rights label changed`);
         assert.equal(new URL(photo.licenseUrl).hostname, source.hostname, `${stop.id} #${index + 1}: official rights link is inconsistent`);
+      } else if (photo.sourceType === "editorial") {
+        assert.match(photo.license, /^(?:Copyright |Public domain$)/, `${stop.id} #${index + 1}: editorial rights label changed`);
+        assert.equal(new URL(photo.licenseUrl).hostname, source.hostname, `${stop.id} #${index + 1}: editorial rights link is inconsistent`);
       } else if (photo.license === "Public domain") {
         assert.equal(new URL(photo.licenseUrl).hostname, "commons.wikimedia.org", `${stop.id} #${index + 1}: public-domain link is inconsistent`);
       } else if (photo.license === "Copyrighted free use") {
@@ -199,7 +219,7 @@ test("every map stop has five unique, attributed, locally hosted photos", () => 
       assert.ok(Math.min(width, height) >= 300 && Math.max(width, height) >= 450, `${photo.src}: photo is too small (${width}×${height})`);
     }
   }
-  assert.equal(hashes.size, 85);
+  assert.equal(hashes.size, 95);
   assert.ok(totalBytes <= 30 * 1024 * 1024, `photo set exceeds 30 MiB (${totalBytes} bytes)`);
 });
 
@@ -219,6 +239,27 @@ test("photo downloads validate every redirect before following it", () => {
   assert.match(photoDownloader, /redirect:\s*"manual"/);
   assert.match(photoDownloader, /if \(!isAllowed\(currentUrl\)\)/);
   assert.match(photoDownloader, /new URL\(location, currentUrl\)/);
+  assert.match(photoDownloader, /approvedWikimediaDomains/);
+  assert.match(photoDownloader, /"Commons metadata request",\s*\(candidate\) => candidate\.protocol === "https:" && isApprovedWikimediaHost\(candidate\.hostname\)/);
+  assert.match(photoDownloader, /`Image download for \$\{photo\.commonsTitle\}`,\s*\(candidate\) => candidate\.protocol === "https:" && isApprovedWikimediaHost\(candidate\.hostname\)/);
+  assert.doesNotMatch(photoDownloader, /fetchWithRetry\(imageUrl/);
+});
+
+test("incremental photo rebuilds reject bad stop filters and stay targeted", () => {
+  const downloader = fileURLToPath(new URL("./scripts/download-trip-map-photos.mjs", import.meta.url));
+  const cwd = fileURLToPath(new URL(".", import.meta.url));
+  const empty = spawnSync(process.execPath, [downloader, "--stop="], { cwd, encoding: "utf8" });
+  assert.notEqual(empty.status, 0);
+  assert.match(empty.stderr, /--stop requires a non-empty trip-map stop id/);
+
+  const unknown = spawnSync(process.execPath, [downloader, "--stop=not-a-trip-stop"], { cwd, encoding: "utf8" });
+  assert.notEqual(unknown.status, 0);
+  assert.match(unknown.stderr, /Unknown trip-map stop/);
+
+  const valid = spawnSync(process.execPath, [downloader, "--stop=balatonibob-leisure-park"], { cwd, encoding: "utf8" });
+  assert.equal(valid.status, 0, valid.stderr || valid.stdout);
+  assert.match(valid.stdout, /Trip-map photo set ready: 5 images\./);
+  assert.doesNotMatch(valid.stdout, /szalajka-valley|aggtelek-baradla/);
 });
 
 test("photo manifest validation rejects incomplete and duplicated galleries", () => {
@@ -270,12 +311,15 @@ test("map page provides two maps, route filters, legend, and accessible fallback
   assert.match(page, /id="routeMap"[^>]+role="region"/);
   assert.match(page, /id="orientationMap"[^>]+role="region"/);
   assert.match(page, /id="detailPhotos"/);
+  assert.match(page, /id="detailPayoff"[^>]+aria-label="Worth-it payoff"/);
+  assert.ok(page.indexOf('id="detailPayoff"') < page.indexOf('id="detailPhotos"'), "worth-it verdict must appear before the gallery");
   assert.equal([...page.matchAll(/<dialog[^>]+id="photoLightbox"/g)].length, 1);
   assert.match(page, /aria-labelledby="lightboxTitle" aria-describedby="lightboxDescription"/);
   assert.match(page, /data-lightbox-action="previous"[^>]+aria-label="Previous photo"/);
   assert.match(page, /data-lightbox-action="next"[^>]+aria-label="Next photo"/);
   assert.match(page, /data-lightbox-action="close"[^>]+aria-label="Close photo gallery"/);
-  assert.match(page, /id="lightboxCount" aria-live="polite"/);
+  assert.match(page, /id="lightboxStatus" aria-live="polite"/);
+  assert.match(mapScript, /lightboxStatus\.textContent = `Photo \$\{nextIndex \+ 1\} of \$\{photos\.length\}: \$\{photo\.subject\}`/);
   assert.equal([...page.matchAll(/data-map-mode="(?:all|A|B)"/g)].length, 3);
   assert.match(page, /Loop A · Balaton/);
   assert.match(page, /Loop B · north-east/);
@@ -290,9 +334,19 @@ test("map page provides two maps, route filters, legend, and accessible fallback
   assert.match(mapScript, /#place-\(\[a-z0-9-\]\+\)/);
   assert.match(mapScript, /aria-pressed/);
   assert.doesNotMatch(mapScript, /aria-selected/);
-  assert.match(page, /<script src="trip-map-photos\.js\?v=20260722\.2"><\/script>/);
-  assert.match(page, /<script src="trip-location-data\.js\?v=20260722\.2"><\/script>/);
-  assert.match(page, /<script src="trip-map\.js\?v=20260722\.2"><\/script>/);
+  assert.match(page, /<script src="trip-map-photos\.js\?v=20260722\.3"><\/script>/);
+  assert.match(page, /<script src="trip-location-data\.js\?v=20260722\.3"><\/script>/);
+  assert.match(page, /<script src="trip-map\.js\?v=20260722\.3"><\/script>/);
+  assert.match(mapScript, /class="stop-button-payoff/);
+  assert.match(mapScript, /stop-button-payoff \$\{escapeHtml\(stop\.worth\.verdict\)\}/);
+  assert.doesNotMatch(mapScript, /stop-button-payoff \$\{escapeHtml\(stop\.worth\.payoff\)\}/);
+  assert.match(page, /\.stop-button-payoff\.must\{/);
+  assert.match(page, /\.stop-button-payoff\.maybe\{/);
+  assert.match(mapScript, /WORTH_VERDICTS/);
+  assert.match(mapScript, /🔥 Must-do/);
+  assert.match(mapScript, /↪ Easy skip/);
+  assert.match(mapScript, /Why it earns the stop:/);
+  assert.match(mapScript, /bindPopup\(`[\s\S]*?worthLabel\(stop\)/);
   assert.match(mapScript, /class="photo-grid"/);
   assert.match(mapScript, /showModal\(\)/);
   assert.match(mapScript, /event\.key === "ArrowLeft"/);
@@ -315,15 +369,15 @@ test("every primary page links to the route-map tab with the correct depth", () 
 });
 
 test("both guide entry points cache-bust the current location data generation", () => {
-  assert.match(page, /<script src="trip-location-data\.js\?v=20260722\.2"><\/script>/);
-  assert.match(planPage, /<script src="trip-location-data\.js\?v=20260722\.2"><\/script>/);
+  assert.match(page, /<script src="trip-location-data\.js\?v=20260722\.3"><\/script>/);
+  assert.match(planPage, /<script src="trip-location-data\.js\?v=20260722\.3"><\/script>/);
 });
 
 test("the previous photo generation remains available to already-open pages", () => {
-  for (const stop of allStops) {
+  for (const stop of allStops.filter((candidate) => !newStopIds.has(candidate.id))) {
     for (let index = 1; index <= 5; index += 1) {
       const filename = String(index).padStart(2, "0");
-      const previousPhoto = new URL(`./images/trip-map/20260722.1/${stop.id}/${filename}.webp`, import.meta.url);
+      const previousPhoto = new URL(`./images/trip-map/20260722.2/${stop.id}/${filename}.webp`, import.meta.url);
       assert.ok(statSync(previousPhoto).size >= 12_000, `${stop.id} #${filename}: previous photo generation is missing`);
     }
   }

@@ -14,3 +14,8 @@
 
 - Use the repository's headless Camoufox workflow and its local cache. Do not use Apify unless the user explicitly requests it.
 - Clear Tripadvisor's locale filter and ground activity briefs in the detail-page description plus up to 10 all-language reviews; preserve names/diacritics and ship the synthesis in English. Keep raw pages and review text gitignored; ship only concise summaries and source links.
+
+## Recommendation fit
+
+- Treat a stop as worth the trip when it is fun, rare, emotionally memorable, exceptionally beautiful, or backed by unusually strong traveler consensus. A quiet experience can be a must-do if it is genuinely distinctive.
+- Do not promote interchangeable castles, promenades, ordinary caves, or viewpoint-only hikes without a specific twist, exceptional setting, or unusually strong evidence. Explain the actual payoff and the required effort separately.
