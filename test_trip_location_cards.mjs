@@ -32,7 +32,7 @@ const expectedLoopBIds = [
 ];
 
 test("location guide has complete, current data for both loops", () => {
-  assert.equal(data.schemaVersion, 1);
+  assert.equal(data.schemaVersion, 2);
   assert.equal(data.checkedAt, "2026-07-22");
   assert.deepEqual(data.loops.A.map((stop) => stop.id), expectedLoopAIds);
   assert.deepEqual(data.loops.B.map((stop) => stop.id), expectedLoopBIds);
@@ -45,6 +45,8 @@ test("location guide has complete, current data for both loops", () => {
     }
     assert.equal(typeof stop.icon, "string");
     assert.ok(stop.icon.length > 0, `${stop.id}: icon cannot be empty`);
+    assert.ok(Number.isFinite(stop.geo?.lat) && Number.isFinite(stop.geo?.lng), `${stop.id}: mapped coordinates are required`);
+    assert.match(stop.geo.sourceUrl, /^https:\/\//, `${stop.id}: coordinate source must use HTTPS`);
     assert.match(stop.id, /^[a-z0-9-]+$/);
     assert.ok(!ids.has(stop.id), `duplicate stop id: ${stop.id}`);
     ids.add(stop.id);
@@ -94,6 +96,7 @@ test("trip page loads the data and accessible renderer", () => {
   assert.match(renderer, /addEventListener\("hashchange", \(\) => revealHashTarget\(\)\)/);
   assert.match(renderer, /beforeprint/);
   assert.match(renderer, /afterprint/);
+  assert.match(renderer, /trip-map\.html#place-/);
 
   const linkedIds = new Set([...html.matchAll(/href="#(place-[a-z0-9-]+)"/g)].map((match) => match[1]));
   const expectedLinkedIds = new Set(stops.map((stop) => `place-${stop.id}`));

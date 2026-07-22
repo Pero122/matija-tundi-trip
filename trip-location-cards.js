@@ -64,7 +64,7 @@
           </dl>
           ${renderPriceDetails(stop.price)}
           <p class="caveat"><b>Know before deciding:</b> ${escapeHtml(stop.caveat)}</p>
-          <div class="stop-sources" aria-label="Sources for ${escapeHtml(stop.name)}">${sources}</div>
+          <div class="stop-sources" aria-label="Sources and map for ${escapeHtml(stop.name)}"><a href="trip-map.html#place-${escapeHtml(stop.id)}">View on route map</a>${sources}</div>
         </div>
       </details>`;
   }

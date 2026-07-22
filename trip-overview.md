@@ -79,9 +79,10 @@ Status at the 22 July check: Zemplén Adventure Park's live page marked the Sól
 - Choose **Loop A** if “holiday” means recovery, lake time and summer atmosphere.
 - Choose **Loop B** if it means collecting caves, castles and small adventures.
 
-The interactive comparison and reversible front-runner choice live in `trip-plan.html`.
+The interactive comparison and reversible front-runner choice live in `trip-plan.html`. The two color-coded routes, numbered stops and Budapest orientation view live in `trip-map.html`.
 
 ## Related
 
 - `maps-list-matija-tundi.md` / `.csv` — saved places and activity ideas
 - `trip-location-data.js` — researched decision-card facts, ratings, prices and sources
+- `trip-map.html` — interactive route comparison and per-stop Budapest orientation map
