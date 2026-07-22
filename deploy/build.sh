@@ -57,6 +57,35 @@ if [ "$versioned_scripts" != "4" ]; then
   exit 1
 fi
 
+# Keep the guide data and its renderer indivisible across atomic release swaps.
+# One HTML response now carries both modules, so no second request can cross the
+# public-symlink activation boundary and mix two generations.
+node --check ../trip-location-data.js
+node --check ../trip-location-cards.js
+if /usr/bin/grep -qi '</script' ../trip-location-data.js ../trip-location-cards.js; then
+  echo "trip-location modules cannot be safely inlined because they contain </script" >&2
+  exit 1
+fi
+trip_plan_inline="$release/trip-plan.inline.$$"
+/usr/bin/awk \
+  -v data="$script_dir/../trip-location-data.js" \
+  -v cards="$script_dir/../trip-location-cards.js" '
+  function dump(path, line) {
+    while ((getline line < path) > 0) print line
+    close(path)
+  }
+  /<script src="trip-location-data\.js([^\"]*)"><\/script>/ { print "<script>"; dump(data); next }
+  /<script src="trip-location-cards\.js([^\"]*)"><\/script>/ { dump(cards); print "</script>"; next }
+  { print }
+' "$release/trip-plan.html" > "$trip_plan_inline"
+/bin/mv -f "$trip_plan_inline" "$release/trip-plan.html"
+if /usr/bin/grep -q 'src="trip-location-' "$release/trip-plan.html"; then
+  echo "failed to inline both trip-location modules" >&2
+  exit 1
+fi
+/usr/bin/grep -q 'TRIP_LOCATION_DATA' "$release/trip-plan.html"
+/usr/bin/grep -q 'renderTripLocationCards' "$release/trip-plan.html"
+
 test -f "$release/budapest-london/tripadvisor/index.html"
 test -f "$release/budapest-london/tripadvisor/activity-briefs.js"
 test -f "$release/budapest-london/tripadvisor/activity-pricing.js"
@@ -86,6 +115,7 @@ fi
   --briefs "$release/budapest-london/tripadvisor/activity-briefs.js" \
   --pricing "$release/budapest-london/tripadvisor/activity-pricing.js"
 node --test \
+  ../test_trip_location_cards.mjs \
   ../budapest-london/tripadvisor/test_curated_activity_briefs.mjs \
   ../budapest-london/tripadvisor/test_discover_collaboration.mjs \
   ../budapest-london/tripadvisor/test_discover_pricing.mjs \

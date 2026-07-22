@@ -4,6 +4,18 @@
 >
 > London is canceled. The live decision is between two wine-optional Hungary road-trip loops.
 
+## Live decision — checked Wednesday 22 July
+
+The seven-night routes below are reference drafts for a **Thursday 23 July** departure. The realistic window before Monday's Budapest anchor is **23–26 July: four days / three nights**.
+
+Best fit for 23–26 July: one Balaton base, with **Zamárdi Adventure Park, Tihany, Tapolca Lake Cave and Szigliget Castle**, then **Hévíz or a slow lake day** before returning to Budapest. Kapolcs is lively rather than quiet once Valley of Arts begins on Friday 24 July. Pécs and the complete north-east loop need a later or longer trip.
+
+**Crowd strategy:** leave Budapest early Thursday rather than arriving Friday evening. Put Zamárdi on Thursday and Tihany first thing Friday; protect Saturday with a timed Tapolca ticket plus late Szigliget, then keep Sunday flexible for Hévíz at opening or the return drive.
+
+`trip-plan.html` now contains one source-backed decision card per stop, including what it is, why Matija may like it, why Tündi may like it, public rating, current adult prices, visit time and booking/weather caveats. The guide was checked **22 July 2026**; live status and checkout prices can still move.
+
+Status at the 22 July check: Zemplén Adventure Park's live page marked the Sólyom zipline and Dongó cable car temporarily closed for weather. Do not drive there for the zipline unless its live status confirms reopening that morning.
+
 ## Fixed anchors
 
 | Date | Event | Where |
@@ -11,7 +23,7 @@
 | **Fri 17 Jul** | VALMAR | Vajdahunyad Castle, Budapest |
 | **Mon 27 Jul** | Charlie Puth | Budapest |
 
-## Shared bookends
+## Original shared bookends (reference draft)
 
 - **17–18 Jul — Budapest (2 nights):** arrive from Vienna, VALMAR, then an easy city day or Danube Bend day trip.
 - **19–25 Jul — road trip (7 nights):** choose Loop A or Loop B below.
@@ -72,3 +84,4 @@ The interactive comparison and reversible front-runner choice live in `trip-plan
 ## Related
 
 - `maps-list-matija-tundi.md` / `.csv` — saved places and activity ideas
+- `trip-location-data.js` — researched decision-card facts, ratings, prices and sources
