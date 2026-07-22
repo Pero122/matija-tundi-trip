@@ -204,24 +204,46 @@ test("photo manifest validation rejects incomplete and duplicated galleries", ()
   assert.throws(() => map.validatePhotoManifest(duplicate, stopById), /Duplicate trip-photo source/);
 });
 
-test("gallery renderer includes five visible photos and complete source credits", () => {
+test("photo navigation wraps cleanly in both directions", () => {
+  assert.equal(map.wrapPhotoIndex(0, 5), 0);
+  assert.equal(map.wrapPhotoIndex(4, 5), 4);
+  assert.equal(map.wrapPhotoIndex(5, 5), 0);
+  assert.equal(map.wrapPhotoIndex(-1, 5), 4);
+  assert.equal(map.wrapPhotoIndex(-11, 5), 4);
+  assert.throws(() => map.wrapPhotoIndex(0, 0), /valid integers/);
+  assert.throws(() => map.wrapPhotoIndex(1.5, 5), /valid integers/);
+});
+
+test("gallery renderer opens five photos in-page and keeps complete source credits", () => {
   const stop = data.loops.A[0];
   const gallery = map.renderPhotoGallery(stop, photos);
   assert.equal([...gallery.matchAll(/<figure class="photo-card/g)].length, 5);
+  assert.equal([...gallery.matchAll(/<button class="photo-open"/g)].length, 5);
+  assert.deepEqual([...gallery.matchAll(/data-photo-index="(\d)"/g)].map((match) => Number(match[1])), [0, 1, 2, 3, 4]);
+  assert.equal([...gallery.matchAll(/aria-haspopup="dialog"/g)].length, 5);
+  assert.equal([...gallery.matchAll(/aria-controls="photoLightbox"/g)].length, 5);
   assert.equal([...gallery.matchAll(/<img src="images\/trip-map\//g)].length, 5);
   assert.equal([...gallery.matchAll(/loading="lazy"/g)].length, 5);
   assert.doesNotMatch(gallery, /loading="eager"/);
-  assert.equal([...gallery.matchAll(/target="_blank" rel="noopener noreferrer"/g)].length, 15);
+  assert.equal([...gallery.matchAll(/target="_blank" rel="noopener noreferrer"/g)].length, 10);
+  assert.doesNotMatch(gallery, /<a href="images\/trip-map\//);
+  assert.doesNotMatch(gallery, /onclick=|window\.open|javascript:/i);
   assert.match(gallery, /Five verified views/);
   assert.match(gallery, /checked against this stop or its immediate setting/);
+  assert.match(gallery, /Tap any photo to open the gallery/);
   assert.match(gallery, /Photo credits, sources &amp; rights/);
-  assert.doesNotMatch(gallery, /javascript:/i);
 });
 
 test("map page provides two maps, route filters, legend, and accessible fallbacks", () => {
   assert.match(page, /id="routeMap"[^>]+role="region"/);
   assert.match(page, /id="orientationMap"[^>]+role="region"/);
   assert.match(page, /id="detailPhotos"/);
+  assert.equal([...page.matchAll(/<dialog[^>]+id="photoLightbox"/g)].length, 1);
+  assert.match(page, /aria-labelledby="lightboxTitle" aria-describedby="lightboxDescription"/);
+  assert.match(page, /data-lightbox-action="previous"[^>]+aria-label="Previous photo"/);
+  assert.match(page, /data-lightbox-action="next"[^>]+aria-label="Next photo"/);
+  assert.match(page, /data-lightbox-action="close"[^>]+aria-label="Close photo gallery"/);
+  assert.match(page, /id="lightboxCount" aria-live="polite"/);
   assert.equal([...page.matchAll(/data-map-mode="(?:all|A|B)"/g)].length, 3);
   assert.match(page, /Loop A · Balaton/);
   assert.match(page, /Loop B · north-east/);
@@ -237,7 +259,19 @@ test("map page provides two maps, route filters, legend, and accessible fallback
   assert.match(mapScript, /aria-pressed/);
   assert.doesNotMatch(mapScript, /aria-selected/);
   assert.match(page, /<script src="trip-map-photos\.js\?v=20260722\.1"><\/script>/);
+  assert.match(page, /<script src="trip-map\.js\?v=20260722\.2"><\/script>/);
   assert.match(mapScript, /class="photo-grid"/);
+  assert.match(mapScript, /showModal\(\)/);
+  assert.match(mapScript, /event\.key === "ArrowLeft"/);
+  assert.match(mapScript, /event\.key === "ArrowRight"/);
+  assert.match(mapScript, /addEventListener\("cancel"/);
+  assert.match(mapScript, /addEventListener\("touchstart"/);
+  assert.match(mapScript, /addEventListener\("touchend"/);
+  assert.match(mapScript, /addEventListener\("touchcancel"/);
+  assert.match(mapScript, /lightboxOpener/);
+  assert.doesNotMatch(mapScript, /window\.open/);
+  assert.match(page, /@media\(prefers-reduced-motion:reduce\)[^{]*\{[^}]*html\{scroll-behavior:auto\}/);
+  assert.match(page, /\.photo-lightbox\.is-closing/);
 });
 
 test("every primary page links to the route-map tab with the correct depth", () => {
