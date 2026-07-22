@@ -1,10 +1,14 @@
 import assert from "node:assert/strict";
-import { readFileSync } from "node:fs";
+import { spawnSync } from "node:child_process";
+import { createHash } from "node:crypto";
+import { readFileSync, statSync } from "node:fs";
 import { createRequire } from "node:module";
 import test from "node:test";
+import { fileURLToPath } from "node:url";
 
 const require = createRequire(import.meta.url);
 const data = require("./trip-location-data.js");
+const photos = require("./trip-map-photos.js");
 const map = require("./trip-map.js");
 const page = readFileSync(new URL("./trip-map.html", import.meta.url), "utf8");
 const mapScript = readFileSync(new URL("./trip-map.js", import.meta.url), "utf8");
@@ -119,9 +123,105 @@ test("invalid topology and missing coordinates fail closed", () => {
   assert.throws(() => map.buildStopIndex(duplicate), /Duplicate trip stop/);
 });
 
+test("every map stop has five unique, attributed, locally hosted photos", () => {
+  const stopById = map.buildStopIndex(data);
+  assert.equal(map.validatePhotoManifest(photos, stopById), true);
+  assert.equal(photos.reviewedAt, "2026-07-22");
+  assert.equal(photos.assetRevision, "20260722.1");
+  assert.deepEqual(new Set(Object.keys(photos.stops)), new Set(allStops.map((stop) => stop.id)));
+
+  const hashes = new Set();
+  let totalBytes = 0;
+  for (const stop of allStops) {
+    const stopPhotos = photos.stops[stop.id];
+    assert.equal(stopPhotos.length, 5, `${stop.id}: expected five photos`);
+    for (const [index, photo] of stopPhotos.entries()) {
+      const source = new URL(photo.sourceUrl);
+      assert.ok(["commons.wikimedia.org", "www.flickr.com", "zamardikalandpark.hu", "www.zamardikalandpark.hu"].includes(source.hostname), `${stop.id} #${index + 1}: source host is unsupported`);
+      if (photo.sourceType === "wikimedia") {
+        assert.match(photo.commonsTitle, /^File:.+/, `${stop.id} #${index + 1}: missing Commons title`);
+        assert.equal(source.hostname, "commons.wikimedia.org", `${stop.id} #${index + 1}: Wikimedia source is inconsistent`);
+        assert.match(decodeURIComponent(source.pathname), /^\/wiki\/File:/, `${stop.id} #${index + 1}: source is not a Commons file page`);
+      } else if (photo.sourceType === "flickr") {
+        assert.equal(source.hostname, "www.flickr.com", `${stop.id} #${index + 1}: Flickr source is inconsistent`);
+        assert.equal(new URL(photo.assetUrl).hostname, "live.staticflickr.com", `${stop.id} #${index + 1}: Flickr asset host is unsupported`);
+      } else {
+        assert.equal(photo.sourceType, "official", `${stop.id} #${index + 1}: source type is unsupported`);
+        assert.match(source.hostname, /^(?:www\.)?zamardikalandpark\.hu$/, `${stop.id} #${index + 1}: official source is inconsistent`);
+        assert.match(new URL(photo.assetUrl).hostname, /^(?:.+\.)?zamardikalandpark\.hu$/, `${stop.id} #${index + 1}: official asset host is unsupported`);
+      }
+      if (photo.sourceType === "official") {
+        assert.equal(photo.license, "Official promotional photo", `${stop.id} #${index + 1}: official photo rights label changed`);
+        assert.equal(new URL(photo.licenseUrl).hostname, source.hostname, `${stop.id} #${index + 1}: official rights link is inconsistent`);
+      } else if (photo.license === "Public domain") {
+        assert.equal(new URL(photo.licenseUrl).hostname, "commons.wikimedia.org", `${stop.id} #${index + 1}: public-domain link is inconsistent`);
+      } else if (photo.license === "Copyrighted free use") {
+        assert.equal(new URL(photo.licenseUrl).hostname, "commons.wikimedia.org", `${stop.id} #${index + 1}: free-use rights link is inconsistent`);
+      } else {
+        assert.match(photo.licenseUrl, /^https:\/\/creativecommons\.org\/(?:licenses|publicdomain)\//, `${stop.id} #${index + 1}: license link is not Creative Commons`);
+      }
+      assert.ok(photo.alt.length >= 18, `${stop.id} #${index + 1}: alt text is too vague`);
+      assert.ok(photo.subject.length >= 5, `${stop.id} #${index + 1}: subject is too vague`);
+      assert.ok(photo.verification.length >= 30, `${stop.id} #${index + 1}: visual-verification note is too vague`);
+
+      const fileUrl = new URL(`./${photo.src}`, import.meta.url);
+      const filePath = fileURLToPath(fileUrl);
+      const file = readFileSync(fileUrl);
+      const size = statSync(fileUrl).size;
+      totalBytes += size;
+      assert.equal(file.subarray(0, 4).toString("ascii"), "RIFF", `${photo.src}: invalid WebP header`);
+      assert.equal(file.subarray(8, 12).toString("ascii"), "WEBP", `${photo.src}: invalid WebP signature`);
+      assert.ok(size >= 12_000, `${photo.src}: suspiciously small photo (${size} bytes)`);
+      assert.ok(size <= 900_000, `${photo.src}: photo exceeds the 900 KiB budget (${size} bytes)`);
+      const hash = createHash("sha256").update(file).digest("hex");
+      assert.ok(!hashes.has(hash), `${photo.src}: duplicate image content`);
+      hashes.add(hash);
+      const decoded = spawnSync("webpinfo", [filePath], { encoding: "utf8" });
+      assert.equal(decoded.status, 0, `${photo.src}: WebP decoder rejected the photo\n${decoded.stderr || decoded.stdout}`);
+      const dimensions = /Width:\s*(\d+)[\s\S]*?Height:\s*(\d+)/.exec(decoded.stdout);
+      assert.ok(dimensions, `${photo.src}: WebP dimensions were not reported`);
+      const width = Number(dimensions[1]);
+      const height = Number(dimensions[2]);
+      assert.ok(Math.min(width, height) >= 300 && Math.max(width, height) >= 450, `${photo.src}: photo is too small (${width}×${height})`);
+    }
+  }
+  assert.equal(hashes.size, 85);
+  assert.ok(totalBytes <= 30 * 1024 * 1024, `photo set exceeds 30 MiB (${totalBytes} bytes)`);
+});
+
+test("photo manifest validation rejects incomplete and duplicated galleries", () => {
+  const stopById = map.buildStopIndex(data);
+  const incomplete = structuredClone(photos);
+  incomplete.stops[allStops[0].id].pop();
+  assert.throws(() => map.validatePhotoManifest(incomplete, stopById), /exactly five photos/);
+
+  const duplicate = structuredClone(photos);
+  duplicate.stops[allStops[1].id][0].sourceUrl = duplicate.stops[allStops[0].id][0].sourceUrl;
+  duplicate.stops[allStops[1].id][0].sourceTitle = duplicate.stops[allStops[0].id][0].sourceTitle;
+  duplicate.stops[allStops[1].id][0].commonsTitle = duplicate.stops[allStops[0].id][0].commonsTitle;
+  duplicate.stops[allStops[1].id][0].sourceType = duplicate.stops[allStops[0].id][0].sourceType;
+  duplicate.stops[allStops[1].id][0].assetUrl = duplicate.stops[allStops[0].id][0].assetUrl;
+  assert.throws(() => map.validatePhotoManifest(duplicate, stopById), /Duplicate trip-photo source/);
+});
+
+test("gallery renderer includes five visible photos and complete source credits", () => {
+  const stop = data.loops.A[0];
+  const gallery = map.renderPhotoGallery(stop, photos);
+  assert.equal([...gallery.matchAll(/<figure class="photo-card/g)].length, 5);
+  assert.equal([...gallery.matchAll(/<img src="images\/trip-map\//g)].length, 5);
+  assert.equal([...gallery.matchAll(/loading="lazy"/g)].length, 5);
+  assert.doesNotMatch(gallery, /loading="eager"/);
+  assert.equal([...gallery.matchAll(/target="_blank" rel="noopener noreferrer"/g)].length, 15);
+  assert.match(gallery, /Five verified views/);
+  assert.match(gallery, /checked against this stop or its immediate setting/);
+  assert.match(gallery, /Photo credits, sources &amp; rights/);
+  assert.doesNotMatch(gallery, /javascript:/i);
+});
+
 test("map page provides two maps, route filters, legend, and accessible fallbacks", () => {
   assert.match(page, /id="routeMap"[^>]+role="region"/);
   assert.match(page, /id="orientationMap"[^>]+role="region"/);
+  assert.match(page, /id="detailPhotos"/);
   assert.equal([...page.matchAll(/data-map-mode="(?:all|A|B)"/g)].length, 3);
   assert.match(page, /Loop A · Balaton/);
   assert.match(page, /Loop B · north-east/);
@@ -136,6 +236,8 @@ test("map page provides two maps, route filters, legend, and accessible fallback
   assert.match(mapScript, /#place-\(\[a-z0-9-\]\+\)/);
   assert.match(mapScript, /aria-pressed/);
   assert.doesNotMatch(mapScript, /aria-selected/);
+  assert.match(page, /<script src="trip-map-photos\.js\?v=20260722\.1"><\/script>/);
+  assert.match(mapScript, /class="photo-grid"/);
 });
 
 test("every primary page links to the route-map tab with the correct depth", () => {
@@ -148,8 +250,10 @@ test("every primary page links to the route-map tab with the correct depth", () 
 test("release build validates and atomically inlines the map modules", () => {
   assert.match(build, /cp \.\.\/trip-plan\.html \.\.\/trip-map\.html/);
   assert.match(build, /node --check \.\.\/trip-map\.js/);
+  assert.match(build, /node --check \.\.\/trip-map-photos\.js/);
   assert.match(build, /trip_map_inline/);
-  assert.match(build, /failed to inline the route-map modules/);
+  assert.match(build, /failed to inline all three route-map modules/);
+  assert.match(build, /TRIP_MAP_PHOTOS/);
   assert.match(build, /\.\.\/test_trip_map\.mjs/);
   assert.match(serve, /trip-map\.html/);
 });

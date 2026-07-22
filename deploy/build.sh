@@ -87,29 +87,33 @@ fi
 /usr/bin/grep -q 'renderTripLocationCards' "$release/trip-plan.html"
 
 # Keep the route map's shared data and renderer in the same HTML response too.
+node --check ../trip-map-photos.js
 node --check ../trip-map.js
-if /usr/bin/grep -qi '</script' ../trip-map.js; then
-  echo "trip-map.js cannot be safely inlined because it contains </script" >&2
+if /usr/bin/grep -qi '</script' ../trip-map-photos.js ../trip-map.js; then
+  echo "trip-map modules cannot be safely inlined because they contain </script" >&2
   exit 1
 fi
 trip_map_inline="$release/trip-map.inline.$$"
 /usr/bin/awk \
   -v data="$script_dir/../trip-location-data.js" \
+  -v photos="$script_dir/../trip-map-photos.js" \
   -v map="$script_dir/../trip-map.js" '
   function dump(path, line) {
     while ((getline line < path) > 0) print line
     close(path)
   }
   /<script src="trip-location-data\.js([^\"]*)"><\/script>/ { print "<script>"; dump(data); next }
+  /<script src="trip-map-photos\.js([^\"]*)"><\/script>/ { dump(photos); next }
   /<script src="trip-map\.js([^\"]*)"><\/script>/ { dump(map); print "</script>"; next }
   { print }
 ' "$release/trip-map.html" > "$trip_map_inline"
 /bin/mv -f "$trip_map_inline" "$release/trip-map.html"
-if /usr/bin/grep -q 'src="trip-\(location-data\|map\)\.js' "$release/trip-map.html"; then
-  echo "failed to inline the route-map modules" >&2
+if /usr/bin/grep -q 'src="trip-\(location-data\|map-photos\|map\)\.js' "$release/trip-map.html"; then
+  echo "failed to inline all three route-map modules" >&2
   exit 1
 fi
 /usr/bin/grep -q 'TRIP_LOCATION_DATA' "$release/trip-map.html"
+/usr/bin/grep -q 'TRIP_MAP_PHOTOS' "$release/trip-map.html"
 /usr/bin/grep -q 'buildTripMap' "$release/trip-map.html"
 
 test -f "$release/budapest-london/tripadvisor/index.html"

@@ -127,17 +127,88 @@
     return closeLoop ? [BUDAPEST, ...coordinates, BUDAPEST] : coordinates;
   }
 
+  function validatePhotoManifest(manifest, stopById) {
+    if (!manifest || manifest.schemaVersion !== 1 || !manifest.stops) throw new Error("The trip-photo manifest is missing or unsupported.");
+    if (!/^[a-z0-9.-]{3,32}$/.test(manifest.assetRevision || "")) throw new Error("The trip-photo asset revision is missing or unsafe.");
+    const manifestIds = Object.keys(manifest.stops);
+    if (manifestIds.length !== stopById.size) throw new Error(`Expected photos for ${stopById.size} stops; found ${manifestIds.length}.`);
+
+    const seenSources = new Set();
+    const seenFiles = new Set();
+    for (const [id] of stopById) {
+      const photos = manifest.stops[id];
+      if (!Array.isArray(photos) || photos.length !== 5) throw new Error(`${id} must have exactly five photos.`);
+      for (const [index, photo] of photos.entries()) {
+        const label = `${id} photo ${index + 1}`;
+        const expectedPath = `images/trip-map/${manifest.assetRevision}/${id}/${String(index + 1).padStart(2, "0")}.webp`;
+        if (photo.src !== expectedPath) throw new Error(`${label} has an unsafe or unexpected local path.`);
+        if (!/^https:\/\//.test(photo.sourceUrl || "") || !/^https:\/\//.test(photo.licenseUrl || "")) throw new Error(`${label} must link to HTTPS source and license pages.`);
+        if (!["wikimedia", "flickr", "official"].includes(photo.sourceType)) throw new Error(`${label} has an unsupported source type.`);
+        for (const field of ["alt", "subject", "credit", "license", "sourceTitle", "verification"]) {
+          if (typeof photo[field] !== "string" || photo[field].trim().length < 2) throw new Error(`${label} is missing ${field}.`);
+        }
+        if (photo.sourceType === "wikimedia") {
+          let sourceTitle = "";
+          try {
+            const source = new URL(photo.sourceUrl);
+            if (source.hostname !== "commons.wikimedia.org" || !source.pathname.startsWith("/wiki/File:")) throw new Error("wrong host or path");
+            sourceTitle = decodeURIComponent(source.pathname.slice("/wiki/".length)).replaceAll("_", " ");
+          } catch {
+            throw new Error(`${label} has an invalid Wikimedia source page.`);
+          }
+          const normalizeTitle = (value) => value.normalize("NFC").replaceAll("_", " ").replaceAll(/\s+/g, " ").trim().toLocaleLowerCase("en");
+          if (normalizeTitle(sourceTitle) !== normalizeTitle(photo.commonsTitle || "")) throw new Error(`${label} does not match its Wikimedia file title.`);
+        }
+        if (seenFiles.has(photo.src)) throw new Error(`Duplicate trip-photo path: ${photo.src}`);
+        const sourceAsset = photo.assetUrl || photo.sourceUrl;
+        if (seenSources.has(sourceAsset)) throw new Error(`Duplicate trip-photo source asset: ${sourceAsset}`);
+        seenFiles.add(photo.src);
+        seenSources.add(sourceAsset);
+      }
+    }
+    for (const id of manifestIds) {
+      if (!stopById.has(id)) throw new Error(`Photo manifest references an unknown stop: ${id}`);
+    }
+    return true;
+  }
+
+  function renderPhotoGallery(stop, manifest) {
+    const photos = manifest?.stops?.[stop.id];
+    if (!Array.isArray(photos) || photos.length !== 5) {
+      return `<section class="photo-gallery photo-gallery-unavailable" aria-label="Photos of ${escapeHtml(stop.name)}"><p>Photos are temporarily unavailable for this stop.</p></section>`;
+    }
+    const tiles = photos.map((photo, index) => `<figure class="photo-card${index === 0 ? " photo-card-hero" : ""}">
+      <a href="${escapeHtml(photo.src)}" target="_blank" rel="noopener noreferrer" aria-label="Open the full-size photo of ${escapeHtml(photo.subject)}">
+        <img src="${escapeHtml(photo.src)}" alt="${escapeHtml(photo.alt)}" width="960" height="720" loading="lazy" decoding="async">
+        <figcaption><span>${escapeHtml(photo.subject)}</span><small>Enlarge ↗</small></figcaption>
+      </a>
+    </figure>`).join("");
+    const credits = photos.map((photo, index) => `<li><span><b>${index + 1}. ${escapeHtml(photo.subject)}</b> — ${escapeHtml(photo.credit)}</span><span><a href="${escapeHtml(photo.sourceUrl)}" target="_blank" rel="noopener noreferrer">source</a> · <a href="${escapeHtml(photo.licenseUrl)}" target="_blank" rel="noopener noreferrer">${escapeHtml(photo.license)}</a></span></li>`).join("");
+    return `<section class="photo-gallery" aria-labelledby="photoGalleryTitle">
+      <div class="photo-gallery-head"><div><p class="photo-eyebrow">Five verified views</p><h3 id="photoGalleryTitle">See ${escapeHtml(stop.name)} and its setting</h3></div><p>Every image was checked against this stop or its immediate setting. Tap any photo for its original source.</p></div>
+      <div class="photo-grid">${tiles}</div>
+      <details class="photo-credits"><summary>Photo credits, sources &amp; rights</summary><ol>${credits}</ol></details>
+    </section>`;
+  }
+
   function initialize(root) {
     const document = root.document;
     const data = root.TRIP_LOCATION_DATA;
     if (!data?.loops) return;
 
     let stopById;
+    let photoManifest = null;
     try {
       stopById = buildStopIndex(data);
     } catch (error) {
       document.querySelector("#routeMap").innerHTML = `<div class="map-fallback">The route data could not be loaded. ${escapeHtml(error.message)}</div>`;
       return;
+    }
+    try {
+      validatePhotoManifest(root.TRIP_MAP_PHOTOS, stopById);
+      photoManifest = root.TRIP_MAP_PHOTOS;
+    } catch (error) {
+      if (root.console?.error) root.console.error("Trip-map photos could not be loaded:", error);
     }
 
     const dom = {
@@ -147,6 +218,7 @@
       detailTitle: document.querySelector("#detailTitle"),
       detailArea: document.querySelector("#detailArea"),
       detailRating: document.querySelector("#detailRating"),
+      detailPhotos: document.querySelector("#detailPhotos"),
       detailBody: document.querySelector("#detailBody"),
       distanceCopy: document.querySelector("#distanceCopy"),
       directions: document.querySelector("#directions"),
@@ -184,6 +256,7 @@
       dom.detailTitle.textContent = stop.name;
       dom.detailArea.textContent = stop.area;
       dom.detailRating.innerHTML = `<b>★ ${escapeHtml(stop.rating.value)}</b><span>${escapeHtml(stop.rating.platform)} · ${escapeHtml(stop.rating.reviews)} reviews</span>`;
+      dom.detailPhotos.innerHTML = renderPhotoGallery(stop, photoManifest);
 
       const packages = stop.price.packages.map((option) => `<li><b>${escapeHtml(option.label)}</b><strong>${escapeHtml(option.price)}</strong>${option.note ? `<small>${escapeHtml(option.note)}</small>` : ""}</li>`).join("");
       const sources = stop.sources.map((source) => `<a class="source-link" href="${escapeHtml(source.url)}" target="_blank" rel="noopener noreferrer">${escapeHtml(source.label)}</a>`).join("");
@@ -353,5 +426,5 @@
     selectStop(initialId, { focusMainMap: Boolean(initialMatch), revealOnMobile: false, updateHash: false });
   }
 
-  return Object.freeze({ BUDAPEST, ROUTES, buildStopIndex, escapeHtml, googleDirectionsUrl, haversineKm, initialize, osmPinUrl, routeCoordinates });
+  return Object.freeze({ BUDAPEST, ROUTES, buildStopIndex, escapeHtml, googleDirectionsUrl, haversineKm, initialize, osmPinUrl, renderPhotoGallery, routeCoordinates, validatePhotoManifest });
 }));
