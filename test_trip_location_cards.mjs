@@ -45,6 +45,9 @@ test("location guide has complete, current data for both loops", () => {
     }
     assert.equal(typeof stop.icon, "string");
     assert.ok(stop.icon.length > 0, `${stop.id}: icon cannot be empty`);
+    assert.ok(Array.isArray(stop.visualStory) && stop.visualStory.length >= 2, `${stop.id}: visual story is incomplete`);
+    assert.equal(new Set(stop.visualStory).size, stop.visualStory.length, `${stop.id}: visual story contains duplicates`);
+    for (const subject of stop.visualStory) assert.ok(subject.length >= 8, `${stop.id}: visual story subject is too vague`);
     assert.ok(Number.isFinite(stop.geo?.lat) && Number.isFinite(stop.geo?.lng), `${stop.id}: mapped coordinates are required`);
     assert.match(stop.geo.sourceUrl, /^https:\/\//, `${stop.id}: coordinate source must use HTTPS`);
     assert.match(stop.id, /^[a-z0-9-]+$/);
@@ -76,7 +79,7 @@ test("location guide has complete, current data for both loops", () => {
 test("trip page loads the data and accessible renderer", () => {
   assert.match(html, /id="loopAStops"/);
   assert.match(html, /id="loopBStops"/);
-  assert.match(html, /src="trip-location-data\.js(?:\?v=[a-f0-9]{64})?"/);
+  assert.match(html, /src="trip-location-data\.js\?v=20260722\.2"/);
   assert.match(html, /src="trip-location-cards\.js(?:\?v=[a-f0-9]{64})?"/);
   assert.match(html, /Thu 23 → Sun 26 July/);
   assert.match(html, /checked 22 July 2026/i);

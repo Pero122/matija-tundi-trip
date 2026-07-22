@@ -17,6 +17,7 @@ const savedPage = readFileSync(new URL("./saved-places.html", import.meta.url), 
 const discoverPage = readFileSync(new URL("./budapest-london/tripadvisor/index.html", import.meta.url), "utf8");
 const build = readFileSync(new URL("./deploy/build.sh", import.meta.url), "utf8");
 const serve = readFileSync(new URL("./scripts/serve-local-site.sh", import.meta.url), "utf8");
+const photoDownloader = readFileSync(new URL("./scripts/download-trip-map-photos.mjs", import.meta.url), "utf8");
 const allStops = [...data.loops.A, ...data.loops.B];
 const expectedGeo = {
   "zamardi-adventure-park": [46.885144, 17.969299, "/way/231872378"],
@@ -37,6 +38,18 @@ const expectedGeo = {
   "regec-castle": [48.378626, 21.344278, "/way/360207514"],
   "zemplen-adventure-park": [48.412625, 21.638988, "/node/2982612219"],
 };
+const approvedOfficialDomains = new Set([
+  "zamardikalandpark.hu",
+  "bfnp.hu",
+  "muveszetekvolgye.hu",
+  "zsolnaynegyed.hu",
+  "egrivar.hu",
+  "zemplen723.eu",
+  "zemplenkalandpark.hu",
+]);
+function isApprovedOfficialHost(hostname) {
+  return [...approvedOfficialDomains].some((domain) => hostname === domain || hostname.endsWith(`.${domain}`));
+}
 
 test("all 17 researched stops have sourced coordinates inside Hungary", () => {
   assert.equal(data.schemaVersion, 2);
@@ -127,7 +140,7 @@ test("every map stop has five unique, attributed, locally hosted photos", () => 
   const stopById = map.buildStopIndex(data);
   assert.equal(map.validatePhotoManifest(photos, stopById), true);
   assert.equal(photos.reviewedAt, "2026-07-22");
-  assert.equal(photos.assetRevision, "20260722.1");
+  assert.equal(photos.assetRevision, "20260722.2");
   assert.deepEqual(new Set(Object.keys(photos.stops)), new Set(allStops.map((stop) => stop.id)));
 
   const hashes = new Set();
@@ -137,7 +150,7 @@ test("every map stop has five unique, attributed, locally hosted photos", () => 
     assert.equal(stopPhotos.length, 5, `${stop.id}: expected five photos`);
     for (const [index, photo] of stopPhotos.entries()) {
       const source = new URL(photo.sourceUrl);
-      assert.ok(["commons.wikimedia.org", "www.flickr.com", "zamardikalandpark.hu", "www.zamardikalandpark.hu"].includes(source.hostname), `${stop.id} #${index + 1}: source host is unsupported`);
+      assert.ok(source.hostname === "commons.wikimedia.org" || source.hostname === "www.flickr.com" || isApprovedOfficialHost(source.hostname), `${stop.id} #${index + 1}: source host is unsupported`);
       if (photo.sourceType === "wikimedia") {
         assert.match(photo.commonsTitle, /^File:.+/, `${stop.id} #${index + 1}: missing Commons title`);
         assert.equal(source.hostname, "commons.wikimedia.org", `${stop.id} #${index + 1}: Wikimedia source is inconsistent`);
@@ -147,8 +160,9 @@ test("every map stop has five unique, attributed, locally hosted photos", () => 
         assert.equal(new URL(photo.assetUrl).hostname, "live.staticflickr.com", `${stop.id} #${index + 1}: Flickr asset host is unsupported`);
       } else {
         assert.equal(photo.sourceType, "official", `${stop.id} #${index + 1}: source type is unsupported`);
-        assert.match(source.hostname, /^(?:www\.)?zamardikalandpark\.hu$/, `${stop.id} #${index + 1}: official source is inconsistent`);
-        assert.match(new URL(photo.assetUrl).hostname, /^(?:.+\.)?zamardikalandpark\.hu$/, `${stop.id} #${index + 1}: official asset host is unsupported`);
+        assert.ok(isApprovedOfficialHost(source.hostname), `${stop.id} #${index + 1}: official source is inconsistent`);
+        assert.ok(isApprovedOfficialHost(new URL(photo.assetUrl).hostname), `${stop.id} #${index + 1}: official asset host is unsupported`);
+        assert.equal(source.hostname.replace(/^www\./, ""), new URL(photo.assetUrl).hostname.replace(/^www\./, ""), `${stop.id} #${index + 1}: official source and asset hosts differ`);
       }
       if (photo.sourceType === "official") {
         assert.equal(photo.license, "Official promotional photo", `${stop.id} #${index + 1}: official photo rights label changed`);
@@ -187,6 +201,24 @@ test("every map stop has five unique, attributed, locally hosted photos", () => 
   }
   assert.equal(hashes.size, 85);
   assert.ok(totalBytes <= 30 * 1024 * 1024, `photo set exceeds 30 MiB (${totalBytes} bytes)`);
+});
+
+test("each guide's distinctive story beats are represented in its gallery", () => {
+  for (const stop of allStops) {
+    assert.ok(Array.isArray(stop.visualStory) && stop.visualStory.length >= 2, `${stop.id}: guide has no explicit visual story`);
+    assert.equal(new Set(stop.visualStory).size, stop.visualStory.length, `${stop.id}: guide repeats a visual story beat`);
+    const gallerySubjects = new Set(photos.stops[stop.id].map((photo) => photo.subject));
+    for (const storyBeat of stop.visualStory) {
+      assert.ok(gallerySubjects.has(storyBeat), `${stop.id}: gallery is missing its guide-owned visual story “${storyBeat}”`);
+    }
+  }
+});
+
+test("photo downloads validate every redirect before following it", () => {
+  assert.match(photoDownloader, /fetchWithApprovedRedirects/);
+  assert.match(photoDownloader, /redirect:\s*"manual"/);
+  assert.match(photoDownloader, /if \(!isAllowed\(currentUrl\)\)/);
+  assert.match(photoDownloader, /new URL\(location, currentUrl\)/);
 });
 
 test("photo manifest validation rejects incomplete and duplicated galleries", () => {
@@ -258,7 +290,8 @@ test("map page provides two maps, route filters, legend, and accessible fallback
   assert.match(mapScript, /#place-\(\[a-z0-9-\]\+\)/);
   assert.match(mapScript, /aria-pressed/);
   assert.doesNotMatch(mapScript, /aria-selected/);
-  assert.match(page, /<script src="trip-map-photos\.js\?v=20260722\.1"><\/script>/);
+  assert.match(page, /<script src="trip-map-photos\.js\?v=20260722\.2"><\/script>/);
+  assert.match(page, /<script src="trip-location-data\.js\?v=20260722\.2"><\/script>/);
   assert.match(page, /<script src="trip-map\.js\?v=20260722\.2"><\/script>/);
   assert.match(mapScript, /class="photo-grid"/);
   assert.match(mapScript, /showModal\(\)/);
@@ -279,6 +312,21 @@ test("every primary page links to the route-map tab with the correct depth", () 
   assert.match(savedPage, /href="trip-map\.html">🧭 Route map/);
   assert.match(discoverPage, /href="\.\.\/\.\.\/trip-map\.html">🧭 Route map/);
   assert.match(page, /class="here" href="trip-map\.html" aria-current="page"/);
+});
+
+test("both guide entry points cache-bust the current location data generation", () => {
+  assert.match(page, /<script src="trip-location-data\.js\?v=20260722\.2"><\/script>/);
+  assert.match(planPage, /<script src="trip-location-data\.js\?v=20260722\.2"><\/script>/);
+});
+
+test("the previous photo generation remains available to already-open pages", () => {
+  for (const stop of allStops) {
+    for (let index = 1; index <= 5; index += 1) {
+      const filename = String(index).padStart(2, "0");
+      const previousPhoto = new URL(`./images/trip-map/20260722.1/${stop.id}/${filename}.webp`, import.meta.url);
+      assert.ok(statSync(previousPhoto).size >= 12_000, `${stop.id} #${filename}: previous photo generation is missing`);
+    }
+  }
 });
 
 test("release build validates and atomically inlines the map modules", () => {

@@ -14,6 +14,19 @@ const concurrency = 6;
 const queue = Object.entries(manifest.stops).flatMap(([stopId, photos]) => photos.map((photo) => ({ stopId, photo })));
 const tempRoot = await mkdtemp(path.join(os.tmpdir(), "tundi-trip-map-photos-"));
 const metadataByTitle = new Map();
+const approvedOfficialDomains = new Set([
+  "zamardikalandpark.hu",
+  "bfnp.hu",
+  "muveszetekvolgye.hu",
+  "zsolnaynegyed.hu",
+  "egrivar.hu",
+  "zemplen723.eu",
+  "zemplenkalandpark.hu",
+]);
+
+function isApprovedOfficialHost(hostname) {
+  return [...approvedOfficialDomains].some((domain) => hostname === domain || hostname.endsWith(`.${domain}`));
+}
 
 function assertSafePhoto(item) {
   const { stopId, photo } = item;
@@ -27,8 +40,11 @@ function assertSafePhoto(item) {
     if (asset.protocol !== "https:" || asset.hostname !== "live.staticflickr.com") throw new Error(`Unsafe Flickr asset URL for ${photo.src}`);
   }
   if (photo.sourceType === "official") {
+    const source = new URL(photo.sourceUrl);
     const asset = new URL(photo.assetUrl);
-    if (asset.protocol !== "https:" || !/(^|\.)zamardikalandpark\.hu$/.test(asset.hostname)) throw new Error(`Unsafe official asset URL for ${photo.src}`);
+    if (source.protocol !== "https:" || !isApprovedOfficialHost(source.hostname)) throw new Error(`Unsafe official source URL for ${photo.src}`);
+    if (asset.protocol !== "https:" || !isApprovedOfficialHost(asset.hostname)) throw new Error(`Unsafe official asset URL for ${photo.src}`);
+    if (source.hostname.replace(/^www\./, "") !== asset.hostname.replace(/^www\./, "")) throw new Error(`Official source and asset hosts differ for ${photo.src}`);
   }
 }
 
@@ -53,14 +69,16 @@ async function isValidWebp(file) {
 const sleep = (milliseconds) => new Promise((resolve) => setTimeout(resolve, milliseconds));
 const titleKey = (title) => String(title).replaceAll("_", " ").trim().toLocaleLowerCase("en");
 
-async function fetchWithRetry(url, label) {
+async function fetchWithRetry(url, label, { redirect = "follow" } = {}) {
   let lastError;
   for (let attempt = 1; attempt <= 5; attempt += 1) {
     try {
       const response = await fetch(url, {
         headers: { "User-Agent": "MatijaTundiTripMap/1.0 (https://github.com/Pero122/matija-tundi-trip)" },
+        redirect,
         signal: AbortSignal.timeout(30_000),
       });
+      if (redirect === "manual" && response.status >= 300 && response.status < 400) return response;
       if (response.ok) return response;
       lastError = new Error(`${label} returned ${response.status}`);
       const transient = response.status === 408 || response.status === 425 || response.status === 429 || response.status >= 500;
@@ -75,6 +93,20 @@ async function fetchWithRetry(url, label) {
     }
   }
   throw lastError || new Error(`${label} exhausted its retry budget`);
+}
+
+async function fetchWithApprovedRedirects(initialUrl, label, isAllowed) {
+  let currentUrl = new URL(initialUrl);
+  for (let redirectCount = 0; redirectCount <= 5; redirectCount += 1) {
+    if (!isAllowed(currentUrl)) throw new Error(`${label} resolved to an unsafe URL: ${currentUrl.href}`);
+    const response = await fetchWithRetry(currentUrl.href, label, { redirect: "manual" });
+    if (response.status < 300 || response.status >= 400) return response;
+    const location = response.headers.get("location");
+    await response.body?.cancel();
+    if (!location) throw new Error(`${label} returned a redirect without a Location header`);
+    currentUrl = new URL(location, currentUrl);
+  }
+  throw new Error(`${label} exceeded five approved redirect hops`);
 }
 
 async function loadCommonsMetadata() {
@@ -110,7 +142,13 @@ async function loadCommonsMetadata() {
 
 async function fetchCommonsImage(photo) {
   if (photo.sourceType === "flickr" || photo.sourceType === "official") {
-    const imageResponse = await fetchWithRetry(photo.assetUrl, `${photo.sourceType} image download for ${photo.sourceTitle}`);
+    const label = `${photo.sourceType} image download for ${photo.sourceTitle}`;
+    const sourceHostname = new URL(photo.sourceUrl).hostname.replace(/^www\./, "");
+    const imageResponse = await fetchWithApprovedRedirects(photo.assetUrl, label, (candidate) => {
+      if (candidate.protocol !== "https:") return false;
+      if (photo.sourceType === "flickr") return candidate.hostname === "live.staticflickr.com";
+      return isApprovedOfficialHost(candidate.hostname) && candidate.hostname.replace(/^www\./, "") === sourceHostname;
+    });
     const bytes = Buffer.from(await imageResponse.arrayBuffer());
     if (bytes.length < 8_000) throw new Error(`Downloaded image is unexpectedly small: ${photo.sourceTitle}`);
     const contentType = imageResponse.headers.get("content-type") || "";
