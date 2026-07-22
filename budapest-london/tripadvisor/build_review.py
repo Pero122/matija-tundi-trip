@@ -208,7 +208,6 @@ def load_candidates(cities):
                     "badge": listing["badge"],
                     "url": listing["url"],
                     "img": listing["photos"][0] if listing["photos"] else "",
-                    "blurb": listing.get("blurb", ""),
                     "city": city,
                     "geo": listing.get("geo", ""),
                     "origin": listing.get("origin", city),

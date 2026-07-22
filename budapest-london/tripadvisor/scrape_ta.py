@@ -297,10 +297,11 @@ def parse(html_txt, city, cat):
         photos = [p for p in dict.fromkeys(
             re.findall(r'"urlTemplate":"(https://[^"]+?\.jpg[^"]*)"', photo_zone))
             if "avatar" not in p and "/profile" not in p][:2]
-        # blurb = "what is this": product description (experiences) else top-review snippet (venues)
+        # Keep listing descriptions local for research, but never substitute a
+        # review snippet. Review prose must not leak into the shipped discovery
+        # inventory when a venue has no description.
         desc = re.search(r'"descriptiveText":\{[^}]*?"text":"([^"]+)"', seg)
-        snip = re.search(r'"reviewSnippet":\{[^}]*?"text":"([^"]+)"', seg)
-        raw_blurb = desc.group(1) if desc else (snip.group(1) if snip else "")
+        raw_blurb = desc.group(1) if desc else ""
         blurb = H.unescape(re.sub("[￹-￻]", "", raw_blurb))
         blurb = re.sub(r"\\[nrt]|\s+", " ", blurb).strip()
         if len(blurb) > 170:

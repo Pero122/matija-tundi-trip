@@ -21,11 +21,27 @@ deploy/.build.lock
 # repeatable crawler pipeline and its tests in version control.
 budapest-london/tripadvisor/*
 !budapest-london/tripadvisor/index.html
+!budapest-london/tripadvisor/activity-briefs.js
+!budapest-london/tripadvisor/activity-pricing.js
+!budapest-london/tripadvisor/curated-activity-research.json
+!budapest-london/tripadvisor/discover-collaboration.js
+!budapest-london/tripadvisor/discover-pricing.js
 !budapest-london/tripadvisor/supabase_setup.sql
 !budapest-london/tripadvisor/scrape_ta.py
+!budapest-london/tripadvisor/scrape_ta_details.py
+!budapest-london/tripadvisor/fetch_ta_detail.py
+!budapest-london/tripadvisor/audit_detail_context.py
+!budapest-london/tripadvisor/generate_activity_research.py
 !budapest-london/tripadvisor/dedup.py
 !budapest-london/tripadvisor/build_review.py
 !budapest-london/tripadvisor/test_scrape_ta.py
+!budapest-london/tripadvisor/test_scrape_ta_details.py
+!budapest-london/tripadvisor/test_audit_detail_context.py
+!budapest-london/tripadvisor/test_discover_collaboration.mjs
+!budapest-london/tripadvisor/test_discover_pricing.mjs
+!budapest-london/tripadvisor/test_curated_activity_briefs.mjs
+!budapest-london/tripadvisor/test_generate_activity_research.py
+!budapest-london/tripadvisor/test_validate_discover_groups.mjs
 !budapest-london/tripadvisor/existing_names.json
 !budapest-london/tripadvisor/README.md
 !budapest-london/tripadvisor/validate_discover_groups.mjs
