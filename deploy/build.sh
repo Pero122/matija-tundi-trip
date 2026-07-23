@@ -32,6 +32,20 @@ mkdir -p "$release/budapest-london/tripadvisor"
 cp ../trip-plan.html ../trip-map.html ../trip-ideas.html ../activities.html ../saved-places.html "$release/"
 cp index.html "$release/index.html"
 cp -R ../images "$release/images"
+
+# PartyKit has a 100 MB static-asset ceiling. Keep the current and immediately
+# previous route-photo generations so already-open pages still work, but do not
+# publish older duplicate galleries forever. Source generations stay untouched.
+photo_generations="$release/images/trip-map"
+if [ -d "$photo_generations" ]; then
+  /usr/bin/find "$photo_generations" -mindepth 1 -maxdepth 1 -type d -print \
+    | /usr/bin/sort \
+    | /usr/bin/sed '$d' \
+    | /usr/bin/sed '$d' \
+    | while IFS= read -r old_generation; do
+        [ -n "$old_generation" ] && rm -rf "$old_generation"
+      done
+fi
 cp ../budapest-london/tripadvisor/index.html "$release/budapest-london/tripadvisor/index.html"
 cp ../budapest-london/tripadvisor/activity-briefs.js "$release/budapest-london/tripadvisor/activity-briefs.js"
 cp ../budapest-london/tripadvisor/activity-pricing.js "$release/budapest-london/tripadvisor/activity-pricing.js"
@@ -192,6 +206,16 @@ node --test \
   ../budapest-london/tripadvisor/test_discover_pricing.mjs \
   ../budapest-london/tripadvisor/test_validate_discover_groups.mjs
 
+# Leave headroom for provider-side accounting differences and fail locally
+# before a deployment upload can reject an otherwise validated release.
+max_partykit_asset_bytes=95000000
+bundle_bytes="$(/usr/bin/find "$release" -type f -exec /usr/bin/stat -f '%z' {} \; \
+  | /usr/bin/awk '{ total += $1 } END { print total + 0 }')"
+if [ "$bundle_bytes" -gt "$max_partykit_asset_bytes" ]; then
+  echo "release is too large for PartyKit: $bundle_bytes bytes (limit $max_partykit_asset_bytes)" >&2
+  exit 1
+fi
+
 previous=""
 if [ -L public ]; then previous="$(readlink public || true)"; fi
 ln -s "$release_rel" "$link_tmp"
@@ -215,4 +239,4 @@ done
 if [ -n "$legacy" ]; then rm -rf "$legacy"; legacy=""; fi
 
 count="$(find "$release" -type f | wc -l | tr -d ' ')"
-echo "built public -> $release_rel : $count files"
+echo "built public -> $release_rel : $count files, $bundle_bytes bytes"
