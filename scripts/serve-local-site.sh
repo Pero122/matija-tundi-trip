@@ -17,7 +17,7 @@ if [[ ! "$PORT" =~ '^[0-9]+$' ]]; then
   print -u2 "CUTETRIP_PORT must be numeric: $PORT"
   exit 1
 fi
-if [[ ! -f "$SITE_ROOT/trip-plan.html" || ! -f "$SITE_ROOT/trip-map.html" || ! -f "$SITE_ROOT/budapest-london/tripadvisor/index.html" ]]; then
+if [[ ! -f "$SITE_ROOT/trip-plan.html" || ! -f "$SITE_ROOT/trip-map.html" || ! -f "$SITE_ROOT/trip-ideas.html" || ! -f "$SITE_ROOT/budapest-london/tripadvisor/index.html" ]]; then
   print -u2 "generated site is missing; run $REPO_ROOT/deploy/build.sh"
   exit 1
 fi

@@ -29,7 +29,7 @@ trap cleanup EXIT
 trap 'exit 1' HUP INT TERM
 
 mkdir -p "$release/budapest-london/tripadvisor"
-cp ../trip-plan.html ../trip-map.html ../activities.html ../saved-places.html "$release/"
+cp ../trip-plan.html ../trip-map.html ../trip-ideas.html ../activities.html ../saved-places.html "$release/"
 cp index.html "$release/index.html"
 cp -R ../images "$release/images"
 cp ../budapest-london/tripadvisor/index.html "$release/budapest-london/tripadvisor/index.html"
@@ -116,14 +116,51 @@ fi
 /usr/bin/grep -q 'TRIP_MAP_PHOTOS' "$release/trip-map.html"
 /usr/bin/grep -q 'buildTripMap' "$release/trip-map.html"
 
+# Publish every Trip ideas dependency as one validated response. The route
+# choices, full guides and five-photo galleries must never cross release
+# generations during an atomic symlink swap.
+node --check ../trip-ideas-data.js
+node --check ../trip-ideas.js
+if /usr/bin/grep -qi '</script' ../trip-ideas-data.js ../trip-ideas.js; then
+  echo "trip-ideas modules cannot be safely inlined because they contain </script" >&2
+  exit 1
+fi
+trip_ideas_inline="$release/trip-ideas.inline.$$"
+/usr/bin/awk \
+  -v data="$script_dir/../trip-location-data.js" \
+  -v photos="$script_dir/../trip-map-photos.js" \
+  -v ideas_data="$script_dir/../trip-ideas-data.js" \
+  -v ideas="$script_dir/../trip-ideas.js" '
+  function dump(path, line) {
+    while ((getline line < path) > 0) print line
+    close(path)
+  }
+  /<script src="trip-location-data\.js([^"]*)"><\/script>/ { print "<script>"; dump(data); next }
+  /<script src="trip-map-photos\.js([^"]*)"><\/script>/ { dump(photos); next }
+  /<script src="trip-ideas-data\.js([^"]*)"><\/script>/ { dump(ideas_data); next }
+  /<script src="trip-ideas\.js([^"]*)"><\/script>/ { dump(ideas); print "</script>"; next }
+  { print }
+' "$release/trip-ideas.html" > "$trip_ideas_inline"
+/bin/mv -f "$trip_ideas_inline" "$release/trip-ideas.html"
+if /usr/bin/grep -q 'src="trip-\(location-data\|map-photos\|ideas-data\|ideas\)\.js' "$release/trip-ideas.html"; then
+  echo "failed to inline all four Trip ideas modules" >&2
+  exit 1
+fi
+/usr/bin/grep -q 'TRIP_LOCATION_DATA' "$release/trip-ideas.html"
+/usr/bin/grep -q 'TRIP_MAP_PHOTOS' "$release/trip-ideas.html"
+/usr/bin/grep -q 'TRIP_IDEAS_DATA' "$release/trip-ideas.html"
+/usr/bin/grep -q 'buildTripIdeas' "$release/trip-ideas.html"
+
 test -f "$release/budapest-london/tripadvisor/index.html"
 test -f "$release/budapest-london/tripadvisor/activity-briefs.js"
 test -f "$release/budapest-london/tripadvisor/activity-pricing.js"
 test -f "$release/budapest-london/tripadvisor/discover-collaboration.js"
 test -f "$release/budapest-london/tripadvisor/discover-pricing.js"
 test -f "$release/trip-map.html"
+test -f "$release/trip-ideas.html"
 grep -q 'budapest-london/tripadvisor/index.html' "$release/trip-plan.html"
 grep -q 'trip-map.html' "$release/trip-plan.html"
+grep -q 'trip-ideas.html' "$release/trip-plan.html"
 
 # Validate the immutable snapshot that will be activated. The generator replaces
 # briefs and pricing separately, so validating before these copies would leave a
@@ -149,6 +186,7 @@ fi
 node --test \
   ../test_trip_location_cards.mjs \
   ../test_trip_map.mjs \
+  ../test_trip_ideas.mjs \
   ../budapest-london/tripadvisor/test_curated_activity_briefs.mjs \
   ../budapest-london/tripadvisor/test_discover_collaboration.mjs \
   ../budapest-london/tripadvisor/test_discover_pricing.mjs \

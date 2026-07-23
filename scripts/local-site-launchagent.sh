@@ -13,6 +13,12 @@ PLIST="$HOME/Library/LaunchAgents/$LABEL.plist"
 OUT_LOG="$HOME/Library/Logs/tundi-trip-local-site.out.log"
 ERR_LOG="$HOME/Library/Logs/tundi-trip-local-site.err.log"
 HEALTH_URL="http://127.0.0.1:$PORT/budapest-london/tripadvisor/index.html"
+TRIP_IDEAS_URL="http://127.0.0.1:$PORT/trip-ideas.html"
+
+site_is_healthy() {
+  /usr/bin/curl --connect-timeout 1 --max-time 2 -fsS -o /dev/null "$HEALTH_URL" \
+    && /usr/bin/curl --connect-timeout 1 --max-time 2 -fsS -o /dev/null "$TRIP_IDEAS_URL"
+}
 
 xml_escape() {
   print -rn -- "$1" | /usr/bin/sed \
@@ -50,8 +56,9 @@ print_status() {
     print -u2 "job pid: $(launchagent_pid || true); listener pid: $(listener_pid || true)"
     return 1
   fi
-  /usr/bin/curl --connect-timeout 1 --max-time 2 -fsS -o /dev/null "$HEALTH_URL"
+  site_is_healthy
   print "healthy: $HEALTH_URL"
+  print "healthy: $TRIP_IDEAS_URL"
   /usr/sbin/lsof -nP -iTCP:"$PORT" -sTCP:LISTEN || true
 }
 
@@ -145,10 +152,10 @@ EOF
 
   local deadline=$((SECONDS+10))
   while (( SECONDS < deadline )); do
-    if agent_owns_port \
-      && /usr/bin/curl --connect-timeout 1 --max-time 2 -fsS -o /dev/null "$HEALTH_URL" 2>/dev/null; then
+    if agent_owns_port && site_is_healthy 2>/dev/null; then
       print "installed: $DOMAIN/$LABEL"
       print "healthy: $HEALTH_URL"
+      print "healthy: $TRIP_IDEAS_URL"
       print "logs: $OUT_LOG"
       print "      $ERR_LOG"
       return 0
@@ -156,7 +163,7 @@ EOF
     /bin/sleep 0.2
   done
 
-  print -u2 "LaunchAgent loaded but health check failed: $HEALTH_URL"
+  print -u2 "LaunchAgent loaded but health check failed: $HEALTH_URL or $TRIP_IDEAS_URL"
   /usr/bin/tail -n 30 "$ERR_LOG" >&2 || true
   exit 1
 }
