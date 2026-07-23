@@ -46,7 +46,7 @@ RAW_DETAILS = HERE / "raw" / "details"
 CF = Path.home() / "workspace/scripts/stealth/.venv/bin/python"
 CF_SCRAPE = HERE / "fetch_ta_detail.py"
 
-CITIES = ("budapest", "london")
+CITIES = ("budapest", "london", "hungary")
 DEFAULT_BATCH_LIMIT = 10
 DEFAULT_WORKERS = 1
 MAX_WORKERS = 3
@@ -388,6 +388,14 @@ def review_coverage_target(
 def detail_identity(value):
     """Return ``(route_kind, numeric_id)`` for a listing or detail URL."""
     url = value.get("url", "") if isinstance(value, dict) else str(value)
+    parsed = urlparse(url)
+    hostname = (parsed.hostname or "").casefold()
+    if (
+        parsed.scheme.casefold() != "https"
+        or not hostname
+        or not (hostname == "tripadvisor.com" or hostname.endswith(".tripadvisor.com"))
+    ):
+        raise ValueError(f"not a supported TripAdvisor host or scheme: {url!r}")
     match = DETAIL_URL_RE.search(url)
     if not match:
         raise ValueError(f"not a supported TripAdvisor detail URL: {url!r}")
@@ -409,6 +417,14 @@ def requested_identity(value):
     value = str(value).strip()
     match = DETAIL_URL_RE.search(value)
     if match:
+        parsed = urlparse(value)
+        hostname = (parsed.hostname or "").casefold()
+        if (
+            parsed.scheme.casefold() != "https"
+            or not hostname
+            or not (hostname == "tripadvisor.com" or hostname.endswith(".tripadvisor.com"))
+        ):
+            raise ValueError(f"invalid TripAdvisor detail URL host: {value!r}")
         route = (
             "AttractionProductReview"
             if match.group(1).lower() == "attractionproductreview"
@@ -2941,11 +2957,14 @@ def fetch_detail(
         )
     )
     if not refresh and cache_valid(destination):
+        os.chmod(destination.parent, 0o700)
+        os.chmod(destination, 0o600)
         return "cached", True, False
     if offline_cache:
         return "FAIL (offline cache missing or invalid)", False, False
 
     destination.parent.mkdir(parents=True, exist_ok=True)
+    os.chmod(destination.parent, 0o700)
     partial = destination.with_name(destination.name + ".part")
     runner = runner or subprocess.run
     errors = []
@@ -2955,6 +2974,7 @@ def fetch_detail(
         try:
             partial.unlink(missing_ok=True)
             with partial.open("w", encoding="utf-8") as handle:
+                os.chmod(partial, 0o600)
                 result = runner(
                     [
                         str(CF),
@@ -3001,6 +3021,7 @@ def fetch_detail(
                 raise DataDomeBlocked(listing_id)
             if result.returncode == 0 and cache_valid(partial):
                 partial.replace(destination)
+                os.chmod(destination, 0o600)
                 suffix = f" after {attempt} attempts" if attempt > 1 else ""
                 return f"fetched{suffix}", True, True
             size = partial.stat().st_size if partial.exists() else 0
@@ -3092,11 +3113,23 @@ def merge_context_rows(existing, updates):
 
 def atomic_write_json(path, value):
     path = Path(path)
+    path.parent.mkdir(parents=True, exist_ok=True)
     partial = path.with_name(path.name + ".part")
-    partial.write_text(
-        json.dumps(value, ensure_ascii=False, indent=2) + "\n", encoding="utf-8"
-    )
+    serialized = json.dumps(value, ensure_ascii=False, indent=2) + "\n"
+    flags = os.O_WRONLY | os.O_CREAT | os.O_TRUNC | getattr(os, "O_NOFOLLOW", 0)
+    descriptor = os.open(partial, flags, 0o600)
+    try:
+        # Enforce the mode even when reusing a stale .part created under an
+        # older version or a permissive umask.
+        os.fchmod(descriptor, 0o600)
+        with os.fdopen(descriptor, "w", encoding="utf-8") as handle:
+            descriptor = None
+            handle.write(serialized)
+    finally:
+        if descriptor is not None:
+            os.close(descriptor)
     partial.replace(path)
+    os.chmod(path, 0o600)
 
 
 def load_context(path):
