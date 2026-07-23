@@ -390,6 +390,9 @@ test("release build validates and atomically inlines the map modules", () => {
   assert.match(build, /trip_map_inline/);
   assert.match(build, /failed to inline all three route-map modules/);
   assert.match(build, /TRIP_MAP_PHOTOS/);
+  assert.match(build, /current and immediately[\s\S]*previous route-photo generations/);
+  assert.match(build, /max_partykit_asset_bytes=95000000/);
+  assert.match(build, /release is too large for PartyKit/);
   assert.match(build, /\.\.\/test_trip_map\.mjs/);
   assert.match(serve, /trip-map\.html/);
 });

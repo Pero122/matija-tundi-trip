@@ -29,9 +29,23 @@ trap cleanup EXIT
 trap 'exit 1' HUP INT TERM
 
 mkdir -p "$release/budapest-london/tripadvisor"
-cp ../trip-plan.html ../trip-map.html ../activities.html ../saved-places.html "$release/"
+cp ../trip-plan.html ../trip-map.html ../trip-ideas.html ../activities.html ../saved-places.html "$release/"
 cp index.html "$release/index.html"
 cp -R ../images "$release/images"
+
+# PartyKit has a 100 MB static-asset ceiling. Keep the current and immediately
+# previous route-photo generations so already-open pages still work, but do not
+# publish older duplicate galleries forever. Source generations stay untouched.
+photo_generations="$release/images/trip-map"
+if [ -d "$photo_generations" ]; then
+  /usr/bin/find "$photo_generations" -mindepth 1 -maxdepth 1 -type d -print \
+    | /usr/bin/sort \
+    | /usr/bin/sed '$d' \
+    | /usr/bin/sed '$d' \
+    | while IFS= read -r old_generation; do
+        [ -n "$old_generation" ] && rm -rf "$old_generation"
+      done
+fi
 cp ../budapest-london/tripadvisor/index.html "$release/budapest-london/tripadvisor/index.html"
 cp ../budapest-london/tripadvisor/activity-briefs.js "$release/budapest-london/tripadvisor/activity-briefs.js"
 cp ../budapest-london/tripadvisor/activity-pricing.js "$release/budapest-london/tripadvisor/activity-pricing.js"
@@ -116,14 +130,51 @@ fi
 /usr/bin/grep -q 'TRIP_MAP_PHOTOS' "$release/trip-map.html"
 /usr/bin/grep -q 'buildTripMap' "$release/trip-map.html"
 
+# Publish every Trip ideas dependency as one validated response. The route
+# choices, full guides and five-photo galleries must never cross release
+# generations during an atomic symlink swap.
+node --check ../trip-ideas-data.js
+node --check ../trip-ideas.js
+if /usr/bin/grep -qi '</script' ../trip-ideas-data.js ../trip-ideas.js; then
+  echo "trip-ideas modules cannot be safely inlined because they contain </script" >&2
+  exit 1
+fi
+trip_ideas_inline="$release/trip-ideas.inline.$$"
+/usr/bin/awk \
+  -v data="$script_dir/../trip-location-data.js" \
+  -v photos="$script_dir/../trip-map-photos.js" \
+  -v ideas_data="$script_dir/../trip-ideas-data.js" \
+  -v ideas="$script_dir/../trip-ideas.js" '
+  function dump(path, line) {
+    while ((getline line < path) > 0) print line
+    close(path)
+  }
+  /<script src="trip-location-data\.js([^"]*)"><\/script>/ { print "<script>"; dump(data); next }
+  /<script src="trip-map-photos\.js([^"]*)"><\/script>/ { dump(photos); next }
+  /<script src="trip-ideas-data\.js([^"]*)"><\/script>/ { dump(ideas_data); next }
+  /<script src="trip-ideas\.js([^"]*)"><\/script>/ { dump(ideas); print "</script>"; next }
+  { print }
+' "$release/trip-ideas.html" > "$trip_ideas_inline"
+/bin/mv -f "$trip_ideas_inline" "$release/trip-ideas.html"
+if /usr/bin/grep -q 'src="trip-\(location-data\|map-photos\|ideas-data\|ideas\)\.js' "$release/trip-ideas.html"; then
+  echo "failed to inline all four Trip ideas modules" >&2
+  exit 1
+fi
+/usr/bin/grep -q 'TRIP_LOCATION_DATA' "$release/trip-ideas.html"
+/usr/bin/grep -q 'TRIP_MAP_PHOTOS' "$release/trip-ideas.html"
+/usr/bin/grep -q 'TRIP_IDEAS_DATA' "$release/trip-ideas.html"
+/usr/bin/grep -q 'buildTripIdeas' "$release/trip-ideas.html"
+
 test -f "$release/budapest-london/tripadvisor/index.html"
 test -f "$release/budapest-london/tripadvisor/activity-briefs.js"
 test -f "$release/budapest-london/tripadvisor/activity-pricing.js"
 test -f "$release/budapest-london/tripadvisor/discover-collaboration.js"
 test -f "$release/budapest-london/tripadvisor/discover-pricing.js"
 test -f "$release/trip-map.html"
+test -f "$release/trip-ideas.html"
 grep -q 'budapest-london/tripadvisor/index.html' "$release/trip-plan.html"
 grep -q 'trip-map.html' "$release/trip-plan.html"
+grep -q 'trip-ideas.html' "$release/trip-plan.html"
 
 # Validate the immutable snapshot that will be activated. The generator replaces
 # briefs and pricing separately, so validating before these copies would leave a
@@ -149,10 +200,21 @@ fi
 node --test \
   ../test_trip_location_cards.mjs \
   ../test_trip_map.mjs \
+  ../test_trip_ideas.mjs \
   ../budapest-london/tripadvisor/test_curated_activity_briefs.mjs \
   ../budapest-london/tripadvisor/test_discover_collaboration.mjs \
   ../budapest-london/tripadvisor/test_discover_pricing.mjs \
   ../budapest-london/tripadvisor/test_validate_discover_groups.mjs
+
+# Leave headroom for provider-side accounting differences and fail locally
+# before a deployment upload can reject an otherwise validated release.
+max_partykit_asset_bytes=95000000
+bundle_bytes="$(/usr/bin/find "$release" -type f -exec /usr/bin/stat -f '%z' {} \; \
+  | /usr/bin/awk '{ total += $1 } END { print total + 0 }')"
+if [ "$bundle_bytes" -gt "$max_partykit_asset_bytes" ]; then
+  echo "release is too large for PartyKit: $bundle_bytes bytes (limit $max_partykit_asset_bytes)" >&2
+  exit 1
+fi
 
 previous=""
 if [ -L public ]; then previous="$(readlink public || true)"; fi
@@ -177,4 +239,4 @@ done
 if [ -n "$legacy" ]; then rm -rf "$legacy"; legacy=""; fi
 
 count="$(find "$release" -type f | wc -l | tr -d ' ')"
-echo "built public -> $release_rel : $count files"
+echo "built public -> $release_rel : $count files, $bundle_bytes bytes"

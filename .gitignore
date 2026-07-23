@@ -6,6 +6,12 @@ __pycache__/
 *.pyc
 .venv/
 
+# Multi-source activity research is durable locally but not published. The
+# versioned schema, adapters, tests and compact exports stay in Git; raw actor
+# payloads and review evidence live in the searchable SQLite database.
+activity-research/data/
+activity-research/exports/private/
+
 # editor
 *.swp
 .idea/

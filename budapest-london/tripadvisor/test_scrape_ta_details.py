@@ -26,6 +26,7 @@ from scrape_ta_details import (  # noqa: E402
     PersistentCamoufoxRunner,
     PersistentCamoufoxRunnerPool,
     SingleInstanceError,
+    atomic_write_json,
     build_context,
     block_cooldown_seconds,
     cache_looks_valid,
@@ -2941,6 +2942,28 @@ class PersistentBrowserTests(unittest.TestCase):
 
 
 class SelectionAndContextTests(unittest.TestCase):
+    def test_atomic_context_temp_file_is_owner_only_from_creation(self):
+        with TemporaryDirectory() as tmp:
+            destination = Path(tmp) / "detail_context_hungary.json"
+            observed_modes = []
+            real_fchmod = os.fchmod
+
+            def inspect_creation_mode(descriptor, mode):
+                observed_modes.append(os.fstat(descriptor).st_mode & 0o777)
+                real_fchmod(descriptor, mode)
+
+            with patch(
+                "scrape_ta_details.os.fchmod", side_effect=inspect_creation_mode
+            ):
+                atomic_write_json(
+                    destination,
+                    [{"reviews": [{"text": "private review evidence"}]}],
+                )
+
+            self.assertEqual(observed_modes, [0o600])
+            self.assertEqual(destination.stat().st_mode & 0o777, 0o600)
+            self.assertFalse(destination.with_name(destination.name + ".part").exists())
+
     def test_single_instance_lock_rejects_a_second_writer(self):
         with TemporaryDirectory() as tmp:
             lock_path = Path(tmp) / ".scrape-budapest.lock"

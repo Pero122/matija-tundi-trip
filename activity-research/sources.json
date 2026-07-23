@@ -1,0 +1,166 @@
+{
+  "version": 2,
+  "scope": {
+    "country": "Hungary",
+    "countryCode": "HU",
+    "excludeLocality": "Budapest"
+  },
+  "budget": {
+    "maxPlannedChargeUsd": 4.2,
+    "requireLiveAllowanceCheck": true
+  },
+  "ranking": {
+    "priorRating": 4.0,
+    "priorReviews": 50,
+    "defaultSort": "bayesian-quality",
+    "detailLimit": 90,
+    "reviewLimitPerListing": 10,
+    "tailWindow": 10,
+    "strongTailMinReviews": 50,
+    "strongTailMinBayesianRating": 4.3,
+    "strongTailMinCount": 2
+  },
+  "actors": {
+    "tripadvisor-discovery": {
+      "actorId": "maxcopell/tripadvisor",
+      "actorApiId": "maxcopell~tripadvisor",
+      "baseInput": {
+        "includeAttractions": true,
+        "includeRestaurants": false,
+        "includeHotels": false,
+        "includeNearbyResults": false,
+        "includeTags": true,
+        "includePriceOffers": false,
+        "includeAiReviewsSummary": false,
+        "language": "en",
+        "currency": "HUF",
+        "maxPhotosPerPlace": 0,
+        "maximumLeadsEnrichmentRecords": 0,
+        "verifyLeadsEnrichmentEmails": false
+      },
+      "phases": [
+        {
+          "label": "country-hungary",
+          "perQueryMaxItems": 30,
+          "perQueryMaxTotalChargeUsd": 0.151,
+          "queries": [
+            "Hungary"
+          ]
+        },
+        {
+          "label": "destination-and-theme-fanout",
+          "perQueryMaxItems": 11,
+          "perQueryMaxTotalChargeUsd": 0.056,
+          "queries": [
+            "Lake Balaton, Hungary",
+            "Hévíz, Hungary",
+            "Keszthely, Hungary",
+            "Eger, Hungary",
+            "Miskolc, Hungary",
+            "Pecs, Hungary",
+            "Tokaj, Hungary",
+            "Aggtelek National Park, Hungary",
+            "Hortobagy National Park, Hungary",
+            "Lake Tisza, Hungary",
+            "Danube Bend, Hungary",
+            "Sopron, Hungary",
+            "Szeged, Hungary",
+            "alpine coaster and zipline Hungary",
+            "special cave tours Hungary",
+            "unusual experiences Hungary",
+            "wildlife safari Hungary",
+            "thermal lakes Hungary"
+          ]
+        }
+      ]
+    },
+    "getyourguide-discovery": {
+      "actorId": "piotrv1001/getyourguide-listings-scraper",
+      "actorApiId": "piotrv1001~getyourguide-listings-scraper",
+      "baseInput": {
+        "mode": "by-city",
+        "includeDetails": false,
+        "proxyConfiguration": {
+          "useApifyProxy": false
+        }
+      },
+      "phases": [
+        {
+          "label": "country-hungary",
+          "maxItems": 250,
+          "maxTotalChargeUsd": 0.51,
+          "input": {
+            "cityUrls": [
+              { "url": "https://www.getyourguide.com/hungary-l169024/" }
+            ],
+            "maxItemsPerCity": 250,
+            "maxActivities": 250
+          }
+        },
+        {
+          "label": "destination-fanout",
+          "batchField": "cityUrls",
+          "batchSize": 2,
+          "perBatchMaxItems": 32,
+          "perBatchMaxItemsPerDestination": 16,
+          "perBatchMaxTotalChargeUsd": 0.065,
+          "input": {
+            "cityUrls": [
+              { "url": "https://www.getyourguide.com/lake-balaton-l1565/" },
+              { "url": "https://www.getyourguide.com/tihany-l105767/" },
+              { "url": "https://www.getyourguide.com/esztergom-l1567/" },
+              { "url": "https://www.getyourguide.com/heviz-l105762/" },
+              { "url": "https://www.getyourguide.com/siofok-l105752/" },
+              { "url": "https://www.getyourguide.com/pecs-l149760/" },
+              { "url": "https://www.getyourguide.com/etyek-l87267/" },
+              { "url": "https://www.getyourguide.com/debrecen-l100146/" },
+              { "url": "https://www.getyourguide.com/veszprem-l155420/" },
+              { "url": "https://www.getyourguide.com/visegrad-l1566/" },
+              { "url": "https://www.getyourguide.com/szentendre-l1568/" },
+              { "url": "https://www.getyourguide.com/gyor-l2558/" },
+              { "url": "https://www.getyourguide.com/szekesfehervar-l157735/" },
+              { "url": "https://www.getyourguide.com/balatonfured-l105747/" },
+              { "url": "https://www.getyourguide.com/szeged-l157501/" },
+              { "url": "https://www.getyourguide.com/pannonhalma-l2559/" },
+              { "url": "https://www.getyourguide.com/godollo-l24490/" },
+              { "url": "https://www.getyourguide.com/tokaj-l111945/" },
+              { "url": "https://www.getyourguide.com/eger-l1573/" },
+              { "url": "https://www.getyourguide.com/holloko-l1391/" },
+              { "url": "https://www.getyourguide.com/badacsonytomaj-magyarorszag-l246703/" },
+              { "url": "https://www.getyourguide.com/vac-l155574/" },
+              { "url": "https://www.getyourguide.com/miskolc-l32584/" },
+              { "url": "https://www.getyourguide.com/keszthely-l105757/" },
+              { "url": "https://www.getyourguide.com/sopron-l156345/" },
+              { "url": "https://www.getyourguide.com/zebegeny-l233766/" },
+              { "url": "https://www.getyourguide.com/nagymaros-l1482/" },
+              { "url": "https://www.getyourguide.com/leanyfalu-l227896/" }
+            ],
+            "maxItemsPerCity": 16,
+            "maxActivities": 32
+          }
+        }
+      ]
+    },
+    "getyourguide-details": {
+      "actorId": "piotrv1001/getyourguide-listings-scraper",
+      "actorApiId": "piotrv1001~getyourguide-listings-scraper",
+      "maxItems": 90,
+      "maxTotalChargeUsd": 0.64,
+      "topLimit": 90,
+      "maxNotReturnedAttempts": 2,
+      "input": {
+        "mode": "by-url",
+        "activityUrls": [],
+        "maxActivities": 90,
+        "includeDetails": true,
+        "proxyConfiguration": {
+          "useApifyProxy": false
+        }
+      }
+    }
+  },
+  "reviewStrategy": {
+    "tripadvisor": "repository-camoufox-top-90",
+    "getyourguide": "detail-actor-sample-reviews"
+  }
+}

@@ -2428,18 +2428,6 @@ def _audit_row(
         ("stored", row.get("url")),
         ("canonical", row.get("canonical_url")),
     ):
-        try:
-            identity = detail_identity(url)
-        except (TypeError, ValueError) as exc:
-            _issue(issues, key, f"{label}-identity", str(exc))
-            continue
-        if identity != (expected_route, expected_id):
-            _issue(
-                issues,
-                key,
-                f"{label}-identity",
-                f"identity {identity!r} does not match {(expected_route, expected_id)!r}",
-            )
         if label == "canonical":
             parsed_url = urlparse(str(url))
             if parsed_url.scheme != "https" or (parsed_url.hostname or "").lower() not in {
@@ -2452,6 +2440,18 @@ def _audit_row(
                     "canonical-host",
                     "canonical URL must be HTTPS on tripadvisor.com",
                 )
+        try:
+            identity = detail_identity(url)
+        except (TypeError, ValueError) as exc:
+            _issue(issues, key, f"{label}-identity", str(exc))
+            continue
+        if identity != (expected_route, expected_id):
+            _issue(
+                issues,
+                key,
+                f"{label}-identity",
+                f"identity {identity!r} does not match {(expected_route, expected_id)!r}",
+            )
 
     try:
         raw_path = detail_cache_path({"url": item.get("url", "")}, raw_dir=raw_dir)
